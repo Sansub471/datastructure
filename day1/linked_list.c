@@ -24,7 +24,7 @@ struct Node* DeletePositin(struct Node* head, int n);
 struct Node* ReverseByIteration(struct Node* head);
 void Print(struct Node*);
 void PrintRecursion(struct Node* head);
-void ReversePrint(struct Node* head);
+void ReversePrintRecursion(struct Node* head);
 
 int main()
 {
@@ -73,6 +73,14 @@ int main()
     printf("Insert at the end : ");
     head = InsertAtEnd(head, 777);
     PrintRecursion(head);
+    head = InsertAtEnd(head, 32);
+    PrintRecursion(head);
+    head = InsertAtEnd(head, 45);
+    PrintRecursion(head);
+
+    // Reverse Print
+    printf("Reverse print a list using recursion : ");
+    ReversePrintRecursion(head);
     return 0;
 }
 struct Node* Insert(struct Node* head, int x)
@@ -174,4 +182,11 @@ void PrintRecursion(struct Node* head)
     if (head == NULL) {printf("\n"); return ;} // Exit condition
     printf("%d ", head->data);
     PrintRecursion(head->next);
+}
+
+void ReversePrintRecursion(struct Node* head)
+{
+    if (head == NULL) return;
+    ReversePrintRecursion(head->next);
+    printf("%d ", head->data);
 }
