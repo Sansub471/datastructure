@@ -15,10 +15,16 @@ struct Node* Insert(struct Node*, int x);
 struct Node* InsertPosition(struct Node* head, int data, int n);
 
 //Insert at the end.
+struct Node* InsertAtEnd(struct Node* head, int data);
 
 //Delete at nth position
 struct Node* DeletePositin(struct Node* head, int n);
+
+//Reverse by iteration
+struct Node* ReverseByIteration(struct Node* head);
 void Print(struct Node*);
+void PrintRecursion(struct Node* head);
+void ReversePrint(struct Node* head);
 
 int main()
 {
@@ -36,7 +42,7 @@ int main()
     }
 
     //Inserting at nth position
-    printf("\nInserting at nth position, ");
+    printf("\nInserting at nth position: ");
     head = InsertPosition(head, 5, 1); // 5
     head = InsertPosition(head, 3, 2); // 5, 3
     head = InsertPosition(head, 6, 3); // 5, 3, 6 
@@ -44,13 +50,29 @@ int main()
     head = InsertPosition(head, 9, 4); // 5, 8, 3, 9, 6
     Print(head);
 
-    printf("\nDeleting from nth position");
+    printf("Deleting from nth position : \n");
     head = DeletePositin(head, 2);
     Print(head);
     head = DeletePositin(head, 4);
     Print(head);
     head = DeletePositin(head, 1);
     Print(head);
+
+    // Reverse list
+    printf("The list is : ");
+    Print(head);
+    printf("The reversed list is : ");
+    head = ReverseByIteration(head);
+    Print(head);
+
+    //Print by recursion
+    printf("Recursion Print : ");
+    PrintRecursion(head);
+
+    //Insert at end
+    printf("Insert at the end : ");
+    head = InsertAtEnd(head, 777);
+    PrintRecursion(head);
     return 0;
 }
 struct Node* Insert(struct Node* head, int x)
@@ -85,12 +107,29 @@ struct Node* InsertPosition(struct Node* head,int data, int n)
     return head;
 }
 
+struct Node* InsertAtEnd(struct Node* head, int data)
+{
+    struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+    temp->data = data;
+    temp->next = NULL;
+    if (head == NULL){
+        head = temp;  
+        return head;
+    }
+    struct Node* temp1 = head;
+    while(temp1->next != NULL) temp1 = temp1->next;
+    temp1->next = temp;
+    return head;
+}
+
+// Try deleting given value, first occurence or all occurences.
+// Assume valid value if n is given.
 struct Node* DeletePositin(struct Node* head, int n)
 {
     struct Node* temp = head;
     if (n == 1)
     {
-        head = temp->next;
+        head = temp->next; // (*temp).next
         free(temp);
         return head;
     }
@@ -103,13 +142,36 @@ struct Node* DeletePositin(struct Node* head, int n)
     free(temp1);
     return head;
 }
+
+struct Node* ReverseByIteration(struct Node* head)
+{
+    struct Node* current = head;
+    struct Node* prev = NULL;
+    struct Node* next;
+    while(current != NULL)
+    {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    head = prev;
+    return head;
+}
+
 void Print(struct Node* head)
 {
-    printf("List is : ");
     while(head != NULL)
     {
         printf(" %d", head->data);
         head = head->next;
     }
     printf("\n");
+}
+
+void PrintRecursion(struct Node* head)
+{
+    if (head == NULL) {printf("\n"); return ;} // Exit condition
+    printf("%d ", head->data);
+    PrintRecursion(head->next);
 }
