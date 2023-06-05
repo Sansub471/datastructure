@@ -13,6 +13,8 @@ struct Node* InsertAtBeginning(struct Node* head, int x);
 struct Node* InsertAtEnd(struct Node* head, int x);
 struct Node* InsertAtPosition(struct Node* head, int x, int n);
 
+struct Node* DeleteAtBeginning(struct Node* head);
+
 // Printing functions
 void Print(struct Node* head);
 //Reverse Print
@@ -42,6 +44,13 @@ int main()
     Print(head);
     head = InsertAtPosition(head, 89, 2);
     Print(head);
+
+    printf("Delete at the beginning : ");
+    head = DeleteAtBeginning(head);
+    Print(head);
+    head = DeleteAtBeginning(head);
+    Print(head);
+    
     return 0;
 }
 struct Node* GetNewNode(int x){
@@ -79,7 +88,8 @@ struct Node* InsertAtEnd(struct Node* head, int x)
 struct Node* InsertAtPosition(struct Node* head, int x, int n)
 {
     struct Node* newNode = GetNewNode(x);
-    if (head == NULL){head=newNode; return head;}
+    if (head == NULL){head=newNode; return head;} // handle empty list
+    // insert at the beginning
     if (n == 1){
         newNode->next = head;
         head->prev = newNode;
@@ -96,8 +106,24 @@ struct Node* InsertAtPosition(struct Node* head, int x, int n)
     return head;
 }
 
+struct Node* DeleteAtBeginning(struct Node* head){
+    if (head == NULL){return head;} // handle empty list
+    //if there is only one element
+    struct Node* temp  = head;
+    if (temp->next == NULL){
+        free(temp);
+        head=NULL; 
+        return head;
+    }
+    head = head->next;
+    head->prev = NULL;
+    free(temp);
+    return head;
+}
+
 void Print(struct Node* head)
 {  
+    if (head == NULL){printf("Empty list.\n");return;}
     while(head != NULL){
         printf("%d ", head->data);
         head = head->next;
