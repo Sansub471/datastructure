@@ -14,6 +14,7 @@ struct Node* InsertAtEnd(struct Node* head, int x);
 struct Node* InsertAtPosition(struct Node* head, int x, int n);
 
 struct Node* DeleteAtBeginning(struct Node* head);
+struct Node* DeleteAtEnd(struct Node* head);
 
 // Printing functions
 void Print(struct Node* head);
@@ -50,7 +51,22 @@ int main()
     Print(head);
     head = DeleteAtBeginning(head);
     Print(head);
-    
+
+    printf("Deleting at the end : ");
+    head = DeleteAtEnd(head);
+    Print(head);
+    head = DeleteAtEnd(head);
+    Print(head);
+    head = DeleteAtEnd(head);
+    Print(head);
+    head = DeleteAtEnd(head);
+    Print(head);
+    head = DeleteAtEnd(head);
+    Print(head);
+    head = DeleteAtEnd(head);
+    Print(head);
+    head = DeleteAtEnd(head);
+    Print(head);
     return 0;
 }
 struct Node* GetNewNode(int x){
@@ -117,6 +133,22 @@ struct Node* DeleteAtBeginning(struct Node* head){
     }
     head = head->next;
     head->prev = NULL;
+    free(temp);
+    return head;
+}
+
+struct Node* DeleteAtEnd(struct Node* head){
+    if (head == NULL){return NULL;} // handle empty list
+    //handle one item
+    if (head->next == NULL){
+        free(head);
+        return NULL;
+    }
+    struct Node* temp = head;
+    while(temp->next != NULL){
+        temp = temp->next;
+    }
+    temp->prev->next = NULL;
     free(temp);
     return head;
 }
