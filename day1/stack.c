@@ -34,7 +34,7 @@ int Top(){
 void Print(){
     int i;
     printf("Stack : ");
-    for(i=0; i<=top; i++){
+    for(i=top; i>-1; i++){
         printf("%d ", A[i]);
     }
     printf("\n");
