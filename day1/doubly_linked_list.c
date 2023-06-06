@@ -15,6 +15,7 @@ struct Node* InsertAtPosition(struct Node* head, int x, int n);
 
 struct Node* DeleteAtBeginning(struct Node* head);
 struct Node* DeleteAtEnd(struct Node* head);
+struct Node* DeleteAtPosition(struct Node* head, int n);
 
 // Printing functions
 void Print(struct Node* head);
@@ -67,6 +68,34 @@ int main()
     Print(head);
     head = DeleteAtEnd(head);
     Print(head);
+
+    printf("New list by inserting at end: ");
+    head = InsertAtEnd(head, 76);
+    head = InsertAtEnd(head, 81);
+    head = InsertAtEnd(head, 32);
+    head = InsertAtEnd(head, 28);
+    head = InsertAtEnd(head, 34);
+    head = InsertAtEnd(head, 99);
+    Print(head);
+
+    printf("Deleting at positon 2 : ");
+    head = DeleteAtPosition(head, 2);
+    Print(head);
+    printf("Deleting at positon 4 : ");
+    head = DeleteAtPosition(head, 4);
+    Print(head);
+    printf("Deleting at positon 4 : ");
+    head = DeleteAtPosition(head, 4);
+    Print(head);
+    printf("Deleting at positon 1 : ");
+    head = DeleteAtPosition(head, 1);
+    Print(head);
+    printf("Deleting at position 1 : ");
+    head = DeleteAtPosition(head, 1);
+    Print(head);
+    head = DeleteAtPosition(head, 1);
+    Print(head);
+
     return 0;
 }
 struct Node* GetNewNode(int x){
@@ -145,11 +174,31 @@ struct Node* DeleteAtEnd(struct Node* head){
         return NULL;
     }
     struct Node* temp = head;
-    while(temp->next != NULL){
-        temp = temp->next;
-    }
+    while(temp->next != NULL){temp = temp->next;}
     temp->prev->next = NULL;
     free(temp);
+    return head;
+}
+
+struct Node* DeleteAtPosition(struct Node* head, int n)
+{
+    if (head == NULL){return NULL;} //empty list
+    if (head->next == NULL){free(head); return NULL;}//only one element
+    struct Node* current = head;
+    // deleting at first position
+    if (n == 1){
+        head = head->next;
+        head->prev = NULL;
+        free(current);
+        return head;
+    }
+    for(int i=0; i < n -2; i++){current = current->next;}//traverse upto n-1
+    //Adjust the pointers to remove nth node
+    struct Node* next = current->next;
+    current->next = next->next;
+    if(next->next != NULL)next->next->prev = current; //or next->prev
+    //handle last node
+    free(next);
     return head;
 }
 
