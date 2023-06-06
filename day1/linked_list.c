@@ -7,9 +7,8 @@ struct Node
     struct Node* next;
 };
  
-// Address of the head node
-// Address at the beginning
-struct Node* Insert(struct Node*, int x);
+// Insert at the beginning
+struct Node* Insert(struct Node* head, int x);
 
 // Insert at nth position
 struct Node* InsertPosition(struct Node* head, int data, int n);
@@ -22,10 +21,16 @@ struct Node* DeletePositin(struct Node* head, int n);
 
 //Reverse by iteration
 struct Node* ReverseByIteration(struct Node* head);
+
+//Reverse by recursion
+void ReverseByRecursion(struct Node* current);
+
+// Print functions
 void Print(struct Node*);
 void PrintRecursion(struct Node* head);
 void ReversePrintRecursion(struct Node* head);
 
+struct Node* headpoint;
 int main()
 {
     struct Node* head = NULL; // empty list
@@ -81,6 +86,8 @@ int main()
     // Reverse Print
     printf("Reverse print a list using recursion : ");
     ReversePrintRecursion(head);
+    printf("\n");
+
     return 0;
 }
 struct Node* Insert(struct Node* head, int x)
@@ -175,6 +182,19 @@ void Print(struct Node* head)
         head = head->next;
     }
     printf("\n");
+}
+
+void ReverseByRecursion(struct Node* p)
+{
+    // Base case : empty list or only one node
+    if (p->next == NULL){
+        headpoint = p;
+        return;
+    }
+    ReverseByRecursion(p->next);
+    struct Node* q = p->next;
+    q->next = p;
+    p->next = NULL;
 }
 
 void PrintRecursion(struct Node* head)
