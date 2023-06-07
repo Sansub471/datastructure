@@ -3,6 +3,7 @@
 #include"linked_list.h"
 struct Node* headpoint;
 
+//Insert at he beginning
 struct Node* Insert(struct Node* head, int x)
 {
     struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
@@ -52,7 +53,7 @@ struct Node* InsertAtEnd(struct Node* head, int data)
 
 // Try deleting given value, first occurence or all occurences.
 // Assume valid value if n is given.
-struct Node* DeletePositin(struct Node* head, int n)
+struct Node* DeletePosition(struct Node* head, int n)
 {
     struct Node* temp = head;
     if (n == 1)

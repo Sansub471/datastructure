@@ -19,7 +19,7 @@ struct Node* InsertPosition(struct Node* head, int data, int n);
 struct Node* InsertAtEnd(struct Node* head, int data);
 
 //Delete at nth position
-struct Node* DeletePositin(struct Node* head, int n);
+struct Node* DeletePosition(struct Node* head, int n);
 
 //Reverse by iteration
 struct Node* ReverseByIteration(struct Node* head);
