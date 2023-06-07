@@ -2,14 +2,20 @@
 #define STACK_LINKED_H
 #include<stdbool.h>
 
+#ifndef NODE
+#define NODE
 struct Node{
     int data;
     struct Node* next;
 };
+#endif
 
+#ifndef STACK
+#define STACK
 struct Stack{
     struct Node* head;
 };
+#endif
 
 // Operations
 struct Stack* Push(struct Stack* stackptr, int data);

@@ -1,28 +1,7 @@
 //Stack implementation using linked list
 #include<stdio.h>
 #include<stdlib.h>
-#include<stdbool.h>
 #include"stack_linked.h"
-
-int main(){
-    struct Stack* stack = NULL;
-    stack = Push(stack, 77); PrintStack(stack);
-    stack = Push(stack, 56); PrintStack(stack);
-    stack = Push(stack, 23); PrintStack(stack);
-    stack = Push(stack, 12); PrintStack(stack);
-    stack = Push(stack, 90); PrintStack(stack);
-    printf("The top of stack is : %d \n", Top(stack));// -1 means empty.
-    int popped;
-    popped = Pop(&stack); // -1 means empty
-    printf("Popped item : %d \n", popped);
-    PrintStack(stack);
-
-    popped = Pop(&stack); // -1 means empty
-    printf("Popped item : %d \n", popped);
-    PrintStack(stack);
-    return 0;
-}
-
 struct Node* newNode(int data){
     struct Node* newnode = (struct Node*)malloc(sizeof(struct Node));
     newnode->data = data;

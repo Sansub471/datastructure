@@ -1,11 +1,14 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
+
+#ifndef NODE
+#define NODE
 struct Node
 {
     int data;
     struct Node* next;
 };
- 
+#endif
 // Insert at the beginning
 struct Node* Insert(struct Node* head, int x);
 
