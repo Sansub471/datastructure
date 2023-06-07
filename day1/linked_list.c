@@ -14,7 +14,7 @@ int main()
         printf("Enter the number: \n");
         scanf("%d", &x);
         head = Insert(head, x);
-        Print(head);
+        PrintList(head);
     }
 
     //Inserting at nth position
@@ -24,25 +24,25 @@ int main()
     head = InsertPosition(head, 6, 3); // 5, 3, 6 
     head = InsertPosition(head, 8, 2); // 5, 8, 3, 6
     head = InsertPosition(head, 9, 4); // 5, 8, 3, 9, 6
-    Print(head);
+    PrintList(head);
 
     printf("Deleting from nth position : \n");
     head = DeletePositin(head, 2);
-    Print(head);
+    PrintList(head);
     head = DeletePositin(head, 4);
-    Print(head);
+    PrintList(head);
     head = DeletePositin(head, 1);
-    Print(head);
+    PrintList(head);
 
     // Reverse list
     printf("The list is : ");
-    Print(head);
+    PrintList(head);
     printf("The reversed list is : ");
     head = ReverseByIteration(head);
-    Print(head);
+    PrintList(head);
 
     //Print by recursion
-    printf("Recursion Print : ");
+    printf("Recursion PrintList : ");
     PrintRecursion(head);
 
     //Insert at end
@@ -145,7 +145,7 @@ struct Node* ReverseByIteration(struct Node* head)
     return head;
 }
 
-void Print(struct Node* head)
+void PrintList(struct Node* head)
 {
     while(head != NULL)
     {

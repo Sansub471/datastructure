@@ -25,7 +25,7 @@ struct Node* ReverseByIteration(struct Node* head);
 void ReverseByRecursion(struct Node* current);
 
 // Print functions
-void Print(struct Node*);
+void PrintList(struct Node*);
 void PrintRecursion(struct Node* head);
 void ReversePrintRecursion(struct Node* head);
 #endif
