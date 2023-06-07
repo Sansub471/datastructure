@@ -2,26 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
-
-struct Node{
-    int data;
-    struct Node* next;
-};
-
-struct Stack{
-    struct Node* head;
-};
-
-// Operations
-struct Stack* Push(struct Stack* stackptr, int data);
-int Pop(struct Stack* stack);
-int Top(struct Stack* stack);
-bool IsEmpty(struct Stack* stack);
-
-void Print(struct Stack* stack);
-
-//getnew stack
-struct Stack* newStack(int data);
+#include"stack_linked.h"
 
 int main(){
     struct Stack* stack = NULL;
@@ -30,7 +11,15 @@ int main(){
     stack = Push(stack, 23); Print(stack);
     stack = Push(stack, 12); Print(stack);
     stack = Push(stack, 90); Print(stack);
-    printf("The top of stack is : %d ", Top(stack));
+    printf("The top of stack is : %d \n", Top(stack));// -1 means empty.
+    int popped;
+    popped = Pop(&stack); // -1 means empty
+    printf("Popped item : %d \n", popped);
+    Print(stack);
+
+    popped = Pop(&stack); // -1 means empty
+    printf("Popped item : %d \n", popped);
+    Print(stack);
     return 0;
 }
 
@@ -74,6 +63,20 @@ int Top(struct Stack* stack){
     }
     return stack->head->data;
 }
+
+int Pop(struct Stack** stack)
+{
+    if(*stack == NULL || IsEmpty(*stack)){
+        printf("Empty stack.\n");
+        return -1;
+    }
+    int popped = Top(*stack);
+    struct Node* current = (*stack)->head;
+    (*stack)->head = current->next;
+    free(current);
+    return popped;
+}
+
 
 void Print(struct Stack* stack){
     if(stack == NULL || IsEmpty(stack)){
