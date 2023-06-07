@@ -7,7 +7,6 @@ int top = -1;
 void Push(int x){
     if(top == MAX_SIZE -1){
         printf("Error: stack overflow.\n");
-
     }
     A[++top] = x; //pre-increment operator
     //Increment will happend before assignment.
@@ -34,7 +33,7 @@ int Top(){
 void Print(){
     int i;
     printf("Stack : ");
-    for(i=top; i>-1; i++){
+    for(i=top; i>-1; i--){
         printf("%d ", A[i]);
     }
     printf("\n");
