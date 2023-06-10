@@ -1,41 +1,10 @@
 //Reverse a string using Stack
 //Linked list implementation of stack.
-#include <stdio.h>
-#include <stdlib.h>
-
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
 #include"rev_string_stack.h"
-
-int main() {
-    char *string = (char *)malloc(MAX_LENGTH * sizeof(char));
-
-    printf("Enter a string: ");
-    fgets(string, MAX_LENGTH, stdin);
-
-    printf("You entered: %s", string);
-
-    //Create a link list of characters
-    struct SNode* head = NULL;
-
-    printf("Characters: ");
-    char *ptr = string; // Initialize a pointer to the start of the string
-    while (*ptr != '\0') {
-        printf("%c ", *ptr);
-        head = Insert(head, *ptr);
-        ptr++; 
-    }
-    printf("\n");
-    printf("The characters in linked list are : ");
-    SPrint(head);
-    
-    //Create a stack using linked list
-    struct Stack* stack = NULL;
-    head = ReverseListByStack(stack, head);
-    printf("The reversed string is: ");
-    SPrint(head);
-    free(stack);
-    free(string);
-    return 0;
-}
+//Insert at the end
 struct SNode* Insert(struct SNode* head, char character){
     struct SNode* temp = (struct SNode*)malloc(sizeof(struct SNode));
     temp->data = character;
@@ -50,7 +19,6 @@ struct SNode* Insert(struct SNode* head, char character){
     return head;
 }
 
-
 struct SNode* newNode(char data){
     struct SNode* newnode = (struct SNode*)malloc(sizeof(struct SNode));
     newnode->data = data;
@@ -64,9 +32,40 @@ struct Stack* newStack(char data){
     return stack;
 }
 
+bool IsEmpty(struct Stack* stack){
+    if((stack->head == NULL) || (stack == NULL)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+char Top(struct Stack* stack){
+    if (stack == NULL || IsEmpty(stack)){
+        printf("Empty stack.\n");
+        return -1;
+    }
+    return stack->head->data;
+}
+
+char Pop(struct Stack** stack)
+{
+    if(*stack == NULL || IsEmpty(*stack)){
+        printf("Empty stack.\n");
+        return -1;
+    }
+    char popped = Top(*stack);
+    struct SNode* current = (*stack)->head;
+    (*stack)->head = current->next;
+    free(current);
+    return popped;
+}
+
 struct Stack* Push(struct Stack* stackptr, char character){
-    if (stackptr == NULL){
+    if ((stackptr == NULL) || (stackptr->head == NULL)){
         struct Stack* stack = newStack(character);
+        if (stackptr != NULL) free(stackptr);
         return stack;
     }
     struct SNode* newnode = newNode(character);
@@ -76,13 +75,14 @@ struct Stack* Push(struct Stack* stackptr, char character){
 }
 
 struct SNode* ReverseListByStack(struct Stack* stack,  struct SNode* head){
+    //push nodes to stack
     while(head != NULL){
         stack = Push(stack, head->data);
         head = head->next;
     }
+    //pop nodes from stack and free the stack
     return stack->head;
 }
-
 
 void SPrint(struct SNode* head){
     while(head != NULL){

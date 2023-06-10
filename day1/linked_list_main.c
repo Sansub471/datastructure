@@ -28,11 +28,11 @@ int main()
     PrintList(head);
 
     printf("Deleting from nth position : \n");
-    head = DeletePositin(head, 2);
+    head = DeletePosition(head, 2);
     PrintList(head);
-    head = DeletePositin(head, 4);
+    head = DeletePosition(head, 4);
     PrintList(head);
-    head = DeletePositin(head, 1);
+    head = DeletePosition(head, 1);
     PrintList(head);
 
     // Reverse list

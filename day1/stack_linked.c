@@ -16,7 +16,7 @@ struct Stack* newStack(int data){
 }
 
 bool IsEmpty(struct Stack* stack){
-    if(stack->head == NULL){
+    if((stack->head == NULL) || (stack == NULL)){
         return true;
     }
     else{
