@@ -15,3 +15,11 @@ struct Node* newNode(int data){
     newnode->next = NULL;
     return newnode;
 }
+
+struct Node* InsertAtBeginning(struct Node* head, int data){
+    struct Node* temp = newNode(data);
+    if (head != NULL) temp->next = head->next;
+    head = temp;
+    return head;
+}
+

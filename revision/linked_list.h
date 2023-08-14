@@ -13,5 +13,6 @@ struct Node {
 #endif
 
 struct Node* newNode(int data);
+struct Node* InsertAtBeginning(int data);
 
 #endif
