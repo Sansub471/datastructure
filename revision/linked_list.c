@@ -5,7 +5,9 @@
 
 int main(){
     struct Node* head = newNode(23);
-    printf("The data is %d", head->data);
+    head = InsertAtBeginning(head, 34);
+    head = InsertAtEnd(head, 77);
+    Print(head);
     return 0;
 }
 
@@ -27,7 +29,12 @@ struct Node* InsertAtEnd(struct Node* head, int data){
     struct Node* temp = newNode(data);
     if(head == NULL) return temp;
 
-    
+    struct Node* temp1 = head;
+    while(temp1->next != NULL){
+        temp1 = temp1->next;
+    }
+    temp1->next = temp;
+    return head;
 }
 
 void Print(struct Node* head){

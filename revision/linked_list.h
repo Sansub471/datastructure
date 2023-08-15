@@ -14,6 +14,7 @@ struct Node {
 
 struct Node* newNode(int data);
 struct Node* InsertAtBeginning(struct Node* head, int data);
+struct Node* InsertAtEnd(struct Node* head, int data);
 
 // printing
 void Print(struct Node* head);
