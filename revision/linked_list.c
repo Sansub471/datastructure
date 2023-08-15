@@ -23,6 +23,13 @@ struct Node* InsertAtBeginning(struct Node* head, int data){
     return head;
 }
 
+struct Node* InsertAtEnd(struct Node* head, int data){
+    struct Node* temp = newNode(data);
+    if(head == NULL) return temp;
+
+    
+}
+
 void Print(struct Node* head){
     while(head != NULL){
         printf("%d \t", head->data);
