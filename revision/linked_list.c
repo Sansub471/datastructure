@@ -11,8 +11,12 @@ int main(){
     head = InsertAtPosition(head, 1, 337);
     Print(head);
 
-    head = DeletePosition(head, 2);
-    Print(head);
+    //head = DeletePosition(head, 2);
+    //Print(head);
+
+    // Reverse by iteration
+    head = ReverseByIteration(head);
+    printf("The reversed list is : "); Print(head);
     return 0;
 }
 
@@ -75,6 +79,20 @@ struct Node* DeletePosition(struct Node* head, int pos){
     struct Node* temp1 = temp->next;
     temp->next = temp1->next;
     free(temp1);
+    return head;
+}
+
+struct Node* ReverseByIteration(struct Node* head){
+    struct Node* prevNode = NULL;
+    struct Node* nextNode = NULL;
+    struct Node* currentNode = head;
+    while(currentNode != NULL){
+        nextNode = currentNode->next;
+        currentNode->next = prevNode;
+        prevNode = currentNode;
+        currentNode = nextNode;
+    }
+    head = prevNode;
     return head;
 }
 

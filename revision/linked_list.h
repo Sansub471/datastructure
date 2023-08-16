@@ -16,7 +16,10 @@ struct Node* newNode(int data);
 struct Node* InsertAtBeginning(struct Node* head, int data);
 struct Node* InsertAtEnd(struct Node* head, int data);
 struct Node* InsertAtPosition(struct Node* head, int pos, int data);
-struct Node* DeletePosition(struct Node* head, int pos); 
+struct Node* DeletePosition(struct Node* head, int pos);
+
+struct Node* ReverseByIteration(struct Node* head);
+
 
 // printing
 void Print(struct Node* head);
