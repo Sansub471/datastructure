@@ -23,9 +23,11 @@ int main(){
     head = headpointer;
     Print(head); 
 
-    printf("Reverse by recursion, no global variable."); 
+    printf("Reverse by recursion, no global variable: "); 
     head = ReverseListRecursion(head);
     Print(head);
+
+    printf("Reverse print recursion : "); ReversePrintRecursion(head); printf("\n");
     return 0;
 }
 
@@ -135,6 +137,12 @@ void PrintRecursion(struct Node* head){
     printf("%d \t", head->data);
     PrintRecursion(head->next);
     //printf("%d \t", head->data); printed in reverse
+}
+
+void ReversePrintRecursion(struct Node* head){
+    if (head == NULL) return;
+    ReversePrintRecursion(head->next);
+    printf("%d \t", head->data);
 }
 
 void Print(struct Node* head){
