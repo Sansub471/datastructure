@@ -17,6 +17,8 @@ int main(){
     // Reverse by iteration
     head = ReverseByIteration(head);
     printf("The reversed list is : "); Print(head);
+
+    printf("Print by iteration : "); PrintRecursion(head); printf("\n");
     return 0;
 }
 
@@ -33,6 +35,7 @@ struct Node* InsertAtBeginning(struct Node* head, int data){
     head = temp;
     return head;
 }
+
 
 struct Node* InsertAtEnd(struct Node* head, int data){
     struct Node* temp = newNode(data);
@@ -94,6 +97,12 @@ struct Node* ReverseByIteration(struct Node* head){
     }
     head = prevNode;
     return head;
+}
+
+void PrintRecursion(struct Node* head){
+    if (head == NULL) return ;
+    printf("%d \t", head->data);
+    PrintRecursion(head->next);
 }
 
 void Print(struct Node* head){

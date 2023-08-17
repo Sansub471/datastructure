@@ -21,7 +21,8 @@ struct Node* DeletePosition(struct Node* head, int pos);
 struct Node* ReverseByIteration(struct Node* head);
 
 
+
 // printing
 void Print(struct Node* head);
-
+void PrintRecursion(struct Node* head);
 #endif
