@@ -2,6 +2,7 @@
 #include<stdlib.h>
 
 #include"linked_list.h"
+struct Node* headpointer;
 
 int main(){
     struct Node* head = newNode(23);
@@ -19,6 +20,10 @@ int main(){
     printf("The reversed list is : "); Print(head);
 
     printf("Print by iteration : "); PrintRecursion(head); printf("\n");
+
+    printf("Reverse by recursion : "); ReverseByRecursion(head); 
+    head = headpointer;
+    Print(head); 
     return 0;
 }
 
@@ -99,10 +104,23 @@ struct Node* ReverseByIteration(struct Node* head){
     return head;
 }
 
+// using a global variable
+void ReverseByRecursion(struct Node* head){
+    if (head->next == NULL){
+        headpointer = head;
+        return;
+    }
+    ReverseByRecursion(head->next);
+    struct Node* nextNode = head->next; // current node is head
+    nextNode->next = head; // link reversed
+    head->next = NULL;
+}
+
 void PrintRecursion(struct Node* head){
     if (head == NULL) return ;
     printf("%d \t", head->data);
     PrintRecursion(head->next);
+    //printf("%d \t", head->data); printed in reverse
 }
 
 void Print(struct Node* head){

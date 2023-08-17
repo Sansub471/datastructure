@@ -19,7 +19,7 @@ struct Node* InsertAtPosition(struct Node* head, int pos, int data);
 struct Node* DeletePosition(struct Node* head, int pos);
 
 struct Node* ReverseByIteration(struct Node* head);
-
+void ReverseByRecursion(struct Node* head);
 
 
 // printing
