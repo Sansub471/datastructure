@@ -18,12 +18,14 @@ int main(){
     // Reverse by iteration
     head = ReverseByIteration(head);
     printf("The reversed list is : "); Print(head);
-
     printf("Print by iteration : "); PrintRecursion(head); printf("\n");
-
     printf("Reverse by recursion : "); ReverseByRecursion(head); 
     head = headpointer;
     Print(head); 
+
+    printf("Reverse by recursion, no global variable."); 
+    head = ReverseListRecursion(head);
+    Print(head);
     return 0;
 }
 
@@ -114,6 +116,18 @@ void ReverseByRecursion(struct Node* head){
     struct Node* nextNode = head->next; // current node is head
     nextNode->next = head; // link reversed
     head->next = NULL;
+}
+
+//reverse by recursion, without global variable
+struct Node* Reverse(struct Node* current, struct Node* prev){
+    if (current == NULL) return prev;
+    struct Node* nextNode = current->next;
+    current->next = prev; // link reversal
+    return Reverse(nextNode, current); 
+}
+
+struct Node* ReverseListRecursion(struct Node* head){
+    return Reverse(head, NULL);
 }
 
 void PrintRecursion(struct Node* head){
