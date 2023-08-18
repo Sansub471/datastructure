@@ -12,6 +12,12 @@ int main(){
     printf("Inserting at the beginning : ");
     Print(head);
 
+    head = InsertAtEnd(head, 89);
+    head = InsertAtEnd(head, 12);
+    printf("Inserting at the end : ");
+    Print(head);
+
+
     return 0;
 }
 
@@ -29,6 +35,19 @@ struct DNode* InsertBeginning(struct DNode* head, int data){
     newnode->next = head;
     head->prev = newnode;
     head = newnode;
+    return head;
+}
+
+struct DNode* InsertAtEnd(struct DNode* head, int data){
+    struct DNode* newnode = newDNode(data);
+    if(head == NULL) return newnode;
+
+    struct DNode* temp = head;
+    // going to last node
+    while(temp->next != NULL) temp = temp->next; 
+    //build the links
+    temp->next = newnode;
+    newnode->prev = temp;
     return head;
 }
 

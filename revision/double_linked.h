@@ -13,7 +13,7 @@ struct DNode{
 
 struct DNode* newDNode(int data);
 struct DNode* InsertBeginning(struct DNode* head, int data);
-
+struct DNode* InsertAtEnd(struct DNode* head, int data);
 
 //Print
 void Print(struct DNode* head);
