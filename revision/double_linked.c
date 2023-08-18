@@ -17,7 +17,9 @@ int main(){
     printf("Inserting at the end : ");
     Print(head);
 
-
+    head = InsertAtPosition(head, 2, 67);
+    printf("Inserting at position : ");
+    Print(head);
     return 0;
 }
 
@@ -48,6 +50,26 @@ struct DNode* InsertAtEnd(struct DNode* head, int data){
     //build the links
     temp->next = newnode;
     newnode->prev = temp;
+    return head;
+}
+
+struct DNode* InsertAtPosition(struct DNode* head, int pos, int data){
+    struct DNode* newnode = newDNode(data);
+    if (head == NULL) return newnode;
+    if (pos == 1) {
+        newnode->next = head;
+        head->prev = newnode;
+        head = newnode;
+        return head;
+    }
+
+    struct DNode* temp = head;
+    for(int i=0; i < pos - 2; i++) temp = temp->next;
+    newnode->next = temp->next;
+    newnode->prev = temp;
+    
+    temp->next->prev = newnode;
+    temp->next = newnode;
     return head;
 }
 
