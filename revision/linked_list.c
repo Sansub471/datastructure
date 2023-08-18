@@ -60,7 +60,7 @@ struct Node* InsertAtEnd(struct Node* head, int data){
 
 struct Node* InsertAtPosition(struct Node* head, int pos, int data){
     struct Node* temp = newNode(data);
-    //if (head == NULL) return temp;
+    if (head == NULL) return temp;
     if(pos == 1){
         temp->next = head;
         head = temp;
