@@ -4,7 +4,12 @@
 #include"double_linked.h"
 
 int main(){
-    struct DNode* head = newDNode(37);
+    struct DNode* head = NULL; // new double linked list
+    head = InsertBeginning(head, 23);
+    head = InsertBeginning(head, 45);
+    head = InsertBeginning(head, 56);
+    head = InsertBeginning(head, 78);
+    printf("Inserting at the beginning : ");
     Print(head);
 
     return 0;
@@ -16,6 +21,15 @@ struct DNode* newDNode(int data){
     newnode->data = data;
     newnode->next = NULL;
     return newnode;
+}
+
+struct DNode* InsertBeginning(struct DNode* head, int data){
+    struct DNode* newnode = newDNode(data);
+    if (head == NULL) return newnode;
+    newnode->next = head;
+    head->prev = newnode;
+    head = newnode;
+    return head;
 }
 
 //Print
