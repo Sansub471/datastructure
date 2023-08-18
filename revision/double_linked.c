@@ -24,6 +24,10 @@ int main(){
     head = DeleteAtBeginning(head);
     printf("Delete at beginning : ");
     Print(head);
+
+    head = DeleteAtPosition(head, 2);
+    printf("Delete at position : ");
+    Print(head);
     return 0;
 }
 
@@ -108,6 +112,35 @@ struct DNode* DeleteAtEnd(struct DNode* head){
     while(temp->next != NULL) temp = temp->next;
     temp->prev->next = NULL;
     free(temp);
+    return head;
+}
+
+struct DNode* DeleteAtPosition(struct DNode* head, int pos){
+    if (head == NULL) return head; // empty list
+
+    struct DNode* currentNode = head;
+
+    // only one element
+    if (currentNode->next == NULL){
+        free(head); return NULL;
+    }
+
+    // at first position
+    if (pos == 1){
+        head = head->next;
+        head->prev = NULL;
+        free(currentNode);
+        return head;
+    }
+
+    // goes upto (pos - 1)th node
+    for(int i=0; i < pos - 2; i++) currentNode = currentNode->next;
+    struct DNode* nextNode = currentNode->next; 
+    currentNode->next = nextNode->next; // currentNode->next->next
+    
+    // if pos = last element
+    if(nextNode->next != NULL) nextNode->next->prev = currentNode; // nextNode->prev
+    free(nextNode); // currentNode->next
     return head;
 }
 
