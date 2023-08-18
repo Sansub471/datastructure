@@ -16,6 +16,6 @@ struct DNode* InsertBeginning(struct DNode* head, int data);
 
 
 //Print
-
+void Print(struct DNode* head);
 
 #endif
