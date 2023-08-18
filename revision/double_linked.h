@@ -16,6 +16,9 @@ struct DNode* InsertBeginning(struct DNode* head, int data);
 struct DNode* InsertAtEnd(struct DNode* head, int data);
 struct DNode* InsertAtPosition(struct DNode* head, int pos, int data);
 
+struct DNode* DeleteAtBeginning(struct DNode* head);
+//struct DNode* DeleteAtEnd(struct DNode* head);
+//struct DNode* DeleteAtPosition(struct DNode* head, int n);
 //Print
 void Print(struct DNode* head);
 

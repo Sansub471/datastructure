@@ -20,6 +20,10 @@ int main(){
     head = InsertAtPosition(head, 2, 67);
     printf("Inserting at position : ");
     Print(head);
+
+    head = DeleteAtBeginning(head);
+    printf("Delete at beginning : ");
+    Print(head);
     return 0;
 }
 
@@ -31,6 +35,7 @@ struct DNode* newDNode(int data){
     return newnode;
 }
 
+// Inserting functions
 struct DNode* InsertBeginning(struct DNode* head, int data){
     struct DNode* newnode = newDNode(data);
     if (head == NULL) return newnode;
@@ -72,6 +77,25 @@ struct DNode* InsertAtPosition(struct DNode* head, int pos, int data){
     temp->next = newnode;
     return head;
 }
+
+// Deleting functions
+struct DNode* DeleteAtBeginning(struct DNode* head){
+    if (head == NULL ) return head;
+    struct DNode* temp = head;
+
+    // handle if there is only one node
+    if(temp->next == NULL){
+        free(temp);
+        head = NULL;
+        return head;
+    }
+    head = head->next;
+    head->prev = NULL;
+    free(temp);
+    return head;
+}
+
+
 
 //Print
 void Print(struct DNode* head){
