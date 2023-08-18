@@ -24,5 +24,4 @@ struct Node* DeleteAtPosition(struct Node* head, int n);
 void Print(struct Node* head);
 //Reverse Print
 void ReversePrint(struct Node* head);
-
 #endif
