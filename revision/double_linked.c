@@ -95,7 +95,21 @@ struct DNode* DeleteAtBeginning(struct DNode* head){
     return head;
 }
 
+struct DNode* DeleteAtEnd(struct DNode* head){
+    if (head == NULL) return head; // empty list
 
+    struct DNode* temp = head;
+    if(temp->next == NULL){
+        free(temp);
+        return NULL; // new head 
+    }
+
+    // get to last node
+    while(temp->next != NULL) temp = temp->next;
+    temp->prev->next = NULL;
+    free(temp);
+    return head;
+}
 
 //Print
 void Print(struct DNode* head){
