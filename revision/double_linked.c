@@ -153,3 +153,5 @@ void Print(struct DNode* head){
     }
     printf("\n");
 }
+
+// double linked list completed.
