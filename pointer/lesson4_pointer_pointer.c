@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define MAXSIZE  10
+#define MAXSIZE  5
 int main(){
     int* arr = malloc(MAXSIZE * sizeof(int));
     int* arr_ptr = arr; // keep track of the head
@@ -24,7 +24,7 @@ int main(){
         arr++;
     }
     printf("\n");
-    free(arr); // free the memory to prevent memory leak
+    free(arr_ptr); // free the memory to prevent memory leak
 
     return 0;
 }
