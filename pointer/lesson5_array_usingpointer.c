@@ -4,7 +4,7 @@
 #define MAXSIZE  10
 
 int main(){
-    int* arr = malloc(MAXSIZE * sizeof(int));
+    int* arr = (int*)malloc(MAXSIZE * sizeof(int));
     int* arr_ptr = arr; // keep track of the head
     if (arr == NULL){
         printf("Memory allocation failed.");
