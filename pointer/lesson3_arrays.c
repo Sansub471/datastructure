@@ -1,25 +1,19 @@
-// why integer strongly typecasted?
+// Some basics of arrays
 #include<stdio.h>
 int main(){
-    int a = 1025;
-    int *p;
-    p= &a;
-    printf("Size of integer is %lu bytes \n", sizeof(int));
-    printf("Address = %ld, value  = %d\n", (long int)(__intptr_t)p, *p);
-    printf("Address = %ld, value  = %d\n", (long int)(__intptr_t)(p+1), *(p+1));
+    int A[] = {34, 45, 99, 12, 90};
+    int* ptr = A;
+    printf("The Address of A, HEX : %p \t INT : %ld\n", A, (long int)(__intptr_t)A);
+    printf("The Address of A, HEX : %p \t INT : %ld\n", &A, (long int)(__intptr_t)&A);
+    printf("\n");
 
-    char* p0;
-    p0 = (char*)p; // typecasting
-    printf("Size of char is %lu bytes \n", sizeof(char));
-    printf("Address = %ld, value  = %d\n", (long int)(__intptr_t)p0, *p0);
-    // p is now typecasted to char pointer, hence it only accesses one byte
-    // of memory
-    // 1025 = 00000000 00000000 00000100 00000001
-    printf("Address = %ld, value  = %d\n", (long int)(__intptr_t)(p0+1), *(p0+1));
-
-    // generic pointer type
-    void* p1;
-    p1 = p;
-    
+    for(int i=0; i<5; i++){
+        printf("The Address of (A+i), HEX : %p \t INT : %ld\n", (A+i), (long int)(__intptr_t)(A+i));
+        printf("The Address of &A[i], HEX : %p \t INT : %ld\n", &A[i], (long int)(__intptr_t)&A[i]);
+        printf("\n");
+        printf("The Value of  A[i] : %d\n", A[i]);
+        printf("The Value of *(A+i): %d \n", *(A+i));
+        printf("\n");
+    }
     return 0;
 }
