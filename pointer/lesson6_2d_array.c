@@ -28,6 +28,45 @@ int main(){
     }
 
     free(arr_ptr);
+
+    // usign double pointer
+    int** arr2 = (int**)malloc(MAX_ROWS*sizeof(int*));
+
+    if(arr2 == NULL){
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    for(int i=0; i<MAX_ROWS; i++){
+        arr2[i] = (int*)malloc(MAX_COLS * sizeof(int));
+        if(arr2[i] == NULL){
+            printf("Memory allocation failed.\n");
+            return 1;
+        }
+    }
+
+    printf("Elements for %d x %d matrix? \n", MAX_ROWS, MAX_COLS);
+    for(int i=0; i< MAX_ROWS; i++){
+        printf("For Row %d\n", i);
+        for(int j=0; j<MAX_COLS; j++){
+            scanf("%d", &arr2[i][j]);
+        }
+    }
+
+    printf("Elements are, %d x %d matrix: \n", MAX_ROWS, MAX_COLS);
+    for(int i=0; i< MAX_ROWS; i++){
+        for(int j=0; j<MAX_COLS; j++){
+            printf("%d\t", arr2[i][j]);
+        }
+        printf("\n");
+    }
+
+    // free memory
+    for(int i=0; i<MAX_ROWS; i++){
+        free(arr2[i]);
+    }
+    free(arr2);
+
     return 0;
 }
 
