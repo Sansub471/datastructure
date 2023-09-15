@@ -5,7 +5,13 @@ int SumOfElements(int A[], int size)
     printf("Function : ");
     //printf("The size of A : %ld \t size of A[0] : %ld\n", sizeof(A), sizeof(A[0]));
     // sizeof(A) will give size of int* to the array not the entire array
-    // This is how compiler interpretes it
+    // The compiler implicitly creates a int* to the original array
+    // array is always passed by reference
+    // SumOfElements(int* A, int size), this is how compiler sees it
+
+    // This concept becomes useful with character arrays
+    
+
     int i, sum = 0;
     for(i=0; i<size; i++){
         sum += A[i];
