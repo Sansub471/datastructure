@@ -1,6 +1,35 @@
 #include<stdio.h>
 #include<string.h>
 
+// compile with gcc -o <main> <file.c> -w
+
+void CharPrint(char C[]){
+    // compiler interprets it as char* 
+    // only the base address is passed not the entire array
+    int length = strlen(C);
+    int size = sizeof(C); // give size of char*
+    printf("The length of the string from function : %d\n", length);
+    printf("The size of the string in bytes from function : %d\n", size);
+
+    int i = 0;
+    printf("The provided string is : ");
+    while(C[i] != '\0'){
+        printf("%c", *(C + i)); // or C[i]
+        i++;
+    }
+    printf("\n");
+
+    printf("The provided string print method 2 is : ");
+    while(*C != '\0'){
+        printf("%c", *C);
+        C++;
+    }
+    printf("\n");
+    // In second method, C++ worked eventhough at function definition 
+    // C[] is used. It's because the compiler treats it as char*
+    // pointer arithmetic works on char* or other pointer type
+
+}
 int main(){
     char C[6];
     C[0] = 'N';
@@ -76,6 +105,16 @@ int main(){
         printf("%c", *C1); // points to the first char, C1[0]
         //C1++; error
     }
+    printf("\n\n");
+
+    // Arrays are always passed by reference to functions
+    char nationality[] = "Nepali";
+    int lengthStr = strlen(nationality);
+    int size = sizeof(nationality);
+    printf("The length of the string from main : %d\n", lengthStr);
+    printf("The size of the string in bytes from main : %d\n", size);
     printf("\n");
+
+    CharPrint(nationality);
     return 0;
 }
