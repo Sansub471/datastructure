@@ -10,7 +10,7 @@ int SumOfElements(int A[], int size)
     // SumOfElements(int* A, int size), this is how compiler sees it
 
     // This concept becomes useful with character arrays
-    
+    // Need to study, not for today
 
     int i, sum = 0;
     for(i=0; i<size; i++){
