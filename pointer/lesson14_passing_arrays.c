@@ -8,11 +8,14 @@ int OneDimArray(int A[]){
 
 int TwoDimArray(int B[][3]){
     // only first dimension is allowed to left empty
+    // the compiler interprets B[][2] as int(*B)[3]
     return *(*B + 1);
 }
 
 
 int ThreeDimArray(int C[][2][2]){
+    // only first dimension is allowed to leave empty
+    // the compiler interprets as int(*C)[2][2]
     return ***C;
 }
 int main(){
