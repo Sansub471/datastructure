@@ -88,7 +88,18 @@ int main(){
     // i.e. find continuous memory block to it, then previous block is extented
 
     // otherwise, previous block is copied to the new location
-    printf("Previous address, arr2 : %ld \t New address, arr3 : %ld\n", (long int)(__intptr_t)arr2, (long int)(__intptr_t)arr3);
+    printf("Reallocated to double: ");
+    printf("Previous address, arr2 : %ld \t New address, arr3 : %ld\n\n", (long int)(__intptr_t)arr2, (long int)(__intptr_t)arr3);
+    
+    // if the size of new block is smaller than the previous block, extra
+    // blocks are deallocated
+
+    // if new size is 0, it is equivalent to free()
+    // if the first argument is null, it is equivalent to malloc
+    int* arr4 = (int*)realloc(arr3, 0.5*n*sizeof(int));
+
+    printf("Reallocated to half  : ");
+    printf("Previous address, arr2 : %ld \t New address, arr4 : %ld\n\n", (long int)(__intptr_t)arr2, (long int)(__intptr_t)arr4);
     return 0;
 }
 
