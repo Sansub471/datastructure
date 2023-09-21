@@ -10,9 +10,15 @@ int* Sum(int a, int b){
     return s;
 }
 
+int* SumOfNumbers(int* a, int* b){
+    int* sum = (int*)malloc(sizeof(int));
+    *sum = (*a) + (*b);
+    return sum;
+}
+
 int* Summation(int* a, int* b){
     int c = (*a) + (*b);
-    return &c; // Address of the local variable
+    //return &c; // Address of the local variable
 }
 // c is local variable to this function
 // function memory is allocated in the stack
@@ -38,11 +44,12 @@ int Add(int a, int b){
 int main(){
     int a = 12, b = 34;
     int* sum = Sum(a,b);
-    int* summation = Summation(&a, &b);
-    printf("Sum,       the sum of %d and %d is : %d\n", a, b, *sum);
-    printf("Summation, the sum of %d and %d is : %d\n", a, b, *summation);
-    printf("Addition,  the sum of %d and %d is : %d\n", a, b, Addition(&a, &b));
-    printf("Add,       the sum of %d and %d is : %d\n", a, b, Add(a,b));
+    //int* summation = Summation(&a, &b);
+    printf("Sum,         the sum of %d and %d is : %d\n", a, b, *sum);
+    //printf("Summation, the sum of %d and %d is : %d\n", a, b, *summation);
+    printf("Addition,    the sum of %d and %d is : %d\n", a, b, Addition(&a, &b));
+    printf("Add,         the sum of %d and %d is : %d\n", a, b, Add(a,b));
+    printf("SumOfNumbers the sum of %d and %d is : %d\n", a, b, *SumOfNumbers(&a, &b));
     return 0;
 }
 
