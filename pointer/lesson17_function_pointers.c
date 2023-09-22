@@ -6,6 +6,10 @@
 // Function pointer in C/C++
 #include<stdio.h>
 
+void PrintHello(char* name){
+    printf("Hello %s\n", name);
+}
+
 int Add(int a, int b){
     return a+b;
 }
@@ -31,5 +35,12 @@ int main(){
     // function pointer being used as function call
     // This method is more popular
 
+    // to be able to point to a function, the type of the function pointer
+    // must be appropriate
+    // e.g void (*p)(int, int); // means the functin is returning void
+
+    void (*hello)(char*);
+    hello = PrintHello;
+    hello("Subash");
     return 0;
 }
