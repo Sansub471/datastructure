@@ -26,6 +26,16 @@ int qsortCompare(const void* a, const void* b){
     // try with abs()
 }
 
+// return type must be integer
+// void* is generic, can be type casted to any data type
+int qsortFloat(const void* a, const void* b){
+    float A = *((float*)a);
+    float B = *((float*)b);
+    return B - A;
+    // try A - B
+    // try with abs()
+}
+
 void BubbleSort(int* A, int n, int (*compare)(int,int)){
     int i,j,temp;
     for(i=0; i<n; i++){
@@ -56,13 +66,20 @@ int main(){
     for(i=0; i<6; i++) printf("%d ", B[i]);
     printf("\n");
 
-    printf("\nQuick sort : \n");
+    printf("\nQuick sort, integer array : \n");
     qsort(A, 6, sizeof(int), qsortCompare);
     for(i=0; i<6; i++) printf("%d ", A[i]);
     printf("\n");
 
     qsort(B, 6, sizeof(int), qsortCompare);
     for(i=0; i<6; i++) printf("%d ", B[i]);
-    printf("\n");
+    printf("\n\n");
+
+    printf("Quick sort, float array : \n");
+    float C[]={23.34, 12.45, 89.56, 45.34, 3.2, 24.78};
+    qsort(C, 6, sizeof(float), qsortFloat);
+    for(i=0; i<6; i++) printf("%.2f ", C[i]);
+    printf("\n\n");
+
     return 0;
 }
