@@ -15,6 +15,17 @@ int absolute_compare(int a, int b){
     return -1;
 }
 
+// elements to compare are being passed by address
+// qsort can sort array of any datatype
+// you have to typecast to the proper data type 
+int qsortCompare(const void* a, const void* b){
+    int A = *((int*)a); // typecasting to int* and getting value
+    int B = *((int*)b);
+    return A - B; // increasing order
+    // try B - A // descending
+    // try with abs()
+}
+
 void BubbleSort(int* A, int n, int (*compare)(int,int)){
     int i,j,temp;
     for(i=0; i<n; i++){
@@ -42,6 +53,15 @@ int main(){
 
     int B[] = {-31, 22, -1, 50, -6, 4};
     BubbleSort(B, 6, absolute_compare);
+    for(i=0; i<6; i++) printf("%d ", B[i]);
+    printf("\n");
+
+    printf("\nQuick sort : \n");
+    qsort(A, 6, sizeof(int), qsortCompare);
+    for(i=0; i<6; i++) printf("%d ", A[i]);
+    printf("\n");
+
+    qsort(B, 6, sizeof(int), qsortCompare);
     for(i=0; i<6; i++) printf("%d ", B[i]);
     printf("\n");
     return 0;
