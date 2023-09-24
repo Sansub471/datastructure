@@ -2,11 +2,17 @@
 // Why do we need call back function at all?
 
 #include<stdio.h>
+#include<stdlib.h>
 
 // Chage return to switch between ascending or descending
 int compare(int a, int b){
     if(a > b) return 1;
     else return -1;
+}
+
+int absolute_compare(int a, int b){
+    if(abs(a) > abs(b)) return 1;
+    return -1;
 }
 
 void BubbleSort(int* A, int n, int (*compare)(int,int)){
@@ -32,6 +38,11 @@ int main(){
     int i, A[] = {3,2,1,5,6,4};
     BubbleSort(A, 6, compare);
     for(i=0; i<6; i++) printf("%d ", A[i]);
+    printf("\n");
+
+    int B[] = {-31, 22, -1, 50, -6, 4};
+    BubbleSort(B, 6, absolute_compare);
+    for(i=0; i<6; i++) printf("%d ", B[i]);
     printf("\n");
     return 0;
 }
