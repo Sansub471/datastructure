@@ -84,7 +84,4 @@ int main(){
 
     return 0;
 }
-
-// Call back is useful for event handling
-// We will see more examples of call back functions
-// This code is here just a copy of previous code
+// Remove this later on
