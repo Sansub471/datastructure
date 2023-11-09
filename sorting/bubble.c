@@ -1,2 +1,1 @@
-// Another day wasted 
-// When will i learn?
+// This will be the bubble sort code i'm writing.
