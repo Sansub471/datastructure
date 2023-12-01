@@ -8,3 +8,5 @@ int main(int argc, char** argv){
     std::cout<<"The value is : "<<div<<std::endl;
     return 0;
 }
+
+// When will I move to serious programming...
