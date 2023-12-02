@@ -13,3 +13,6 @@ int main(int argc, char** argv){
     std::cout<<"The sum of "<<first<<" and "<<second<<" is : "<<c<<std::endl;
     return 0;
 }
+
+// Got the function spot on
+// It is right, make it happen

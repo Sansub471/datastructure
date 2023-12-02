@@ -5,8 +5,6 @@ int main(int argc, char** argv){
 
     // Runtime error
     int div = 7 / 0;
-    std::cout<<"The value is : "<<div<<std::endl;
+    std::cout<< "The value is : " << div << std::endl;
     return 0;
 }
-
-// When will I move to serious programming...
