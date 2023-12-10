@@ -3,3 +3,18 @@
 /.vscode
 .exe
 .out
+
+*.exe
+*.out
+
+
+# Ignore the .vscode folder
+.vscode/
+
+# Ignore tasks .json files inside .vscode
+.vscode/*.json
+
+# All executables inside the C++ folder.
+
+C++/**/*.exe
+C++/**/*.out
