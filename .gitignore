@@ -18,3 +18,9 @@
 
 C++/**/*.exe
 C++/**/*.out
+
+
+# All .vscode files in subfolders
+./**/.vscode
+
+
