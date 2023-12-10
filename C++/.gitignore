@@ -7,3 +7,8 @@
 
 # Ignore tasks .json files inside .vscode
 .vscode/*.json
+
+# All executables inside the C++ folder.
+
+C++/**/*.exe
+C++/**/*.out
