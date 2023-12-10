@@ -1,0 +1,9 @@
+*.exe
+*.out
+
+
+# Ignore the .vscode folder
+.vscode/
+
+# Ignore tasks .json files inside .vscode
+.vscode/*.json
