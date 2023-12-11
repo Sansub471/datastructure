@@ -32,7 +32,9 @@ int main(int argc, char** argv){
     // Infinity 
     double result {number1 / 0.0};
     std::cout << "Infinity result : " << result << std::endl;
+
+    // NaN 
+    double nan {0.0 / 0.0 };
+    std::cout << "NaN in C++ : " << nan << std::endl;
     return 0;
 }
-
-// I will make a comeback to this soon, right now i have other important task to do.
