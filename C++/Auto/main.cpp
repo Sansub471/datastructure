@@ -28,8 +28,5 @@ int main(){
     std::cout << "var 7 occupies : " << sizeof(var7) << " bytes." << std::endl;
     std::cout << "var 8 occupies : " << sizeof(var8) << " bytes." << std::endl;
     std::cout << "var 9 occupies : " << sizeof(var9) << " bytes." << std::endl;
-
-
-
     return 0;
 }
