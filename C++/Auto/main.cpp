@@ -30,5 +30,3 @@ int main(){
     std::cout << "var 9 occupies : " << sizeof(var9) << " bytes." << std::endl;
     return 0;
 }
-
-// This is temporary, for printing the question paper.
