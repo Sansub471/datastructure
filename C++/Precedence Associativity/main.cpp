@@ -14,10 +14,12 @@ int main(){
     int g {5};
 
     int result = a + b * c - d / e  - f + g ; 
+    int result1 = b + d / f - a + g + c * e + g / f;
 
     // by precedance, * first then / and finally associativity left to right
 
     std::cout<<"The result is : " << result << std::endl;
+    std::cout<<"The result one is : " << result1 << std::endl;
     return 0;
 }
 
