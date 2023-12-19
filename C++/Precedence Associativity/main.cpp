@@ -15,6 +15,8 @@ int main(){
 
     int result = a + b * c - d / e  - f + g ; 
 
+    // by precedance, * first then / and finally associativity left to right
+
     std::cout<<"The result is : " << result << std::endl;
     return 0;
 }
