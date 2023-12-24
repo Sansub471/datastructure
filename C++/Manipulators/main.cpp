@@ -19,5 +19,3 @@ int main()
     std::showpos; // show or hide the + sign for positive numbers.
     return 0;
 }
-
-// The comment of for the day to save the trend
