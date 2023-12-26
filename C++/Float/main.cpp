@@ -38,5 +38,3 @@ int main(int argc, char** argv){
     std::cout << "NaN in C++ : " << nan << std::endl;
     return 0;
 }
-
-// Float chapter completed.
