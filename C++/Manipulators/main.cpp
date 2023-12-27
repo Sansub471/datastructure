@@ -37,4 +37,3 @@ int main()
     return 0;
 }
 
-// Waiting for result still on.
