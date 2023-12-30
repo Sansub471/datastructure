@@ -36,5 +36,3 @@ int main()
 
     return 0;
 }
-
-// The code will be right back.
