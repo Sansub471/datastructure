@@ -26,13 +26,21 @@ int main()
 
     std::cout<< "The false bool : " << flag2 << std::endl;
 
-    std::showpos; // show or hide the + sign for positive numbers.
+    // show number sign.
+
+    std::cout<<"Manipulator std:: showpos and std::noshowpos" << std::endl;
+    std::cout<<std::showpos; // show or hide the + sign for positive numbers.
 
     int pos_num {34};
     int neg_num {-45};
 
     std::cout<< "pos_num : " << pos_num << std::endl;
     std::cout<< "neg_num : " << neg_num << std::endl;
+
+    std::cout<<std::noshowpos;
+    std::cout<< "pos_num : " << pos_num << std::endl;
+    std::cout<< "neg_num : " << neg_num << std::endl;
+
 
     return 0;
 }
