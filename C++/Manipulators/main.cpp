@@ -42,5 +42,34 @@ int main()
     std::cout<< "neg_num : " << neg_num << std::endl;
 
 
+    // Number system manipulators
+    // std::dec, std::hex, std::oct
+
+    int pos_int {1024};
+    int neg_int {-256};
+    double double_var {489.24};
+
+    std::cout << std::endl;
+    std::cout << "pos_int in different bases : " << std::endl;
+    std::cout << "(dec) : " << std::dec << pos_int << std::endl;
+    std::cout << "(hex) : " << std::hex << pos_int << std::endl;
+    std::cout << "(oct) : " << std::oct << pos_int << std::endl;
+
+
+    std::cout << std::endl;
+    std::cout << "neg_int in different bases : " << std::endl;
+    std::cout << "(dec) : " << std::dec << neg_int << std::endl;
+    std::cout << "(hex) : " << std::hex << neg_int << std::endl;
+    std::cout << "(oct) : " << std::oct << neg_int << std::endl;
+
+    std::cout << std::endl;
+    std::cout << "double_var in different bases : " << std::endl;
+    std::cout << "(dec) : " << std::dec << double_var << std::endl;
+    std::cout << "(hex) : " << std::hex << double_var << std::endl;
+    std::cout << "(oct) : " << std::oct << double_var << std::endl;
+
+    
+
+
     return 0;
 }
