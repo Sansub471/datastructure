@@ -45,7 +45,7 @@ int main()
     // Number system manipulators
     // std::dec, std::hex, std::oct
 
-    int pos_int {1024};
+    int pos_int {52719};
     int neg_int {-256};
     double double_var {489.24};
 
@@ -68,8 +68,22 @@ int main()
     std::cout << "(hex) : " << std::hex << double_var << std::endl;
     std::cout << "(oct) : " << std::oct << double_var << std::endl;
 
+    // These number systems are not reflected in floating point number
+    // The floating point numbers are stored differently in the memory
     
 
+    // showbase and noshowbase : show the base for integral types
+    std::cout << "showbase and noshowbase : show the base for integral types";
+    pos_int = 717171;
+    std::cout << "pos_int (noshowbase: default) : " << std::endl;
+    std::cout << "(dec) : " << std::dec << pos_int << std::endl;
+    std::cout << "(hex) : " << std::hex << pos_int << std::endl;
+    std::cout << "(oct) : " << std::oct << pos_int << std::endl;
 
+    std::cout << "pos_int (showbase) : " << std::endl;
+    std::cout << std::showbase;
+    std::cout << "(dec) : " << std::dec << pos_int << std::endl;
+    std::cout << "(hex) : " << std::hex << pos_int << std::endl;
+    std::cout << "(oct) : " << std::oct << pos_int << std::endl;
     return 0;
 }
