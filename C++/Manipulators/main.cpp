@@ -85,5 +85,8 @@ int main()
     std::cout << "(dec) : " << std::dec << pos_int << std::endl;
     std::cout << "(hex) : " << std::hex << pos_int << std::endl;
     std::cout << "(oct) : " << std::oct << pos_int << std::endl;
+
+    // Moving on to next lesson, completed numbers in different bases so far.
+    
     return 0;
 }
