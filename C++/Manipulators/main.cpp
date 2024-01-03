@@ -86,10 +86,5 @@ int main()
     std::cout << "(hex) : " << std::hex << pos_int << std::endl;
     std::cout << "(oct) : " << std::oct << pos_int << std::endl;
 
-    // The day of watching strange things is done.
-    // I will be back at the game tomorrow.
-    // I'm tired of waiting for the result.
-    // I don't know what is stoping me from being the one who cares about life.
-
     return 0;
 }
