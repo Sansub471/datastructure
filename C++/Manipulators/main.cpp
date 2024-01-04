@@ -10,11 +10,11 @@ int main()
     //std::flush;
     std::setw(15); // setwidth e.g a Formatted Table
     std::right; // right justification
-    std::internal; // sign in left justified, data is right justified.
+    std::internal; // sign is left justified, data is right justified.
     // -    45.0233
     // -    902.023
 
-   
+   {
     bool flag = true;
     bool flag2 = false;
     
@@ -25,8 +25,9 @@ int main()
     std::cout << std::noboolalpha; // disable boolalpha
 
     std::cout<< "The false bool : " << flag2 << std::endl;
+   }
 
-    // show number sign.
+   { // show number sign.
 
     std::cout<<"Manipulator std:: showpos and std::noshowpos" << std::endl;
     std::cout<<std::showpos; // show or hide the + sign for positive numbers.
@@ -40,8 +41,9 @@ int main()
     std::cout<<std::noshowpos;
     std::cout<< "pos_num : " << pos_num << std::endl;
     std::cout<< "neg_num : " << neg_num << std::endl;
+   }
 
-
+   {
     // Number system manipulators
     // std::dec, std::hex, std::oct
 
@@ -70,11 +72,12 @@ int main()
 
     // These number systems are not reflected in floating point number
     // The floating point numbers are stored differently in the memory
-    
+   }
 
+    {
     // showbase and noshowbase : show the base for integral types
     std::cout << "showbase and noshowbase : show the base for integral types" <<std::endl;
-    pos_int = 717171;
+    int pos_int = 717171;
     std::cout << "pos_int (noshowbase: default) : " << std::endl;
     std::cout << "(dec) : " << std::dec << pos_int << std::endl;
     std::cout << "(hex) : " << std::hex << pos_int << std::endl;
@@ -86,7 +89,10 @@ int main()
     std::cout << "(hex) : " << std::hex << pos_int << std::endl;
     std::cout << "(oct) : " << std::oct << pos_int << std::endl;
 
+    }
 
+    {
+    int pos_int = 717171;
     // uppercase and nouppercase
     std::cout << "pos_int (nouppercase: default) : " << std::endl;
     std::cout << "(dec) : " << std::dec << pos_int << std::endl;
@@ -98,6 +104,11 @@ int main()
     std::cout << "(dec) : " << std::dec << pos_int << std::endl;
     std::cout << "(hex) : " << std::hex << pos_int << std::endl;
     std::cout << "(oct) : " << std::oct << pos_int << std::endl;
+    }
+
+    // control floating point numbers
+    // std::scientific and std::fixed
+
 
     return 0;
 }
