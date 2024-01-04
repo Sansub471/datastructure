@@ -73,7 +73,7 @@ int main()
     
 
     // showbase and noshowbase : show the base for integral types
-    std::cout << "showbase and noshowbase : show the base for integral types";
+    std::cout << "showbase and noshowbase : show the base for integral types" <<std::endl;
     pos_int = 717171;
     std::cout << "pos_int (noshowbase: default) : " << std::endl;
     std::cout << "(dec) : " << std::dec << pos_int << std::endl;
@@ -82,6 +82,19 @@ int main()
 
     std::cout << "pos_int (showbase) : " << std::endl;
     std::cout << std::showbase;
+    std::cout << "(dec) : " << std::dec << pos_int << std::endl;
+    std::cout << "(hex) : " << std::hex << pos_int << std::endl;
+    std::cout << "(oct) : " << std::oct << pos_int << std::endl;
+
+
+    // uppercase and nouppercase
+    std::cout << "pos_int (nouppercase: default) : " << std::endl;
+    std::cout << "(dec) : " << std::dec << pos_int << std::endl;
+    std::cout << "(hex) : " << std::hex << pos_int << std::endl;
+    std::cout << "(oct) : " << std::oct << pos_int << std::endl;
+
+    std::cout << "pos_int (uppercasae) : " << std::endl;
+    std::cout << std::uppercase;
     std::cout << "(dec) : " << std::dec << pos_int << std::endl;
     std::cout << "(hex) : " << std::hex << pos_int << std::endl;
     std::cout << "(oct) : " << std::oct << pos_int << std::endl;
