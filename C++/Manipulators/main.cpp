@@ -14,7 +14,7 @@ int main()
     // -    45.0233
     // -    902.023
 
-   {
+   { // std::boolalpha and std::noboolalpha
     bool flag = true;
     bool flag2 = false;
     
@@ -43,8 +43,7 @@ int main()
     std::cout<< "neg_num : " << neg_num << std::endl;
    }
 
-   {
-    // Number system manipulators
+   {// Number system manipulators
     // std::dec, std::hex, std::oct
 
     int pos_int {52719};
@@ -74,8 +73,7 @@ int main()
     // The floating point numbers are stored differently in the memory
    }
 
-    {
-    // showbase and noshowbase : show the base for integral types
+    {// showbase and noshowbase : show the base for integral types
     std::cout << "showbase and noshowbase : show the base for integral types" <<std::endl;
     int pos_int = 717171;
     std::cout << "pos_int (noshowbase: default) : " << std::endl;
@@ -91,9 +89,8 @@ int main()
 
     }
 
-    {
+    {// uppercase and nouppercase
     int pos_int = 717171;
-    // uppercase and nouppercase
     std::cout << "pos_int (nouppercase: default) : " << std::endl;
     std::cout << "(dec) : " << std::dec << pos_int << std::endl;
     std::cout << "(hex) : " << std::hex << pos_int << std::endl;
@@ -106,9 +103,11 @@ int main()
     std::cout << "(oct) : " << std::oct << pos_int << std::endl;
     }
 
-    // control floating point numbers
+    {// control floating point numbers
     // std::scientific and std::fixed
 
+    
 
+    }
     return 0;
 }
