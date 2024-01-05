@@ -107,6 +107,10 @@ int main()
     // std::scientific and std::fixed
 
     
+    // Let's start the floating point numbers now, print it in scientific and fixed way.
+    double var_double = 8349.34304;
+    std::cout<<std::scientific<<var_double<<std::endl;
+    std::cout<<std::fixed<<var_double<<std::endl;
 
     }
     return 0;
