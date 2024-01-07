@@ -111,7 +111,7 @@ int main()
     std::cout<<std::fixed<<var_double<<std::endl;
     }
 
-    { // This is the first time, let's finish it soon. 
+    { 
         
     }
     return 0;
