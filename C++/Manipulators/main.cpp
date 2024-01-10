@@ -136,7 +136,7 @@ int main()
     double d{34.1};
     double e{101.99};
     double f{12.0};
-    int g{450};
+    int g{45};
 
     std::cout<<"noshowpoint (default) : " << std::endl;
     std::cout<<"d : " << d << std::endl;
@@ -149,10 +149,12 @@ int main()
     std::cout<<"d : " << d << std::endl;
     std::cout<<"e : " << e << std::endl;
     std::cout<<"f : " << f << std::endl;
-    std::cout<<"g : " << g << std::endl;
-    
+    std::cout<<"g : " << g << std::endl; 
 
-   
+    // Note : The std::showpoint manipulator is primarily intended for floating-point numbers to ensure that the decimal point and 
+    // trailing zeros are always displayed. Its effect on integer types is not standardized, and in some implementations, it may lead 
+    // to unexpected behavior, such as interpreting the integer as an octal value.
+    // g's value is printed in octal here.
     }
     return 0;
 }
