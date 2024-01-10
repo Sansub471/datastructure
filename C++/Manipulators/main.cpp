@@ -112,11 +112,7 @@ int main()
     }
 
     { 
-         std::cout << std::endl;
-    std::cout << "double_var in different bases : " << std::endl;
-    std::cout << "(dec) : " << std::dec << double_var << std::endl;
-    std::cout << "(hex) : " << std::hex << double_var << std::endl;
-    std::cout << "(oct) : " << std::oct << double_var << std::endl;
+   
     }
     return 0;
 }
