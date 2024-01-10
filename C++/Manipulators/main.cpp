@@ -109,6 +109,24 @@ int main()
     double var_double = 8349.34304;
     std::cout<<std::scientific<<var_double<<std::endl;
     std::cout<<std::fixed<<var_double<<std::endl;
+
+    double pi{3.14159265358979};
+    long double plank{6.62607015e-34}; // Js (Joule-seconds)
+    double goldenRatio{1.618};
+    std::cout<< "double values (default: use scientific where necessary)"<<std::endl;
+    std::cout<<std::setprecision(3); // default is 6
+    std::cout<< "PI : " << pi <<std::endl;
+    std::cout<<std::setprecision(4);
+    std::cout<< "Plank's Constant : " << plank << std::endl;
+    std::cout<< "Golden ratio : " << goldenRatio << std::endl;
+
+    // if precision is bigger than the supported type, it will print garbage
+    // for eg. double supports 15 (say)
+    std::cout<<"Scientific Plank's Constant : " << std::setprecision(8)<< 
+    std::scientific<< plank << std::endl;
+    
+
+
     }
 
     { 
