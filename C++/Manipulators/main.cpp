@@ -157,8 +157,7 @@ int main()
     // g's value is printed in octal here.
     }
 
-    { // Finally all exams clear, time to think about license.
-    // Let's start a new day of coding.
+    { 
 
     }
     return 0;
