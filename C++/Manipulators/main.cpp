@@ -157,8 +157,6 @@ int main()
     // g's value is printed in octal here.
     }
 
-    { 
-        
-    }
+    // Get more on the topic from here : https://en.cppreference.com/w/cpp/io/manip
     return 0;
 }
