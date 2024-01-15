@@ -9,5 +9,8 @@
 int main()
 {
 
+    double name{980238.9089};
+    std::cout << "The double name : " << name << std::endl;
     return 0;
 }
+
