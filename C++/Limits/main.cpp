@@ -8,5 +8,3 @@ int main()
 
     return 0;
 }
-
-// The days are going like pain
