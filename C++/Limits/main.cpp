@@ -8,5 +8,3 @@ int main()
 
     return 0;
 }
-
-// Maybe it's my fate
