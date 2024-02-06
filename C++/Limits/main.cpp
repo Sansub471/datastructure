@@ -19,7 +19,12 @@
 int main()
 {
     std::cout<< "The range for short is from " << std::numeric_limits<short>::min() << " to " 
-                << std::numeric_limits<short>::max() << std::endl;
+                << std::numeric_limits<short>::max() << std::endl; // equivalent to short int
+
+    std::cout<< "The range for short int  is from " << std::numeric_limits<short int>::min() << " to " 
+                << std::numeric_limits<short int>::max() << std::endl;
+    std::cout<<std::endl;
+    
     std::cout<< "The range for unsigned short is from " << std::numeric_limits<unsigned short>::min() << " to " 
                 << std::numeric_limits<unsigned short>::max() << std::endl;
 
