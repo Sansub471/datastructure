@@ -13,7 +13,19 @@ int main()
     double epow = std::exp(100);
     std::cout<<"The value of exp(100) is : " << epow << std::endl;
 
-    double china = std::log(200);
+    double china = std::log(epow);
     std::cout<<"The log(200) is : " << china << std::endl;
+
+    double l10 = 10;
+    std::cout<<"The log10 of " << l10 << " is : " << std::log10(l10) << std::endl;
+
+    // log and exp are inverse to each other
+
+    float saving = -4598.900;
+    std::cout<<"The saving is : " << std::abs(saving) << std::endl;
+
+    float round = 7.7;
+    std::cout<<"The ceil of " << round << " is : " << std::ceil(round) << std::endl;
+    std::cout<<"The flooe of " << round << " is : " << std::floor(round) << std::endl;
     return 0;
 }
