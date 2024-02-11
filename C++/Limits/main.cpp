@@ -92,3 +92,6 @@ int main()
 
     return 0;
 }
+
+// For more functions, explore the link 
+// https://en.cppreference.com/w/cpp/types/numeric_limits
