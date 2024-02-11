@@ -29,3 +29,6 @@ int main()
     std::cout<<"The flooe of " << round << " is : " << std::floor(round) << std::endl;
     return 0;
 }
+
+// click the link for more information on cmath library
+// https://en.cppreference.com/w/cpp/header/cmath
