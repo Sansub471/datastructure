@@ -28,11 +28,6 @@ int main()
     std::cout<<"The ceil of " << round << " is : " << std::ceil(round) << std::endl;
     std::cout<<"The flooe of " << round << " is : " << std::floor(round) << std::endl;
 
-    std::cout<<"The ceil of " << round << " is : " << std::ceil(round) << std::endl;
-    std::cout<<"The flooe of " << round << " is : " << std::floor(round) << std::endl;
-
-
-
     return 0;
 }
 
