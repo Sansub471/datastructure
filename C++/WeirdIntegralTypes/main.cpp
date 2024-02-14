@@ -19,8 +19,12 @@ int main(){
     std::cout<<"Size of var3 : " << sizeof(var3) << std::endl;
     std::cout<<"Size of var4 : " << sizeof(var4) << std::endl;
 
-    auto result1 = var1 + var2; // converted to int before arithmetic operation
+    auto result1 = var1 + var2; // converted to int
     auto result2 = var3 + var4; // converted to int
+
+    // Int is the smallest type which can accomodate these arithmetic operations
+    // The same behaviour is present on other operators like bitwise
+    // shift operators (>> and << )
 
     std::cout<<"Size of result1 : " << sizeof(result1) << std::endl;
     std::cout<<"Size of result2 : " << sizeof(result2) << std::endl;
