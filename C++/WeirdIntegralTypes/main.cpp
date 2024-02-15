@@ -24,9 +24,11 @@ int main(){
 
     // Int is the smallest type which can accomodate these arithmetic operations
     // The same behaviour is present on other operators like bitwise
-    // shift operators (>> and << )
+    // shift operators (>> and << ).
 
     std::cout<<"Size of result1 : " << sizeof(result1) << std::endl;
     std::cout<<"Size of result2 : " << sizeof(result2) << std::endl;
     return 0;
 }
+
+//next lesson
