@@ -30,3 +30,4 @@ int main(){
     std::cout<<"Size of result2 : " << sizeof(result2) << std::endl;
     return 0;
 }
+// weird integral types done.
