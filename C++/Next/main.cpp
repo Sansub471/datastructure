@@ -1,5 +1,7 @@
 #include<iostream>
 
 int main(){
-    return 0;
+    
+    std::cout<<"The next lesson on C++ is unknown : " << std::endl;
+return 0;
 }
