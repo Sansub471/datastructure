@@ -4,4 +4,4 @@ Syntax : result = (condition) ? option1 : option 2;
 e.g. a = 5, b= 7;
 int val = (a > b) ? a : b;
 
-2. 
+2. Second Revision
