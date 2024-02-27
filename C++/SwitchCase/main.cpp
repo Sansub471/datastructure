@@ -35,5 +35,3 @@ return 0;
 
 // switch case must ba integral or enum type
 // not a string or float type
-
-// Revision of switch case done.
