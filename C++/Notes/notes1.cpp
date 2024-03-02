@@ -13,6 +13,7 @@ int main(){
     std::cout<<"The size of size_t is : " << sizeof(size_t) << std::endl;
 
     // Array declaratio: omit size
+    // Advantage : just add the elements, no need to take care of size
     int class_sizes[] {10, 12, 15, 11, 18, 17};
     std::cout<<"Let's look at the values of the array : " << std::endl;
     for(auto value : class_sizes){
