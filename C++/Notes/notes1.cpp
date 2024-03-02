@@ -31,4 +31,3 @@ int main(){
     }
     return 0;
 }
-// Back to quick C++ lessons
