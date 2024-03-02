@@ -18,5 +18,17 @@ int main(){
     for(auto value : class_sizes){
         std::cout<< "value : " << value << std::endl;
     }
+
+    // This is range based for loop added since C++11 and later
+    // Read more : https://www.geeksforgeeks.org/range-based-loop-c/
+    std::cout<<"Multi dimensional array using range-based for loop : " <<std::endl;
+    int numbers[][2] {17, 77, 37, 15};
+    for(int (&rows)[2] : numbers){
+        for(int elem: rows){
+            std::cout<< elem << "\t";
+        }
+        std::cout<<std::endl;
+    }
     return 0;
 }
+// Back to quick C++ lessons
