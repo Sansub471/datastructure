@@ -30,5 +30,14 @@ int main(){
         }
         std::cout<<std::endl;
     }
+
+    std::cout<<"The matrix is : "<<std::endl;
+    int matrix[][4] {12,89,34, 12, 89, 54, 13, 90};
+    for(int (&rows)[4] : matrix){
+        for(int elem : rows){
+            std::cout<<elem<<"\t";
+        }
+        std::cout<<std::endl;
+    }
     return 0;
 }
