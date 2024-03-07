@@ -46,14 +46,19 @@ int main(){
 
     // get the size of array at runtime
     std::cout<<"use of std::size() method : " << std::endl;
+    /*
     int count {std::size(scores)};
+    std::cout<<"The size of scores is : " << count << std::endl;
+    
     for(size_t i {0}; i< count; ++i){
         std::cout<< "scores [ " << i << "] : " << scores[i] << std::endl;
     }
-
+    */
 
     // old method is to divide the array size with the size of one element
     int arrCount = sizeof(scores) / sizeof(scores[0]);
     std::cout<< "The number of elements in the array is " << arrCount << std::endl;
+
+
     return 0;
 }
