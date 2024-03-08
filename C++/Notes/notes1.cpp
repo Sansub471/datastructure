@@ -59,6 +59,6 @@ int main(){
     int arrCount = sizeof(scores) / sizeof(scores[0]);
     std::cout<< "The number of elements in the array is " << arrCount << std::endl;
 
-
+    
     return 0;
 }
