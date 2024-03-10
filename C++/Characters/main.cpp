@@ -16,5 +16,3 @@ int main(){
     static_cast<int>(value)<<std::endl; // interpret as number
     return 0;
 }
-
-// Characters lesson completed.
