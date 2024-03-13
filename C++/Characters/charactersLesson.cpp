@@ -12,6 +12,12 @@ int main(){
     // This method works, but it's not a good idea to use it like this, 
     // writing each character is not easy
     
+    std::cout<<"Another message is : ";
+    char message[]{'N', 'E', 'P', 'A', 'L', '\0'};
+    for(auto m : message){
+        std::cout<<m;
+    }
+    std::cout<<std::endl;
     
     return 0;
 }
