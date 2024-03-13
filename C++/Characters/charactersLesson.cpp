@@ -11,7 +11,8 @@ int main(){
     std::cout<<std::endl;
     // This method works, but it's not a good idea to use it like this, 
     // writing each character is not easy
-
+    
+    // I have failed in life.
     
     return 0;
 }
