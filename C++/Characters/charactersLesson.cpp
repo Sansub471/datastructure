@@ -19,5 +19,6 @@ int main(){
     }
     std::cout<<std::endl;
  
+    // Start of the day for now
     return 0;
 }
