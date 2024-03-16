@@ -18,7 +18,9 @@ int main(){
         std::cout<<m;
     }
     std::cout<<std::endl;
- 
+    // null terminated strings in C++ are called C-string
+    // it comes from the C-programming language
+    
     // Start of the day for now
     return 0;
 }
