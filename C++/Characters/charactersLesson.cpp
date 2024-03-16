@@ -11,16 +11,27 @@ int main(){
     std::cout<<std::endl;
     // This method works, but it's not a good idea to use it like this, 
     // writing each character is not easy
+    // Don't use string with no null-termination
     
     std::cout<<"Another message is : ";
-    char message[]{'N', 'E', 'P', 'A', 'L', '\0'};
-    for(auto m : message){
+    char msg1[]{'N', 'E', 'P', 'A', 'L', '\0'};
+    for(auto m : msg1){
         std::cout<<m;
     }
     std::cout<<std::endl;
     // null terminated strings in C++ are called C-string
     // it comes from the C-programming language
-    
-    // Start of the day for now
+
+    char msg3[6]{'H','e','l','l','o'}; // remaining space is filled with null
+    std::cout<< msg3 << std::endl;
+    std::cout<<"Size of msg3 : " << sizeof(msg3) << std::endl;
+
+    char msg4[]{'H','e','l','l','o'}; // This is not a c string
+    // as there is no null character
+    std::cout<<"The msg4 is : " << msg4 << std::endl;
+    std::cout<<"Size of msg4 : " << sizeof(msg4) << std::endl;
+    // We see unexpected result while printing msg4 because there is no
+    // null termination
+
     return 0;
 }
