@@ -33,5 +33,9 @@ int main(){
     // We see unexpected result while printing msg4 because there is no
     // null termination
 
+    // C-string is difficult to work with
+    // In C++, we have string literals
+    char msg5[] {"Hello C++, you have been a real pain in the ass."};
+    std::cout<<"String literal : " << msg5 << std::endl;
     return 0;
 }
