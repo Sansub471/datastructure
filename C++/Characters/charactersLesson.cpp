@@ -37,5 +37,8 @@ int main(){
     // In C++, we have string literals
     char msg5[] {"Hello C++, you have been a real pain in the ass."};
     std::cout<<"String literal : " << msg5 << std::endl;
+
+    char* message {"Pointer to string literal in C++"};
+    std::cout<<"The char pointer : " << message << std::endl;
     return 0;
 }
