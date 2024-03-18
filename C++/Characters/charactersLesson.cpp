@@ -38,8 +38,11 @@ int main(){
     char msg5[] {"Hello C++, you have been a real pain in the ass."};
     std::cout<<"String literal : " << msg5 << std::endl;
 
-    //char* message {"Pointer to string literal in C++"};
-    //std::cout<<"The char pointer : " << message << std::endl;
+    const char* message {"Pointer to string literal in C++"};
+    // const is necessary in C++ now because modifying non-const string literal 
+    // can lead to undefined behaviour
+    // or bug risk
+    std::cout<<"The char pointer : " << message << std::endl;
 
 
     return 0;
