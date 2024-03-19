@@ -43,7 +43,16 @@ int main(){
     // can lead to undefined behaviour
     // or bug risk
     std::cout<<"The char pointer : " << message << std::endl;
+    std::cout<<std::endl;
+    
+    // Character array is special, let's see it.
+    int numbers[]{1,2,3,4,5};
+    std::cout<<"The numbers   array : " << numbers << std::endl;
+    std::cout<<"The character array : " << msg5 << std::endl;
 
+    // We can directly print the character arry using cout
+    // but not number array, why?
+    
 
     return 0;
 }
