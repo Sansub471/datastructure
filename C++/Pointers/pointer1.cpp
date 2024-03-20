@@ -15,7 +15,8 @@ int main(){
 
     // This is how we normally think, but there is something special here
     // We can use string literal, "String Literal" with char*
-    
-
+    const char* sentence{"The const* char pointer declaration."};
+    std::cout<<"The address of sentence : "<< &sentence << std::endl;
+    std::cout<<"The size    of sentence : "<<sizeof(sentence) << std::endl;
     return 0;
 }
