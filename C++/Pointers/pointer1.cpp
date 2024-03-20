@@ -17,6 +17,24 @@ int main(){
     // We can use string literal, "String Literal" with char*
     const char* sentence{"The const* char pointer declaration."};
     std::cout<<"The address of sentence : "<< &sentence << std::endl;
-    std::cout<<"The size    of sentence : "<<sizeof(sentence) << std::endl;
+    std::cout<<"The size    of sentence : "<< sizeof(sentence) << std::endl;
+
+    // The first character will be pointed by the the first character
+    // of the string literal
+
+    std::cout<<"The *sentence is : " << *sentence << std::endl;
+    // It will print the first character of the string literal
+    std::cout<<"The *sentence + 1 is : " << *(sentence + 1) << std::endl;
+    // The second character and the arithematic works like any othe pointer type
+
+    // What if we want to modify the char array? 
+    // The easy solution is to use the char array char[]{}
+
+    char sen[]{"Fewa is the biggest lake of Nepal."};
+    sen[0] = 'R'; sen[1]='a'; sen[2]='r'; sen[3] = 'a';
+    std::cout<<"Info, lake of Nepal : " << sen << std::endl;
+
+
+    
     return 0;
 }
