@@ -34,7 +34,9 @@ int main(){
     sen[0] = 'R'; sen[1]='a'; sen[2]='r'; sen[3] = 'a';
     std::cout<<"Info, lake of Nepal : " << sen << std::endl;
 
-
+    char sen1[]{"My name is Subash Mainali"};
+    sen1[0] ='N';
+    std::cout<<"Info, name : " << sen1 << std::endl;
     
     return 0;
 }
