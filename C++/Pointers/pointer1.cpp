@@ -38,5 +38,7 @@ int main(){
     sen1[0] ='N';
     std::cout<<"Info, name : " << sen1 << std::endl;
     
+    //the game of cricket starts today
+    
     return 0;
 }
