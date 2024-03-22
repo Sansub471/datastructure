@@ -37,17 +37,42 @@ int main(){
     char sen1[]{"My name is Subash Mainali"};
     sen1[0] ='N';
     std::cout<<"Info, name : " << sen1 << std::endl;
-    
-    char* msg1 = "The pointer in C++";
-    
+       
     // Let's take few notes here ; 
     // There are other types of string in C++
     // 1. std::string 
     
     std::string name = "DellInspiron15i7";
     std::cout<<"std::string  = " << name << std::endl;
+    //      std::string is an instantiation of the basic_string class
+    //      tempelate that uses char(i.e. bytes) as its characters type.
+    //      Don't use cstring or string.h functions with std::string strings.
+    //      because cstring strings are of const char* type.
+    
     // 2. char[]
-    // 3. cosnt char* 
+    char str[] = "This string can be modified later.";
+    //Pros:     can modify the string later on
+    //Cons:    this is statically allocated sized array which consumes space in the stack
+    //         large size array required for concatenation or maipulate since the 
+    //          size of string is fixed.
+    //          Can use cstring or string.h library functions.      
+    
+    // 3. const char* 
+    const char* line = "This is cont* char type string, cannot be modified later.";
+    // Pros :   only one pointer required to refer to whole string, memory efficient
+    //          No need to declare the size of array before.
+    // Cons : char* is okay in C, but not in C++. In C-string is an array of characters
+    //         while in C++, string is an array of const characters
+
+    //          Can't modify the string later on, however it can point to another string.
+    std::cout<<"Old line string is : " << line << std::endl;
+    line = str;
+    std::cout<<"New line string is : " << line << std::endl;
+    
+    // Is the opposite possible?
+    const char* line2 = "This is the second line type string.";
+    //str = line2; // incompatible type in assignment of 'const char*' to 'char []'
+    std::cout<<"line2 assigned to str : " << str << std::endl;
 
     return 0;
 }
