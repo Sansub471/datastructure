@@ -38,7 +38,16 @@ int main(){
     sen1[0] ='N';
     std::cout<<"Info, name : " << sen1 << std::endl;
     
-    //the game of cricket starts today
+    char* msg1 = "The pointer in C++";
     
+    // Let's take few notes here ; 
+    // There are other types of string in C++
+    // 1. std::string 
+    
+    std::string name = "DellInspiron15i7";
+    std::cout<<"std::string  = " << name << std::endl;
+    // 2. char[]
+    // 3. cosnt char* 
+
     return 0;
 }
