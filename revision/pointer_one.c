@@ -27,5 +27,7 @@ int main(){
     char* name = "Is this even allowed in C?";
     printf("The string pointer in C : %s\n", name);
 
+    
+
     return 0;
 }
