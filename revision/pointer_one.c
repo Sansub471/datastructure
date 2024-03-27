@@ -24,5 +24,8 @@ int main(){
 
     // perhaps we can have even higher pointer, but who is gonna try?? lol
 
+    char* name = "Is this even allowed in C?";
+    printf("The string pointer in C : %s\n", name);
+
     return 0;
 }
