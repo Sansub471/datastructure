@@ -1,13 +1,37 @@
 #include<stdio.h>
 // Create an array using dymanic memory allocation 
 #define MAXSIZE 5
+int* newArray(){
+    int* arr = (int*)malloc(MAXSIZE * sizeof(int));
+    if(arr == NULL){
+        return NULL;
+    }
+    return arr;
+}
 
+void ArrayInput(int* arr){
+    unsigned short i = 0;
+    for(i = 0; i < MAXSIZE; i++){
+        printf("Element : ");
+        scanf("%d", arr); // arr itself is address
+        arr++;
+    }
+}
+
+void ArrayOutput(int* arr){
+    unsigned short i = 0;
+    printf("The elements are : ");
+    for(i=0; i < MAXSIZE; i++){
+        printf("%d\t", *(arr+i));
+    }
+}
 int main(){
-    int* arr = (int*)(malloc(MAXSIZE * sizeof(int)));
+    int* arr = newArray();
     if(arr == NULL){
         printf("Memory allocation failed.");
         return -1;
     }
-    int* arrptr = arr; // keep track of head 
+    ArrayInput(arr);
+    ArrayOutput(arr);
     return 0;
 }
