@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 // Create an array using dymanic memory allocation 
 #define MAXSIZE 5
 int* newArray(){
@@ -24,6 +25,7 @@ void ArrayOutput(int* arr){
     for(i=0; i < MAXSIZE; i++){
         printf("%d\t", *(arr+i));
     }
+    printf("\n");
 }
 int main(){
     int* arr = newArray();
