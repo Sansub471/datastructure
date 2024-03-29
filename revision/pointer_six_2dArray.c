@@ -21,12 +21,27 @@ int** new2DArray(){
     return rows;   
 }
 
+void TwoDArrayInput(int** arr){
+    printf("Elements for %d x %d matrix? \n", MAXROW, MAXCOL);
+    unsigned short i,j;
+    for(i=0; i < MAXROW; i++){
+        printf("Elements of Row %d : ", i);
+        for(j=0; j < MAXCOL; j++){
+            printf("Element [%d][%d] : ", i, j);
+            scanf("%d", &arr[i][j]);
+        }
+        printf("\n");
+    }
+}
 int main(){
     int** arr2d = new2DArray();
+
+    printf("The size of arr2d : %ld \n", sizeof(arr2d));
     if (arr2d == NULL){
         printf("Memory allocation failed, exiting.");
         return -1;
     }
-    
+
+    TwoDArrayInput(arr2d);
     return 0;
 }
