@@ -60,5 +60,12 @@ int main(){
 
     TwoDArrayInput(arr2d);
     TwoDArrayOutput(arr2d);
+
+    // At last free the allocated memory
+    unsigned short i = 0;
+    for(i=0; i < MAXROW; i++){
+        free(arr2d[i]);
+    }
+    free(arr2d);
     return 0;
 }
