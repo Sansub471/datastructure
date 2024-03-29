@@ -30,7 +30,7 @@ void TwoDArrayInput(int** arr){
         printf("Elements of Row %d : \n", i);
         for(j=0; j < MAXCOL; j++){
             printf("Element [%d][%d] : ", i, j);
-            scanf("%d", &arr[i][j]);
+            scanf("%d", *(arr+i) + j ); // or *(arr+i)+j &arr[i][j]
         }
         printf("\n");
     }
@@ -41,7 +41,7 @@ void TwoDArrayOutput(int** arr){
     unsigned short i,j;
     for(i=0; i < MAXROW; i++){
         for(j=0; j < MAXCOL; j++){
-            printf("%d\t", arr[i][j]);
+            printf("%d\t", *(*(arr+i)+j)); // or *(*(arr+i)+j) or arr[i][j]
             
         }
         printf("\n");
