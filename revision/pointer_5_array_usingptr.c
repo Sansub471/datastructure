@@ -2,6 +2,7 @@
 #include<stdlib.h>
 // Create an array using dymanic memory allocation 
 #define MAXSIZE 5
+
 int* newArray(){
     int* arr = (int*)malloc(MAXSIZE * sizeof(int));
     if(arr == NULL){
@@ -27,6 +28,7 @@ void ArrayOutput(int* arr){
     }
     printf("\n");
 }
+
 int main(){
     int* arr = newArray();
     if(arr == NULL){
