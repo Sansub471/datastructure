@@ -98,8 +98,8 @@ int main(){
         printf("Memory allocation failed, exiting.");
         return -1;
     }
-
-    TwoDArrayInput(arr2d);
+    // how will the code change if passed &arr2d ? 
+    TwoDArrayInput(arr2d); 
     TwoDArrayOutput(arr2d);
 
     // At last free the allocated memory
