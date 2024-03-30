@@ -20,8 +20,6 @@ int* Increment(int* a){
     // b = a means b also points to memory pointed by a
     // There is memory leak, dynamic memory allocated to b is now inaccesible
     // it can neither be freed or deallocated.
-
-    
     return b;
 }
 
