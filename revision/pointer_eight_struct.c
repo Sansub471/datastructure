@@ -46,6 +46,34 @@ struct Student* newStudent(char* name, int age, char* level, float GPA){
     return stdnt;
 }
 
+struct Student* newStudentImproved(const char* name, int age, const char* level, float GPA) {
+    // Allocate memory for the Student structure
+    struct Student* stdnt = (struct Student*)malloc(sizeof(struct Student));
+    if (stdnt == NULL) {
+        return NULL; // Memory allocation has failed
+    }
+    
+    // Allocate memory for the name and level strings and copy the provided strings
+    stdnt->name = strdup(name);
+    if (stdnt->name == NULL) {
+        free(stdnt); // Free the allocated memory for the Student structure
+        return NULL; // Memory allocation has failed
+    }
+
+    stdnt->level = strdup(level);
+    if (stdnt->level == NULL) {
+        free(stdnt->name); // Free the allocated memory for the name string
+        free(stdnt);      // Free the allocated memory for the Student structure
+        return NULL;      // Memory allocation has failed
+    }
+
+    // Initialize other fields of the Student structure
+    stdnt->age = age;
+    stdnt->GPA = GPA;
+
+    return stdnt;
+}
+
 // Let's try something, can we return struct like this:
 struct Student newStudant(char* name, int age, char* level, float GPA){
     struct Student stdn;
@@ -84,7 +112,7 @@ int main(){
     //free(level);
     //PrintStudentPtr(stdnt);
 
-    struct Student est = newStudant(name, age, level, GPA);
-    PrintStudent(est);
+    //struct Student est = newStudant(name, age, level, GPA);
+    //PrintStudent(est);
     return 0;
 }
