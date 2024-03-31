@@ -92,15 +92,21 @@ int main(){
     st.level = "BE";
     st.GPA = 3.89;
 
-    PrintStudent(st);
+    //PrintStudent(st);
 
-    // Structure with dynamic allocation
+    // This is not dynamic memory allocation for string.
+    // It is string literal 
     char* name = "Rohit Poudel";
     char* level = "BSC";
+
+    // This is dynamic allocation
+    char* naam = strdup("Kushal Malla");
+    char* lvl = strdup("BSCSIT");
+
     int age = 22;
     float GPA = 3.90;
 
-    struct Student* stdnt = newStudent(name, age, level, GPA);
+    struct Student* stdnt = newStudent(naam, age, level, GPA);
     PrintStudentPtr(stdnt);   
 
     // Where is the confusion?
@@ -109,13 +115,17 @@ int main(){
     // Because, the &stdnt can be stored only in Student** type, and the function can only take Student*
 
     // What will happend if we free the passed char* arguments to the function newStudent()
-    //free(name);
-    //free(level);
-    //PrintStudentPtr(stdnt);
+    free(naam); 
+    PrintStudentPtr(stdnt);
+    // Look at the name now, undefined value being printed.
 
     // Try with newStudentImproved() function
-    struct Student* stde = newStudentImproved(name, age, level, GPA);
+    struct Student* stde = newStudentImproved(name, age, lvl, GPA);
     PrintStudentPtr(stde);
+
+    free(lvl);
+    PrintStudentPtr(stde);
+    // free(lvl) doesn't make a difference because it is dynamically allocated inside newStudentImproved()
 
     //struct Student est = newStudant(name, age, level, GPA);
     //PrintStudent(est);
