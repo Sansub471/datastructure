@@ -36,10 +36,24 @@ struct Student* newStudent(char* name, int age, char* level, float GPA){
     stdnt->level = level;
     stdnt->GPA = GPA;
 
+    // char* arguments passed are not copied here, simply pointer assigned.
+    // The life time of char* type arguments passed must be longer than the structure 
+
+
     // return &stdnt is not allowed, because it is the address of the pointer, not the address pointed by it
     // Also, it would mean we are trying to return the address of the local variable 'stdnt'
     // And, the return type for it would be struct** where in our functin it's struct*
     return stdnt;
+}
+
+// Let's try something, can we return struct like this:
+struct Student newStudant(char* name, int age, char* level, float GPA){
+    struct Student stdn;
+    stdn.name = name; // better to allocate memory and copy first for pointer type 
+    stdn.age = age;
+    stdn.level = level;
+    stdn.GPA = GPA;
+    return stdn;
 }
 
 int main(){
@@ -64,5 +78,13 @@ int main(){
     // Well, PrintStudentPtr() function can take Student* as argument.
     // We can pass, &s but not the address of stdnt. Why?
     // Because, the &stdnt can be stored only in Student** type, and the function can only take Student*
+
+    // What will happend if we free the passed char* arguments to the function newStudent()
+    //free(name);
+    //free(level);
+    //PrintStudentPtr(stdnt);
+
+    struct Student est = newStudant(name, age, level, GPA);
+    PrintStudent(est);
     return 0;
 }
