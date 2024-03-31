@@ -40,3 +40,5 @@ int main(){
 }
 // Address of local varible can't be returned.
 // Return the dynamically allocated variable only.
+
+// There is not much for today.
