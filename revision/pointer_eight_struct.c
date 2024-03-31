@@ -15,9 +15,17 @@ void PrintStudent(struct Student s){
     printf("Age : %d\n", s.age);
     printf("Level : %s\n", s.level);
     printf("GPA : %.2f\n", s.GPA);
-    printf("--------------------------------------------------\n");
+    printf("------------------------------------------------\n");
 }
 
+void PrintStudentPtr(struct Student* s){
+    printf("-------------------Student's Profile------------\n");
+    printf("Name : %s\n", (*s).name);
+    printf("Age : %d\n", (*s).age);
+    printf("Level : %s\n", (*s).level);
+    printf("GPA : %.2f\n", (*s).GPA);
+    printf("------------------------------------------------\n");
+}
 struct Student* newStudent(char* name, int age, char* level, float GPA){
     struct Student* stdnt = (struct Student*)malloc(sizeof(struct Student));
     if(stdnt == NULL){
@@ -44,8 +52,13 @@ int main(){
     PrintStudent(st);
 
     // Structure with dynamic allocation
+    char* name = "Rohit Poudel";
+    char* level = "BSC";
+    int age = 22;
+    float GPA = 3.90;
 
-    
+    struct Student* stdnt = newStudent(name, age, level, GPA);
+    PrintStudentPtr(stdnt);   
 
     return 0;
 }
