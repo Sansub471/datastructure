@@ -60,5 +60,9 @@ int main(){
     struct Student* stdnt = newStudent(name, age, level, GPA);
     PrintStudentPtr(stdnt);   
 
+    // Where is the confusion?
+    // Well, PrintStudentPtr() function can take Student* as argument.
+    // We can pass, &s but not the address of stdnt. Why?
+    // Because, the &stdnt can be stored only in Student** type, and the function can only take Student*
     return 0;
 }
