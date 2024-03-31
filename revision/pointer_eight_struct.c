@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 struct Student{
     char* name;
@@ -111,6 +112,10 @@ int main(){
     //free(name);
     //free(level);
     //PrintStudentPtr(stdnt);
+
+    // Try with newStudentImproved() function
+    struct Student* stde = newStudentImproved(name, age, level, GPA);
+    PrintStudentPtr(stde);
 
     //struct Student est = newStudant(name, age, level, GPA);
     //PrintStudent(est);
