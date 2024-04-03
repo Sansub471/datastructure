@@ -131,3 +131,5 @@ int main(){
     //PrintStudent(est);
     return 0;
 }
+
+// There is a lot to do for structure.
