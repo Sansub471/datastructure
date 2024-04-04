@@ -131,5 +131,3 @@ int main(){
     //PrintStudent(est);
     return 0;
 }
-
-// Working with strucure is done.
