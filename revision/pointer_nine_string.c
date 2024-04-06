@@ -27,3 +27,5 @@ int main(){
     printf("The entered string is : %s\n", dynamic_name);
     return 0;
 }
+
+// Not much today, it was a dull day.
