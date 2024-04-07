@@ -40,4 +40,3 @@ int main(){
     return 0;
 }
 
-// Learning arrays with pointers and dynamic memory allocation
