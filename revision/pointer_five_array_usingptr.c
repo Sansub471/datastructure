@@ -39,3 +39,5 @@ int main(){
     ArrayOutput(arr);
     return 0;
 }
+
+// Learning arrays with pointers and dynamic memory allocation
