@@ -119,5 +119,3 @@ int main(){
 
     return 0;
 }
-
-// 2d Array with pointers done.
