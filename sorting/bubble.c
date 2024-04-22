@@ -31,5 +31,4 @@ void Print(int* A){
     Print(B);    
     return 0;
  }
-
-// Back to the sorting code.
+ // This is the name of sorting game
