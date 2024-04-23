@@ -1,12 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include"utilities.h"
 
-// Function to read array from the user
-int* inputArray(){
+unsigned int getSize(){
     unsigned int size;
     printf("Give the maxsize of array : ");
     scanf("%d", &size);
-    
+    return size;
+}
+
+// Function to read array from the user
+int* inputArray(unsigned int size){    
     // Allocate memory for array and get the input
     int* A = (int*)malloc(sizeof(int) * size);
     if (A == NULL){
@@ -24,3 +28,16 @@ int* inputArray(){
 }
 
 // Function to print the given array 
+void PrintArray(int* A, unsigned int N){
+    if(A == NULL){
+        printf("Can't print NULL array!\n");
+        return;
+    }
+    printf("The elements are : ");
+    unsigned int i;
+    for(i=0; i<N; i++){
+        printf("%d \t", *A);
+        A++;
+    }
+    printf("\n");
+}
