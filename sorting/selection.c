@@ -5,6 +5,6 @@
 
 int main(){
     unsigned int N = getSize();
-    int* A = inputArray(N);
+    int* A = InputArray(N);
     PrintArray(A, N);
 }
