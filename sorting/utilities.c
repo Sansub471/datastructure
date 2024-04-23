@@ -10,7 +10,7 @@ unsigned int getSize(){
 }
 
 // Function to read array from the user
-int* inputArray(unsigned int size){    
+int* InputArray(unsigned int size){    
     // Allocate memory for array and get the input
     int* A = (int*)malloc(sizeof(int) * size);
     if (A == NULL){
@@ -24,7 +24,7 @@ int* inputArray(unsigned int size){
         scanf("%d", A);
         A++;
     }
-    return A;
+    return head;
 }
 
 // Function to print the given array 
