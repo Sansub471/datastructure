@@ -1,27 +1,44 @@
 // Implementation of selection sort algorithm.
 #include<stdio.h>
+
+#include"selection.h"
 #include"utilities.c"
 
 int* SelectionSort(int* A, unsigned int N){
-    unsigned int i,j, iMin;
-    int temp;
-    for(i=0; i < (N - 1); i++){
-        iMin = i; // Assume the position of smallest element
+    unsigned int i,j;
+    for(i=0; i < (N - 1); i++){ // need to do n - 2 passes
+        int iMin = i; // elements from i till n - 1 are candidates
         for(j=i+1; j < N; j++){
             if(A[j] < A[iMin]){
-                iMin = j;
+                iMin = j; // update the index of minimun element
             }
         }
         // Smallest in ith iteration found.
         // Swap part
-        temp = A[i];
+        int temp = A[i];
         A[i] = A[iMin];
         A[iMin] = temp;            
     }
     return A;
 }
 
-
+// Even void return type would work, array is passed by reference in C
+void SelectionSortN(int A[], unsigned int N){
+    unsigned int i,j;
+    for(i=0; i < (N - 1); i++){ // need to do n - 2 passes
+        int iMin = i; // elements from i till n - 1 are candidates
+        for(j=i+1; j < N; j++){
+            if(A[j] < A[iMin]){
+                iMin = j; // update the index of minimun element
+            }
+        }
+        // Smallest in ith iteration found.
+        // Swap part
+        int temp = A[i];
+        A[i] = A[iMin];
+        A[iMin] = temp;            
+    }
+}
 
 int main(){
 
@@ -36,6 +53,9 @@ int main(){
     int* sortedArr = SelectionSort(arr, size);
     PrintArray(sortedArr, size);
 
+    printf("The original array is also sorted : \n");
+    PrintArray(arr, size); // original arr is also sorted
+
     // Array taken as user input
     unsigned int N = getSize();
     int* A = InputArray(N);
@@ -43,8 +63,12 @@ int main(){
     PrintArray(A, N);
     printf("\n");
 
-    printf("The sorted array is : \n");
-    int* sortedA = SelectionSort(A, N);
-    PrintArray(sortedA, N);
+    //printf("The sorted array is : \n");
+    //int* sortedA = SelectionSort(A, N);
+    //PrintArray(sortedA, N);
+
+    printf("The sorted array is :  \n");
+    SelectionSortN(A, N);
+    PrintArray(A, N);
 
 }
