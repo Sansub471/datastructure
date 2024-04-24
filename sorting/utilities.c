@@ -6,6 +6,7 @@ unsigned int getSize(){
     unsigned int size;
     printf("Give the maxsize of array : ");
     scanf("%d", &size);
+    
     return size;
 }
 
