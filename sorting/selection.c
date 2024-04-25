@@ -70,3 +70,5 @@ int main(){
     PrintArray(A, N);
 
 }
+
+// Time complexity : O(n^2)
