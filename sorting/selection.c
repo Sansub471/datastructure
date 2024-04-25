@@ -15,9 +15,7 @@ int* SelectionSort(int* A, unsigned int N){
         }
         // Smallest in ith iteration found.
         // Swap part
-        int temp = A[i];
-        A[i] = A[iMin];
-        A[iMin] = temp;            
+        swap(&A[i], &A[iMin]);         
     }
     return A;
 }
