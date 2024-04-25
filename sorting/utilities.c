@@ -2,6 +2,12 @@
 #include<stdlib.h>
 #include"utilities.h"
 
+void swap(int* a, int* b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 unsigned int getSize(){
     unsigned int size;
     printf("Give the maxsize of array : ");
