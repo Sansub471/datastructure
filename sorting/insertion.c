@@ -31,6 +31,16 @@ int main(){
     PrintArray(arr, size);
     printf("\n");
 
+    // Let's take user input and sort it.
+    unsigned int N = getSize();
+    int* A = InputArray(N);
+    printf("The given array is : \n");
+    PrintArray(A, N);
+    printf("\n");
 
+    InsertionSort(A, N);
+    printf("The sorted array is : \n");
+    PrintArray(A,N);
+    printf("\n");
     return 0;
 }
