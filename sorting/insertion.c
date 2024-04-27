@@ -4,7 +4,7 @@
 
 void InsertionSort(int* A, unsigned int N){
     int i,j,value,hole;
-    for(i=0; i < N; i++){
+    for(i=1; i < N; i++){
         value = A[i];
         hole = i;
         while(hole > 0 && A[hole-1] > value){
