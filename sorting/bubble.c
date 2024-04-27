@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include<stdbool.h>
 
+#include"bubble.h"
 #include"utilities.c"
+
 
 void BubbleSort(int* A, unsigned int N){
     int i,j;
