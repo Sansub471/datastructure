@@ -44,3 +44,5 @@ int main(){
     printf("\n");
     return 0;
 }
+
+// I'm wasting my time and life for nothing.
