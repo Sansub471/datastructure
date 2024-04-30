@@ -44,3 +44,5 @@ int main(){
     printf("\n");
     return 0;
 }
+
+// I'm always stuck with my goal
