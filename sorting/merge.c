@@ -4,7 +4,11 @@
 #include"merge.h"
 #include"utilities.c"
 
-
+// int* L : left sub array
+// int* R : right sub array
+// int* A : original array
+// unsigned nL : length(L)
+// unsigned nR : length(R)
 void Merge(int* L, unsigned nL, int* R, unsigned nR, int* A){
     int i=0,j=0,k=0;
     while(i < nL && j < nR){
@@ -36,7 +40,7 @@ void Merge(int* L, unsigned nL, int* R, unsigned nR, int* A){
 void MergeSort(int* A, unsigned int N){
     if (N < 2) return;
     unsigned int mid = N / 2;
-    int* left = (int*)malloc(sizeof(int) * mid);
+    int* left  = (int*)malloc(sizeof(int) * mid);
     int* right = (int*)malloc(sizeof(int) * (N - mid));
 
     //if (left == NULL || right == NULL) return;
