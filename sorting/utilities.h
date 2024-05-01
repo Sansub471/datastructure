@@ -7,4 +7,6 @@ unsigned int getSize(); // take array size input
 int* InputArray(unsigned int size); // take array input and return it
 void PrintArray(int* A, unsigned int N); // print the given array
 
+// Get an array with random values
+int* randomArray(int size);
 #endif

@@ -48,3 +48,20 @@ void PrintArray(int* A, unsigned int N){
     }
     printf("\n");
 }
+
+// Get an array with random values
+int* randomArray(int size) {
+    int* array = (int*)malloc(size * sizeof(int));
+    if (array == NULL) {
+        return NULL; // memory allocation failed
+    }
+
+    // Seed the random number generator
+    srand(time(NULL));
+
+    // Fill the array with random integers
+    for (int i = 0; i < size; i++) {
+        array[i] = rand();
+    }
+    return array;
+}
