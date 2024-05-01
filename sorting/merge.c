@@ -26,14 +26,12 @@ void Merge(int* L, unsigned nL, int* R, unsigned nR, int* A){
     // if one of the sub-array exahusts first, only one of the while will be executed.
     while( i < nL){
         A[k] = L[i];
-        i += 1;
-        k += 1;
+        i += 1;  k += 1;
     }
 
     while( j < nR){
         A[k] = R[j];
-        j += 1;
-        k += 1;
+        j += 1;   k += 1;
     }
 }
 
@@ -46,12 +44,11 @@ void MergeSort(int* A, unsigned int N){
     //if (left == NULL || right == NULL) return;
     int i = 0;
     for(i=0; i <= mid - 1; i++){
-        left[i] = A[i];
-    }
+        left[i] = A[i];}
 
     for(i=mid; i <= N - 1; i++){
-        right[i-mid] = A[i];
-    }
+        right[i-mid] = A[i];}
+    
     MergeSort(left, mid);
     MergeSort(right, N - mid);
     Merge(left, mid, right, N - mid, A);
@@ -71,6 +68,7 @@ int main(){
     PrintArray(A, N);
     printf("\n");
 
+    /*
     // let's try with user input
     unsigned size  = getSize();
     int* arr = InputArray(size);
@@ -81,6 +79,24 @@ int main(){
     MergeSort(arr, size);
     printf("The sorted array is : \n");
     PrintArray(arr, size);
+    printf("\n");
+    */
+
+    // Let's try with randomly created array of given size
+    unsigned sizeN = getSize();
+    int* array = randomArray(sizeN);
+    if(array == NULL){
+        printf("Memory allocation failed!");
+        return 0;
+    }
+
+    printf("The random array is : \n");
+    PrintArray(array, sizeN);
+    printf("\n");
+
+    MergeSort(array, sizeN);
+    printf("The sorted random array is : \n");
+    PrintArray(array, sizeN);
     printf("\n");
 
 

@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
+
 #include"utilities.h"
 
 void swap(int* a, int* b){
@@ -59,9 +61,9 @@ int* randomArray(int size) {
     // Seed the random number generator
     srand(time(NULL));
 
-    // Fill the array with random integers
+    // Fill the array with random integers between 1 and 1000
     for (int i = 0; i < size; i++) {
-        array[i] = rand();
+        array[i] = (rand() % 1000) + 1;
     }
     return array;
 }
