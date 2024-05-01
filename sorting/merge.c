@@ -54,3 +54,19 @@ void MergeSort(int* A){
     Merge(left, right, A);
     free(left); free(right);
 }
+
+int main(){
+    // Let's try with an array
+    int A[] = {2,4,1,6,8,5,3,7};
+    unsigned int N = sizeof(A) / sizeof(A[0]);
+    printf("The given array to sort is : \n");
+    PrintArray(A, N);
+    printf("\n");
+
+    MergeSort(A);
+    printf("The sorted array is : \n");
+    PrintArray(A, N);
+    printf("\n");
+
+    return 0;
+}
