@@ -52,7 +52,7 @@ void MergeSort(int* A){
     MergeSort(left);
     MergeSort(right);
     Merge(left, right, A);
-    free(left); free(right);
+    //free(left); free(right);
 }
 
 int main(){
