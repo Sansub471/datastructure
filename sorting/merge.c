@@ -5,9 +5,7 @@
 #include"utilities.c"
 
 
-void Merge(int* L, int* R, int* A){
-    int nL = sizeof(L) / sizeof(L[0]);
-    int nR = sizeof(R) / sizeof(R[0]);
+void Merge(int* L, unsigned nL, int* R, unsigned nR, int* A){
     int i=0,j=0,k=0;
     while(i < nL && j < nR){
         if(L[i] <= R[j]){
@@ -21,7 +19,7 @@ void Merge(int* L, int* R, int* A){
         k += 1;
     }
 
-    // if one of the sub-array exahusts first
+    // if one of the sub-array exahusts first, only one of the while will be executed.
     while( i < nL){
         A[k] = L[i];
         i += 1;
@@ -35,24 +33,25 @@ void Merge(int* L, int* R, int* A){
     }
 }
 
-void MergeSort(int* A){
-    int N = sizeof(A) / sizeof(A[0]);
+void MergeSort(int* A, unsigned int N){
     if (N < 2) return;
-    int mid = N / 2;
+    unsigned int mid = N / 2;
     int* left = (int*)malloc(sizeof(int) * mid);
     int* right = (int*)malloc(sizeof(int) * (N - mid));
+
+    //if (left == NULL || right == NULL) return;
     int i = 0;
     for(i=0; i <= mid - 1; i++){
         left[i] = A[i];
     }
 
     for(i=mid; i <= N - 1; i++){
-        right[i] = A[i];
+        right[i-mid] = A[i];
     }
-    MergeSort(left);
-    MergeSort(right);
-    Merge(left, right, A);
-    //free(left); free(right);
+    MergeSort(left, mid);
+    MergeSort(right, N - mid);
+    Merge(left, mid, right, N - mid, A);
+    free(left); free(right);
 }
 
 int main(){
@@ -63,10 +62,23 @@ int main(){
     PrintArray(A, N);
     printf("\n");
 
-    MergeSort(A);
+    MergeSort(A, N);
     printf("The sorted array is : \n");
     PrintArray(A, N);
     printf("\n");
+
+    // let's try with user input
+    unsigned size  = getSize();
+    int* arr = InputArray(size);
+    printf("The given array to sort is : \n");
+    PrintArray(arr, size);
+    printf("\n");
+
+    MergeSort(arr, size);
+    printf("The sorted array is : \n");
+    PrintArray(arr, size);
+    printf("\n");
+
 
     return 0;
 }
