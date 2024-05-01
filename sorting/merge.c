@@ -1,5 +1,8 @@
 #include<stdio.h>
+#include<stdlib.h>
+
 #include"merge.h"
+#include"utilities.c"
 
 
 void Merge(int* L, int* R, int* A){
@@ -30,4 +33,24 @@ void Merge(int* L, int* R, int* A){
         j += 1;
         k += 1;
     }
+}
+
+void MergeSort(int* A){
+    int N = sizeof(A) / sizeof(A[0]);
+    if (N < 2) return;
+    int mid = N / 2;
+    int* left = (int*)malloc(sizeof(int) * mid);
+    int* right = (int*)malloc(sizeof(int) * (N - mid));
+    int i = 0;
+    for(i=0; i <= mid - 1; i++){
+        left[i] = A[i];
+    }
+
+    for(i=mid; i <= N - 1; i++){
+        right[i] = A[i];
+    }
+    MergeSort(left);
+    MergeSort(right);
+    Merge(left, right, A);
+    free(left); free(right);
 }
