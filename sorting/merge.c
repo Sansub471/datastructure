@@ -102,4 +102,3 @@ int main(){
 
     return 0;
 }
-// There is no way i'm serious in life.
