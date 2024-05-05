@@ -102,3 +102,5 @@ int main(){
 
     return 0;
 }
+
+// Got my license from NEC today. Not very productive day though
