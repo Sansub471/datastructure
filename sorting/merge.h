@@ -5,3 +5,5 @@ void Merge(int* L, unsigned nL, int* R, unsigned nR, int* A);
 void MergeSort(int* A, unsigned int N);
 
 #endif
+
+// This is the header file
