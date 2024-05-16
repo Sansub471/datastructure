@@ -67,5 +67,3 @@ int* randomArray(int size) {
     }
     return array;
 }
-
-// Utitlities function are done.
