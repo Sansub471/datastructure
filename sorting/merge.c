@@ -103,4 +103,4 @@ int main(){
     return 0;
 }
 
-// Returning back to merge sort algorithm
+// Analysis of the algorith in going on.
