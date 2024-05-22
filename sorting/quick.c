@@ -8,4 +8,4 @@ int main(){
     return 0;
 }
 
-// The day begins for me.
+// Quick sort is the next algorithm
