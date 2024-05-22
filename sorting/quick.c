@@ -7,5 +7,3 @@ int main(){
     
     return 0;
 }
-
-// Quick sort is the next algorithm
