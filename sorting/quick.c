@@ -40,5 +40,23 @@ int main(){
     PrintArray(A, N);
     printf("\n");
     
+
+    // Let's try with randomly created array of given size
+    unsigned sizeN = getSize();
+    int* array = randomArray(sizeN);
+    if(array == NULL){
+        printf("Memory allocation failed!");
+        return 0;
+    }
+
+    printf("The random array is : \n");
+    PrintArray(array, sizeN);
+    printf("\n");
+
+    QuickSort(array, 0, sizeN - 1);
+    printf("The sorted random array is : \n");
+    PrintArray(array, sizeN);
+    printf("\n");
+
     return 0;
 }
