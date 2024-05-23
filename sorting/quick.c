@@ -19,6 +19,13 @@ int Partition(int* A, int start, int end){
     return pIndex;
 }
 
+void QuickSort(int* A, int start, int end){
+    if (start >= end ) return ; // if(start < end ) { put code here}
+    int pIndex = Partition(A, start, end);
+    QuickSort(A, start, pIndex - 1);
+    QuickSort(A, pIndex + 1, end);
+}
+
 int main(){
     
     return 0;
