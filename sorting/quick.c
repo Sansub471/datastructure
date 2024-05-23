@@ -27,6 +27,18 @@ void QuickSort(int* A, int start, int end){
 }
 
 int main(){
+    // Let's try with an array
+    int A[] = {2,4,1,6,8,5,3,7};
+    unsigned int N = sizeof(A) / sizeof(A[0]);
+    int start = 0, end = N -1;
+    printf("The given array to sort is : \n");
+    PrintArray(A, N);
+    printf("\n");
+
+    QuickSort(A, start, end);
+    printf("The sorted array is : \n");
+    PrintArray(A, N);
+    printf("\n");
     
     return 0;
 }
