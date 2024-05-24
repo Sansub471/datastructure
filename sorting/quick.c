@@ -3,6 +3,7 @@
 #include"utilities.c"
 #include"quick.h"
 
+// keeping smaller elements to the left of pivot
 int Partition(int* A, int start, int end){
     int pivot = A[end]; // pivot be the last element
     int pIndex = start; // set partition index as start initially
@@ -18,6 +19,7 @@ int Partition(int* A, int start, int end){
     swap(&A[pIndex], &A[end]); // swap pivot with element at partition index
     return pIndex;
 }
+
 
 void QuickSort(int* A, int start, int end){
     if (start >= end ) return ; // if(start < end ) { put code here}
@@ -60,3 +62,5 @@ int main(){
 
     return 0;
 }
+
+// Analysis of the algorithm.
