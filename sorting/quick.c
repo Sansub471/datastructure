@@ -62,5 +62,3 @@ int main(){
 
     return 0;
 }
-
-// The day for my name 
