@@ -62,5 +62,3 @@ int main(){
 
     return 0;
 }
-
-// Let's start the day for me.
