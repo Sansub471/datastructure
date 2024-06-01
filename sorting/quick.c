@@ -63,4 +63,4 @@ int main(){
     return 0;
 }
 
-// The day is there for me.
+// Let's start the day for me.
