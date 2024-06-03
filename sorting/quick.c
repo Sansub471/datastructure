@@ -62,5 +62,3 @@ int main(){
 
     return 0;
 }
-
-// Analysis part of the quick sort algorithm is done.

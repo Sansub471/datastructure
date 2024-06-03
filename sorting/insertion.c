@@ -44,5 +44,3 @@ int main(){
     printf("\n");
     return 0;
 }
-
-// Insertion sort algorithm is done.
