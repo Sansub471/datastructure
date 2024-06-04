@@ -102,7 +102,3 @@ int main(){
 
     return 0;
 }
-
-// World cup campaingn begins for Nepal today
-
-// Be ready for the big day boys.
