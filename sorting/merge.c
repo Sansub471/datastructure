@@ -102,3 +102,6 @@ int main(){
 
     return 0;
 }
+
+
+// The game is not right
