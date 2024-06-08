@@ -102,6 +102,3 @@ int main(){
 
     return 0;
 }
-
-
-// Begin the day for me
