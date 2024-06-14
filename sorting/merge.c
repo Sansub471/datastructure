@@ -103,3 +103,4 @@ int main(){
     return 0;
 }
 
+// The last inspection for the day.
