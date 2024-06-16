@@ -102,5 +102,3 @@ int main(){
 
     return 0;
 }
-
-// Let's finish the lessons.
