@@ -67,3 +67,15 @@ int* randomArray(int size) {
     }
     return array;
 }
+
+// Get a random integer between the given integers
+int Random(int lower, int upper){
+    if(lower > upper){
+        swap(&lower, &upper);
+    }
+
+    // Seed the random number generator
+    srand(time(NULL));
+    int num = (rand() % (upper - lower + 1)) + lower;
+    return num;
+}
