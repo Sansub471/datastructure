@@ -21,9 +21,18 @@ int Partition(int* A, int start, int end){
 }
 
 
+int RandomPartition(int* A, int start, int end){
+    int pivotIndex = Random(start, end);
+    swap(&A[pivotIndex], &A[end]);
+    Partition(A, start, end);
+    return pivotIndex;
+}
+
 void QuickSort(int* A, int start, int end){
     if (start >= end ) return ; // if(start < end ) { put code here}
-    int pIndex = Partition(A, start, end);
+    //int pIndex = Partition(A, start, end); // withou RandomPartition
+
+    int pIndex = RandomPartition(A,start, end); // with random Partition
     QuickSort(A, start, pIndex - 1);
     QuickSort(A, pIndex + 1, end);
 }
