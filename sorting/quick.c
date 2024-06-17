@@ -24,8 +24,7 @@ int Partition(int* A, int start, int end){
 int RandomPartition(int* A, int start, int end){
     int pivotIndex = Random(start, end);
     swap(&A[pivotIndex], &A[end]);
-    Partition(A, start, end);
-    return pivotIndex;
+    return Partition(A, start, end);
 }
 
 void QuickSort(int* A, int start, int end){
