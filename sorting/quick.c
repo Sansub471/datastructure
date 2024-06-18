@@ -70,5 +70,3 @@ int main(){
 
     return 0;
 }
-
-// Next theory lesson is going on 
