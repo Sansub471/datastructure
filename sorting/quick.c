@@ -70,5 +70,3 @@ int main(){
 
     return 0;
 }
-
-// Another upset on the cards?
