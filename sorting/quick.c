@@ -73,4 +73,3 @@ int main(){
 
 
 
-// The comments were removed.
