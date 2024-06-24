@@ -72,3 +72,4 @@ int main(){
 }
 
 
+// Let's start the day today.
