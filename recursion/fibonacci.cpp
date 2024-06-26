@@ -15,9 +15,26 @@ int FiboIter(int n){
     return F;
 }
 
+// Recursive solution
+int FiboRecur(int n){
+    if(n <= 1){
+        return n;
+    }
+    else{
+        return FiboRecur(n - 1 ) + FiboRecur(n - 2);
+    }
+}
+
 int main(){
     int n;
     std::cout<<"Give the position of Fibonacci number : ";
     std::cin>>n;
     std::cout<<"The " << n << " Fibonacci number is : " << FiboIter(n) << std::endl;
+
+    
+    std::cout<<"Give the position of Fibonacci number : ";
+    std::cin>>n;
+    std::cout<<"The " << n << " Fibonacci number is : " << FiboRecur(n) << std::endl;
+
+
 }
