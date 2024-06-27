@@ -38,5 +38,3 @@ int main(){
 
 
 }
-
-// Start of the day
