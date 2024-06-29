@@ -1,4 +1,5 @@
 #include<iostream>
+#include<chrono>
 
 // Interative solution
 int FiboIter(int n){
@@ -35,20 +36,25 @@ int FiboRM(int n){
     return F[n];
 }
 
+// Task: Make sure it works for any number of terms, not limited by the size of the array.
+
+void calculate(int (*fibonacci)(int), int n, const std::string& method){
+    auto start = std::chrono::high_resolution_clock::now();
+    int FiboN = fibonacci(n);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); // Calculate the elapsed time in milliseconds
+    std::cout<<"Calculation method : " << method <<std::endl;
+    std::cout<<"The " << n << " Fibonacci number is : " << FiboN << std::endl;
+    std::cout<<"Time taken : " << duration << "ms" << std::endl;
+    std::cout<<std::endl;
+}
 int main(){
     int n;
     std::cout<<"Give the position of Fibonacci number : ";
     std::cin>>n;
-    std::cout<<"The " << n << " Fibonacci number is : " << FiboIter(n) << std::endl;
-
     
-    std::cout<<"Give the position of Fibonacci number : ";
-    std::cin>>n;
-    std::cout<<"The " << n << " Fibonacci number is : " << FiboRecur(n) << std::endl;
-
-    std::cout<<"Give the position of Fibonacci number : ";
-    std::cin>>n;
-    std::cout<<"The " << n << " Fibonacci number is : " << FiboRecur(n) << std::endl;
-
+    calculate(FiboIter, n, "Iteration");
+    calculate(FiboRecur, n, "Recurrence");
+    calculate(FiboRM, n, "Recurrence with Memorization");
 }
 
