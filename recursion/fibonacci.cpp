@@ -42,9 +42,9 @@ int main(){
     std::cout<<"The " << n << " Fibonacci number is : " << FiboIter(n) << std::endl;
 
     
-    // std::cout<<"Give the position of Fibonacci number : ";
-    // std::cin>>n;
-    // std::cout<<"The " << n << " Fibonacci number is : " << FiboRecur(n) << std::endl;
+    std::cout<<"Give the position of Fibonacci number : ";
+    std::cin>>n;
+    std::cout<<"The " << n << " Fibonacci number is : " << FiboRecur(n) << std::endl;
 
     std::cout<<"Give the position of Fibonacci number : ";
     std::cin>>n;
@@ -52,4 +52,3 @@ int main(){
 
 }
 
-// Ready for the day
