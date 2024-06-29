@@ -25,6 +25,16 @@ int FiboRecur(int n){
     }
 }
 
+// Recursion with memorization
+// Avoid recalculation of same function states
+int F[51]; // limits the number of terms
+int FiboRM(int n){
+    if(n <= 1) return n;
+    if(F[n] != -1) return F[n];
+    F[n] = FiboRM(n-1) + FiboRM(n-2);
+    return F[n];
+}
+
 int main(){
     int n;
     std::cout<<"Give the position of Fibonacci number : ";
@@ -32,10 +42,13 @@ int main(){
     std::cout<<"The " << n << " Fibonacci number is : " << FiboIter(n) << std::endl;
 
     
+    // std::cout<<"Give the position of Fibonacci number : ";
+    // std::cin>>n;
+    // std::cout<<"The " << n << " Fibonacci number is : " << FiboRecur(n) << std::endl;
+
     std::cout<<"Give the position of Fibonacci number : ";
     std::cin>>n;
     std::cout<<"The " << n << " Fibonacci number is : " << FiboRecur(n) << std::endl;
-
 
 }
 
