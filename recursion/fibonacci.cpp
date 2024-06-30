@@ -28,10 +28,14 @@ int FiboRecur(int n){
 
 // Recursion with memorization
 // Avoid recalculation of same function states
-int F[51]; // limits the number of terms
+
+const int SIZE = 51;
+int F[SIZE]; // limits the number of terms
 int FiboRM(int n){
-    if(n <= 1) return n;
-    if(F[n] != -1) return F[n];
+    if(n <= 1){
+        return n;}
+    if(F[n] != -1){
+        return F[n];}
     F[n] = FiboRM(n-1) + FiboRM(n-2);
     return F[n];
 }
@@ -55,6 +59,18 @@ int main(){
     
     calculate(FiboIter, n, "Iteration");
     calculate(FiboRecur, n, "Recurrence");
+
+    // For memorization let's initialize the array
+    for(int i=0; i < SIZE; i++){
+        F[i] = -1;
+    }
+
+    // OR,
+    // int value = -1;
+    // std::fill(F, F+SIZE, value);
+
     calculate(FiboRM, n, "Recurrence with Memorization");
 }
+
+// 46th is the largest Fibonacci using integer data type, larger will overflow.
 
