@@ -61,13 +61,13 @@ int main(){
     calculate(FiboRecur, n, "Recurrence");
 
     // For memorization let's initialize the array
-    for(int i=0; i < SIZE; i++){
-        F[i] = -1;
-    }
+    // for(int i=0; i < SIZE; i++){
+    //     F[i] = -1;
+    // }
 
     // OR,
-    // int value = -1;
-    // std::fill(F, F+SIZE, value);
+    int value = -1;
+    std::fill(F, F+SIZE, value);
 
     calculate(FiboRM, n, "Recurrence with Memorization");
 }
