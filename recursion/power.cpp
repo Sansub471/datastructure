@@ -55,7 +55,7 @@ void calculation(long long (*function)(int, int), int x, int n, const std::strin
     std::cout<<std::endl;
 }
 int main(){
-    std::cout<<"The Power(x,n) : " << std::endl;
+    std::cout<<"The Power(x,n) : x ^ n" << std::endl;
     int x, n;
     std::cout<<"Enter x : "; std::cin>>x; 
     std::cout<<"Enter n : "; std::cin>>n;
