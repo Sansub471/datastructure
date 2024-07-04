@@ -55,8 +55,8 @@ int main(){
     // it doesn't make difference in solving the problem at all
     // hence by default let's keep start = A, end = C and aux = C
 
-    start = A; end = C;    
-    int aux = 6 - (start + end);
+    start = A; end = C;
+    int aux = 6 - (start + end); // or aux = B
 
     std::cout<<"\nImplementation I  : \n" << std::endl;
     stepsCounter = 0;
