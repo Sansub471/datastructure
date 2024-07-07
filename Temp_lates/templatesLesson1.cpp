@@ -19,3 +19,5 @@ int main()
 
     return 0;
 }
+
+// Read about SQL, went to hospital and made the day.
