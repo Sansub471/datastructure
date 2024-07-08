@@ -38,3 +38,5 @@ int main()
     a.print();
     return 0;
 }
+
+// This is the name of the game
