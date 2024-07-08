@@ -8,6 +8,10 @@ template <typename T> T myMax(T x, T y){
     return (x > y) ? x : y;
 }
 
+template <typename T, typename U> U mySum(T t, U u){
+    return t + u;
+}
+
 int main()
 {
     // call myMax for int
@@ -16,6 +20,12 @@ int main()
     std::cout << myMax<double>(3.0, 7.0) << std::endl;
     // call myMax for char
     std::cout << myMax<char>('g', 'e') << std::endl;
+
+    //call mySum for <int> <float>
+    std::cout<<mySum<int, float>(23, 45.4)<<std::endl;
+    
+    // call mysum for <float> <double>
+    std::cout<<mySum<float, double>(12.23, 89.12)<<std::endl;
 
     return 0;
 }
