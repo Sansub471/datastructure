@@ -24,6 +24,7 @@ template <typename T> unsigned int Array<T>::getSize(){
 template <typename T> T* Array<T>::InputArray(){
     std::cout<<"Give the size of array : "; std::cin>>N;
     // Allocate memory for array and get the input.
+
     try{
         A = new T[N];
     }
@@ -31,8 +32,10 @@ template <typename T> T* Array<T>::InputArray(){
     catch(const std::bad_alloc& e){
         std::cout<<"Memory allocation failed for the array. "<< e.what()
         <<std::endl;
+        A = nullptr; N = 0;
+        return nullptr;
     }
-    
+
     for(int i=0; i < N; i++){
         std::cout<<"Element ["<<i<<"]"; std::cin>>A[i];
     }
@@ -61,7 +64,10 @@ int main(){
     arr1.PrintArray();
 
     Array<float> arr2;
-    arr2.InputArray();
+    float* ptr = arr2.InputArray();
+    if(ptr == nullptr){
+        std::cout<<"Null pointer returned."<<std::endl;
+    }
     arr2.PrintArray();
     return 0;
 }
