@@ -63,6 +63,5 @@ int main(){
     PrintArray(B, M);
     std::cout<<std::endl;
 
-    
     return 0;
 }
