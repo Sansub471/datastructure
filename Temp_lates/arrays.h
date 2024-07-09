@@ -10,6 +10,9 @@ template <typename T> class Array{
 
     unsigned int getSize();
     T* InputArray();
-    void PrintArray();    
+    void PrintArray();
+
+    void swap(T* a, T* b);
+    T* randomArray(unsigned int size, T minValue, T maxValue);    
 };
 #endif
