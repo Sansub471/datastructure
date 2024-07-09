@@ -5,6 +5,11 @@ template <typename T> class Array{
         T* A;
         unsigned int N; // array size
     public:
-        
+    Array();
+    Array(T* arr, unsigned int size);
+
+    unsigned int getSize();
+    T* InputArray();
+    void PrintArray();    
 };
 #endif
