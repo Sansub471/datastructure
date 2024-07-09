@@ -32,13 +32,10 @@ template <typename T> T* Array<T>::InputArray(){
         std::cout<<"Memory allocation failed for the array. "<< e.what()
         <<std::endl;
     }
-
-    T* head = A;
+    
     for(int i=0; i < N; i++){
         std::cout<<"Element ["<<i<<"]"; std::cin>>A[i];
-        A++;
     }
-    A = head;
     return A;
 }
 
