@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include <new> // For std::nothrow
 #include <cstdlib> // For std::rand, std::srand
 #include <ctime> // For std::time
@@ -86,7 +86,7 @@ template <typename T> T* Array<T>::randomArray(unsigned int size, T minValue, T 
 
     // Fill the array with random values within the specified range
     for (std::size_t i = 0; i < N; ++i) {
-        if constexpr (std::is_integral_v<T>) {
+        if constexpr (std::is_integral_v<T>) { // Read : https://www.geeksforgeeks.org/understanding-constexper-specifier-in-cpp/
             A[i] = static_cast<T>((std::rand() % (maxValue - minValue + 1)) + minValue);
         } else {
             A[i] = static_cast<T>((static_cast<double>(std::rand()) / RAND_MAX) * (maxValue - minValue) + minValue);
