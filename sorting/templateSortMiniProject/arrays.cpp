@@ -23,6 +23,11 @@ template <typename T> unsigned int Array<T>::getSize(){
     return N;
 }
 
+// get the head of the array
+template <typename T> T* Array<T>::getArray(){
+    return A;
+}
+
 // input array from user
 template <typename T> T* Array<T>::InputArray(){
     std::cout<<"Give the size of array : "; std::cin>>N;

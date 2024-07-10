@@ -19,6 +19,8 @@ template <typename T> class Array{
     ~Array();
 
     unsigned int getSize();
+    T* getArray();
+    
     T* InputArray();
     void PrintArray();
 
