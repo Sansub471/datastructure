@@ -1,18 +1,7 @@
-#include <iostream>
-#include <new> // For std::nothrow
-#include <cstdlib> // For std::rand, std::srand
-#include <ctime> // For std::time
-#include <type_traits> // For std::is_integral_v
-#include <cmath>
-
-//#include <algorithm> // For std::swap
-
 #include"arrays.h"
 
-template <typename T> Array<T>::Array(){
-    A = nullptr;
-    N = 0;
-}
+// default constructor
+template <typename T> Array<T>::Array():A(nullptr), N(0){};
 
 // creating object with parameterized constructor, passing array.
 // T arr[] is same as T* arr
@@ -24,10 +13,17 @@ template <typename T> Array<T>::Array(T* arr, unsigned int size){
     }
 }
 
+// default destructor to free allocated memory
+template <typename T> Array<T>::~Array(){
+    delete[] A;
+}
+
+// get the size of the array
 template <typename T> unsigned int Array<T>::getSize(){
     return N;
 }
 
+// input array from user
 template <typename T> T* Array<T>::InputArray(){
     std::cout<<"Give the size of array : "; std::cin>>N;
     // Allocate memory for array and get the input.
@@ -49,6 +45,7 @@ template <typename T> T* Array<T>::InputArray(){
     return A;
 }
 
+// print the array
 template <typename T> void Array<T>::PrintArray(){
     if(A == nullptr || N <=0 ){
         std::cerr<<"Can't print empty array!"<<std::endl;
