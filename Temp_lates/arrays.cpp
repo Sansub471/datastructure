@@ -3,6 +3,7 @@
 #include <cstdlib> // For std::rand, std::srand
 #include <ctime> // For std::time
 #include <type_traits> // For std::is_integral_v
+#include <cmath>
 
 //#include <algorithm> // For std::swap
 
@@ -89,45 +90,48 @@ template <typename T> T* Array<T>::randomArray(unsigned int size, T minValue, T 
         if constexpr (std::is_integral_v<T>) { // Read : https://www.geeksforgeeks.org/understanding-constexper-specifier-in-cpp/
             A[i] = static_cast<T>((std::rand() % (maxValue - minValue + 1)) + minValue);
         } else {
-            A[i] = static_cast<T>((static_cast<double>(std::rand()) / RAND_MAX) * (maxValue - minValue) + minValue);
+            // Generate random floating-point numbers with up to 3 decimal places
+            double randomValue = (static_cast<double>(std::rand()) / RAND_MAX) * (maxValue - minValue) + minValue;
+            randomValue = std::round(randomValue * 1000.0) / 1000.0; // multiply by 1000 round to nearest integer and divide it by 1000
+            A[i] = static_cast<T>(randomValue);
         }
     }
     return A;
 }
 
-int main(){
+// int main(){
 
-    int A[] = {89, 34, 1, 3, -15, 37, 12, 23, 21, 10};
-    unsigned int N = sizeof(A) / sizeof(A[0]);
+//     int A[] = {89, 34, 1, 3, -15, 37, 12, 23, 21, 10};
+//     unsigned int N = sizeof(A) / sizeof(A[0]);
 
-    Array<int> arr1(A, N);
-    arr1.PrintArray();
+//     Array<int> arr1(A, N);
+//     arr1.PrintArray();
 
-    // Array<float> arr2;
-    // float* ptr = arr2.InputArray();
-    // if(ptr == nullptr){
-    //     std::cerr<<"Null pointer returned."<<std::endl;
-    // }
-    // arr2.PrintArray();
+//     // Array<float> arr2;
+//     // float* ptr = arr2.InputArray();
+//     // if(ptr == nullptr){
+//     //     std::cerr<<"Null pointer returned."<<std::endl;
+//     // }
+//     // arr2.PrintArray();
 
-    Array<int> arr3;
-    int* randintArr = arr3.randomArray(12, 23, 77);
+//     Array<int> arr3;
+//     int* randintArr = arr3.randomArray(12, 23, 77);
 
-    //std::cout<< randintArr << std::endl;
-    if(randintArr == nullptr){
-        std::cerr<<"Null pointer returned."<<std::endl;
-    }
+//     //std::cout<< randintArr << std::endl;
+//     if(randintArr == nullptr){
+//         std::cerr<<"Null pointer returned."<<std::endl;
+//     }
 
-    arr3.PrintArray();
+//     arr3.PrintArray();
 
-    Array<float> arr4;
-    float* randfloatArr = arr4.randomArray(15, 10.45f, 97.77f);
+//     Array<float> arr4;
+//     float* randfloatArr = arr4.randomArray(15, 10.45f, 97.77f);
 
-    //std::cout<< randintArr << std::endl;
-    if(randintArr == nullptr){
-        std::cerr<<"Null pointer returned."<<std::endl;
-    }
+//     //std::cout<< randintArr << std::endl;
+//     if(randintArr == nullptr){
+//         std::cerr<<"Null pointer returned."<<std::endl;
+//     }
 
-    arr4.PrintArray();
-    return 0;
-}
+//     arr4.PrintArray();
+//     return 0;
+// }
