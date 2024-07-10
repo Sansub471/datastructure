@@ -1,0 +1,12 @@
+The learnings from the project will be here: 
+1. .hpp and .h file difference
+    By one convention, .hpp files are used when the prototypes are defined in the header itself. 
+    Such definitions in headers are useful in case of templates, since the compiler generates the 
+    code for each type only on template instantiation. Hence, if they are not defined in header files, 
+    their definitions will not be resolved at link time from other compilation units. If your project 
+    is a C++ only project that makes heavy use of templates, this convention will be useful.
+
+    Certain template libraries that adhere to this convention provide headers with .hpp extensions to indicate 
+    that they do not have corresponding .cpp files.
+
+    Another convention is to use .h for C headers and .hpp for C++; a good example would be the boost library.
