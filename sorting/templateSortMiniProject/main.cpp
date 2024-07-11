@@ -12,11 +12,12 @@ int main(){
     std::cout<<"The unsorted array is : ";
     arr.PrintArray();
 
+    std::cout<<"The unsorted from Sort class is : ";
     Sort<int> sorted(arr);
-    //sorted.bubbleSort();
-
-    std::cout<<"The sorted array is : ";
     sorted.PrintSort();
+
+    std::cout<<"The sorted array is : \n";
+    //sorted.PrintSort();
 
     return 0;
 }

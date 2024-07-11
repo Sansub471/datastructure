@@ -15,6 +15,8 @@ template <typename T> Array<T>::Array(T* arr, unsigned int size){
 
 // default destructor to free allocated memory
 template <typename T> Array<T>::~Array(){
+    std::cout<<"This is array deconstructor."<<std::endl;
+    std::cout<<"Trying to free : " << A << std::endl;
     delete[] A;
 }
 

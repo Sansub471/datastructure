@@ -2,10 +2,13 @@
 
 template <typename T> Sort<T>::Sort(const Array<T>& array):  Arr(array){}
 
-// Destructor
-template <typename T> Sort<T>::~Sort() {
-    // Destructor body can be empty as there are no additional resources to manage
-}
+// // Destructor
+// template <typename T> Sort<T>::~Sort() {
+//     // Destructor body can be empty as there are no additional resources to manage
+//     std::cout<<"This is Sort deconstructor."<<std::endl;
+//     std::cout<<"Trying to free : "<< Arr.getArray()<< std::endl;
+
+// }
 
 template <typename T> void Sort<T>:: PrintSort(){
     Arr.PrintArray();

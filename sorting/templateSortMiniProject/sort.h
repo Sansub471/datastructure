@@ -10,8 +10,8 @@ template <typename T> class Sort{
 
     public:
     // constructor that takes array object.
-    Sort( const Array<T>& array);
-    ~Sort();//Deconstructor
+    Sort(const Array<T>& array);
+    //~Sort();//Deconstructor
 
     void PrintSort();
 
