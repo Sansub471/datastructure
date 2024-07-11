@@ -1,6 +1,6 @@
 #include"sort.h"
 
-template <typename T> Sort<T>::Sort(const Array<T>& array, bool debug) : Arr(array), debug(debug){}
+template <typename T> Sort<T>::Sort(const Array<T>& array):  Arr(array){}
 
 // Destructor
 template <typename T> Sort<T>::~Sort() {
@@ -13,13 +13,13 @@ template <typename T> void Sort<T>:: PrintSort(){
 
 template <typename T> void Sort<T>:: bubbleSort(){
     unsigned int N = Arr.getSize();
-    T* A = Arr.getArray();
+    T* arrPtr = Arr.getArray();
 
     for(int i=0; i< N - 1; i++){
         bool swapped = false;
         for(int j=0; j< N - i - 1; j++){
-            if(A[j] > A[j+1]){
-                Arr.swap(&A[j], &A[j+1]);
+            if(arrPtr[j] > arrPtr[j+1]){
+                Arr.swap(&arrPtr[j], &arrPtr[j+1]);
                 swapped = true;
             }
         }

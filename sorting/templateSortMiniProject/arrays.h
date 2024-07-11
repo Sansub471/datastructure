@@ -28,6 +28,6 @@ template <typename T> class Array{
     T* randomArray(unsigned int size, T minValue, T maxValue);    
 };
 
-#include"arrays.cpp" // include implementation for template class
+//#include"arrays.cpp" // include implementation for template class
 
 #endif

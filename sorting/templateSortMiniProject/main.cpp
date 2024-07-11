@@ -1,6 +1,9 @@
 #include "arrays.h"
 #include "sort.h"
 
+#include "arrays.cpp"
+#include "sort.cpp"
+
 int main(){
 
     Array<int> arr;
@@ -10,10 +13,10 @@ int main(){
     arr.PrintArray();
 
     Sort<int> sorted(arr);
-    sorted.bubbleSort();
+    //sorted.bubbleSort();
 
     std::cout<<"The sorted array is : ";
-    //sorted.PrintSort();
+    sorted.PrintSort();
 
     return 0;
 }
