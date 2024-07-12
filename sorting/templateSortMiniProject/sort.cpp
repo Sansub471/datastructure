@@ -33,6 +33,4 @@ template <typename T> void Sort<T>:: bubbleSort(){
         // if no two elements swapped by inner loop, break
         if(swapped == false) break;
     }
-
-    Arr.PrintArray();
 }
