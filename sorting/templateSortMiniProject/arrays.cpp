@@ -15,8 +15,8 @@ template <typename T> Array<T>::Array(T* arr, unsigned int size){
 
 // default destructor to free allocated memory
 template <typename T> Array<T>::~Array(){
-    std::cout<<"This is array deconstructor."<<std::endl;
-    std::cout<<"Trying to free : " << A << std::endl;
+    //std::cout<<"This is array deconstructor."<<std::endl;
+    //std::cout<<"Trying to free : " << A << std::endl;
     delete[] A;
 }
 
@@ -53,15 +53,19 @@ template <typename T> T* Array<T>::InputArray(){
 }
 
 // print the array
+// Problem with copying code from standalone function
+// Previously : head pointer of the array was passed as local variable
+// but now the class's data is being modified hence, make sure to keep track of the head
 template <typename T> void Array<T>::PrintArray(){
     if(A == nullptr || N <=0 ){
         std::cerr<<"Can't print empty array!"<<std::endl;
         return;
     }
 
+    T* head  = A;
     for(int i=0; i < N; i++){
-        std::cout<<*A<<"\t";
-        A++;
+        std::cout<<*head<<"\t";
+        head++;
     }
     std::cout<<std::endl;
 }
@@ -102,40 +106,3 @@ template <typename T> T* Array<T>::randomArray(unsigned int size, T minValue, T 
     }
     return A;
 }
-
-// int main(){
-
-//     int A[] = {89, 34, 1, 3, -15, 37, 12, 23, 21, 10};
-//     unsigned int N = sizeof(A) / sizeof(A[0]);
-
-//     Array<int> arr1(A, N);
-//     arr1.PrintArray();
-
-//     // Array<float> arr2;
-//     // float* ptr = arr2.InputArray();
-//     // if(ptr == nullptr){
-//     //     std::cerr<<"Null pointer returned."<<std::endl;
-//     // }
-//     // arr2.PrintArray();
-
-//     Array<int> arr3;
-//     int* randintArr = arr3.randomArray(12, 23, 77);
-
-//     //std::cout<< randintArr << std::endl;
-//     if(randintArr == nullptr){
-//         std::cerr<<"Null pointer returned."<<std::endl;
-//     }
-
-//     arr3.PrintArray();
-
-//     Array<float> arr4;
-//     float* randfloatArr = arr4.randomArray(15, 10.45f, 97.77f);
-
-//     //std::cout<< randintArr << std::endl;
-//     if(randintArr == nullptr){
-//         std::cerr<<"Null pointer returned."<<std::endl;
-//     }
-
-//     arr4.PrintArray();
-//     return 0;
-// }
