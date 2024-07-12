@@ -11,7 +11,6 @@ template <typename T> void PrintArray(T* A, unsigned int N){
         std::cout<<"Can't print NULL array!\n";
         return;
     }
-    std::cout<<"The elements are : ";
     unsigned int i;
     for(i=0; i<N; i++){
         std::cout<<"\t"<< *A;
