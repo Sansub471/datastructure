@@ -16,7 +16,7 @@ template <typename T> class Array{
     public:
     Array();
     Array(T* arr, unsigned int size);
-    ~Array();
+    //~Array();
 
     unsigned int getSize();
     T* getArray();
