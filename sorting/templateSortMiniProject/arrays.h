@@ -1,7 +1,7 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include <iostream>
+
 #include <new> // For std::nothrow
 #include <cstdlib> // For std::rand, std::srand
 #include <ctime> // For std::time
@@ -28,6 +28,6 @@ template <typename T> class Array{
     T* randomArray(unsigned int size, T minValue, T maxValue);    
 };
 
-//#include"arrays.cpp" // include implementation for template class
+#include"arrays.cpp" // include implementation for template class
 
 #endif

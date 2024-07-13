@@ -1,8 +1,6 @@
+#include <iostream>
 #include "arrays.h"
 #include "sort.h"
-
-#include "arrays.cpp"
-#include "sort.cpp"
 
 int main(){
 

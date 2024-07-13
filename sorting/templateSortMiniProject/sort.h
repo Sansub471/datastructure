@@ -19,6 +19,6 @@ template <typename T> class Sort{
     
 };
 
-//#include"sort.cpp"
+#include"sort.cpp"
 
 #endif
