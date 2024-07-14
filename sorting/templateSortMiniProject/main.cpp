@@ -59,5 +59,7 @@ int main(){
     std::cout<<"The sorted array is   : ";
     sorted3.PrintSort();
 
+    // the day has begun 
+    // This is the day for the game.
     return 0;
 }
