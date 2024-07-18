@@ -10,5 +10,6 @@ int main(){
     for(int number : numbers){
         std::cout<< number <<"\t";
     }
+    std::cout<<std::endl;
     return 0;
 }
