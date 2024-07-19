@@ -13,5 +13,3 @@ int main(){
     std::cout<<std::endl;
     return 0;
 }
-
-// Starting the day for me.
