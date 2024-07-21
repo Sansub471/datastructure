@@ -34,7 +34,14 @@ template<std::size_t SIZE>
     }
 // SIZE will be replaced with compile-time constant(the size of array)
 
-
+template<typename T, std::size_t SIZE>
+    void PrintingFunction(std::array<T, SIZE>& arr){
+    std::cout<<"The elements from Printing Function are : ";
+        for(auto& e : arr) {
+            std::cout<<e<<"\t";
+        }
+    std::cout<<std::endl;
+    }
 
 int main(){
     // Two methods of initialization
@@ -80,5 +87,10 @@ int main(){
     PrintArray(numbers);
 
     ArrayPrinting(numbers);
+
+    PrintingFunction(marks);
+    std::array<float, 5> decimals = {22.3, 45.34, 56.34, 9, 78.89};
+    PrintingFunction(decimals);
+
     return 0;
 }
