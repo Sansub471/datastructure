@@ -12,6 +12,30 @@
 
 
 // source : https://www.programiz.com/cpp-programming/std-array
+
+void PrintArray(std::array<int, 5>& arr){
+    std::cout<<"The elements from print function : ";
+    for(auto& n : arr){
+        std::cout<<n<<"\t";
+    }
+    std::cout<<std::endl;
+
+}
+
+// The above approach has a limitation, what if we want to print array of size 10, 20, 30 etc.
+// use template
+template<std::size_t SIZE>
+    void ArrayPrinting(std::array<int, SIZE>& arr) {
+        std::cout<<"The elements from ArrayPrinting are : ";
+        for(auto& e : arr) {
+            std::cout<<e<<"\t";
+        }
+    std::cout<<std::endl;
+    }
+// SIZE will be replaced with compile-time constant(the size of array)
+
+
+
 int main(){
     // Two methods of initialization
     // Initializer list
@@ -47,6 +71,14 @@ int main(){
     // 4. It can be used with STL algorithms.
 
 
-    // 
+    // Difference between std::array and C-style array
+    // 1. C-style array T[n] can automatically cast to T* while std::array can't.
+    // 2. C-style-array doesn't support assignment while std::array<T, N> does.
+
+    // Recommended to use STL array over C-Style array in C++
+
+    PrintArray(numbers);
+
+    ArrayPrinting(numbers);
     return 0;
 }
