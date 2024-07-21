@@ -39,5 +39,14 @@ int main(){
     numbers.at(0) = 17;
     std::cout<<"The first number is " << numbers[0] << std::endl;
     std::cout<<"The third element is " << numbers.at(2) << std::endl;
+
+    // Methods:
+    // 1. n.empty() let n be std::array returns true if empty otherwise false
+    // 2. n.size() get the number of elements
+    // 3. n.fill(value) fill the entire array with 'value'
+    // 4. It can be used with STL algorithms.
+
+
+    // 
     return 0;
 }
