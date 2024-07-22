@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 
 // Syntax : std::vector<T> vector_name;
 // The type parameter <T> specifies the type of the vector.
@@ -154,6 +155,20 @@ int main(){
     std::cout<<"Erase range : ";
     PrintingVector(myvector);
 
+    // Removing an element based on its value
+    std::vector<int> values = {1,2,3,4,5,3,2,1,3,3};
+    // know the position using find() and delete it
+    int valueToDelete = 3;
+    auto it = std::find(values.begin(), values.end(), valueToDelete);
+    // if found returns the iter to its position otherwise iter to the last position
+    // T(n) = O(n)
+    if(it != values.end()){
+        values.erase(it);
+    }
+
+    // clear() removes all the elements reducing vector size to 0
+    // erase() removes specific element or range of elements, and reducing size accordingly
+    
     
     return 0;
 }
