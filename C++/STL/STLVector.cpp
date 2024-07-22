@@ -128,5 +128,32 @@ int main(){
 
     vec4.push_back(45.89);
     std::cout<<"The size of vec4 is : " << vec4.capacity() << std::endl;
+
+    // 11. erase() : remove elements from a conatiner from the specified pos or range
+
+    // erase syntax : 
+    // vector_name.erase(position); delete from specific position
+    // vector_name.erase(start_pos, end_pos); deletion in range
+    // positions are in the form of iterator.
+
+    std::vector<int> myvector = {1, 2, 3, 4, 5, 6, 7, 8};
+    std::vector<int>::iterator itr1, itr2;
+    itr1 = myvector.begin() + 2;
+    itr2 = myvector.begin() + 4;
+
+    std::cout<<"Element : " << *itr1 << "\t " << myvector[2]<< std::endl;
+
+    std::cout<<std::endl<<"Original vector : ";
+    PrintingVector(myvector);
+
+    myvector.erase(itr1); // O(n)
+    std::cout<<"Erase at a position : ";
+    PrintingVector(myvector);
+
+    myvector.erase(itr1, itr2);
+    std::cout<<"Erase range : ";
+    PrintingVector(myvector);
+
+    
     return 0;
 }
