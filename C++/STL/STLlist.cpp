@@ -28,6 +28,16 @@ template <typename T>
 bool compare(double a, double b){
         return ((int)a == (int)b);
     }
+
+// comparator which compares elements internally, merge fn
+template <typename T>
+    bool comparator(const T& first, const T& second){
+        return first < second;
+    }
+
+// bool comparator(int first, int second){
+//     return first < second;
+// }
 int main(){
 
     std::list<int> numbers = {1,2,3,4,5,6,7,8};
@@ -97,7 +107,36 @@ int main(){
 
     std::cout<<"\nUnique with binary predicate.\n";
     PrintingList(listtwo);
-   
+    
+    // merge without comparator
+    std::list<int> list1 {20, 10, 30, 20};
+    std::list<int> list2 {50, 40, 60, 40};
 
+    //list1.sort(); list2.sort();
+    
+    list1.merge(list2);
+    std::cout<<"\nThe list1 is \n";
+    PrintList(list1);
+
+    std::cout<<"\nThe list2 is \n";
+    PrintList(list2);
+
+    // Time complexity: O(n + m - 1)
+    // n : size of list1, m : size of list2
+
+    // with comparator
+    // list1_name.merge(list2_name, comparator)
+    
+    std::list<int> lst1 {1, 89, 23, 90};
+    std::list<int> lst2 {10, 11, 7, 3, 2};
+
+    // sort lists first to get final list sorted
+    lst1.sort(comparator<int>);
+    lst2.sort(comparator<int>);
+
+    // merge operation
+    lst1.merge(lst2, comparator<int>);
+    std::cout<<"\nMerged with comparator function \n";
+    PrintList(lst1);
     return 0;
 }
