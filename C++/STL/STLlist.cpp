@@ -138,5 +138,51 @@ int main(){
     lst1.merge(lst2, comparator<int>);
     std::cout<<"\nMerged with comparator function \n";
     PrintList(lst1);
+
+    // Use of iterator
+    std::list<int>::iterator itr;
+    itr = lst1.begin();
+    ++itr;
+
+    std::cout<<"The second element is " << *itr << std::endl;
+
+    // Add element at a specific position
+    // list_name.insert(iterator, value);
+    lst1.insert(itr, 77);
+    PrintList(lst1);
+
+    // Remove element from a specific position
+    // list_name.remove(element)
+
+    // Remove() using value
+    lst1.push_back(90);
+    lst1.push_back(90);
+
+    std::cout<<"\nBefore removing by value\n";
+    PrintList(lst1);
+
+    std::cout<<"\nAfter removing by value\n";
+    lst1.remove(90);
+    PrintList(lst1);
+    // All 90 will be removed
+
+    // Remove() using iterator
+    std::list<int>::iterator iter;
+    iter = lst1.begin();
+    lst1.push_back(77);
+    lst1.push_back(77);
+    std::cout<<"\nBefore removing by iterator\n";
+    PrintList(lst1);
+
+    ++iter; // index 1 element
+    lst1.remove(*iter);
+    // Removes all the values pointed by the iterator
+    std::cout<<"\nAfter removing by iterator\n";
+    PrintList(lst1);
+
+    // by value and dereferencing *itr seems same to me
+
+
+
     return 0;
 }
