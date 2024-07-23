@@ -18,7 +18,7 @@ void PrintVector(std::vector<int>& vec){
 template<typename T>
     void PrintingVector(std::vector<T>& vec){
         std::cout<<"The elements from printing functions : ";
-        for(const int& elem : vec){
+        for(const T& elem : vec){
             std::cout<<elem<<"\t";
         }
     std::cout<<std::endl;
@@ -169,6 +169,7 @@ int main(){
     // clear() removes all the elements reducing vector size to 0
     // erase() removes specific element or range of elements, and reducing size accordingly
     
+    PrintingVector(vec4);
     
     return 0;
 }
