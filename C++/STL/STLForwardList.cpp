@@ -35,13 +35,31 @@ int main(){
 
     // add elements to the forward list
     int_fwd_list.push_front(77);
-    auto itr = int_fwd_list.begin();
+    auto itr = int_fwd_list.begin(); // or std::forward_list<int>::iterator itr;
     ++itr; ++itr;
 
     int_fwd_list.insert_after(itr, 17);
     std::cout<<"The list after insertion operations \n";
     PrintForwardList(int_fwd_list);
 
+    // update the content of the forward list
+    // assign() fn replaces the original contents of the forward list with new ones.
+
+    std::forward_list<int> firstLst {1,2,3,4,5};
+    std::cout<<"The list before assign function : \n";
+    PrintForwardList(firstLst);
+
+    firstLst.assign({7,9,8,7,9,6,5,9}); // can have more than 5 elements
+    std::cout<<"The list after assign function : \n";
+    PrintForwardList(firstLst);
+
+    // delete elements from forward list
+    firstLst.pop_front();
+    firstLst.remove(9); // remove all occurence of 9
+
+    // firstLst.clear(); // deletes all the elements from the list
+    std::cout<<"The list after deletion operations \n";
+    PrintForwardList(firstLst);
 
 
     return 0;
