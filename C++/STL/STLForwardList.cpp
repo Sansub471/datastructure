@@ -5,7 +5,7 @@ template <typename T>
     void PrintForwardList(std::forward_list<T>& fwdList){
         std::cout<<"The elements of the forward list are : ";
         for(const T& elem : fwdList){
-            std::cout<<elem<<"\t";
+            std::cout<<elem<<"  ";
         }
     std::cout<<std::endl;
     }
@@ -29,7 +29,19 @@ int main(){
     // 6. remove() : remove the element with specific value
     // 7. clear() : delete all the contencts of the list
 
-    
+    // access the first element
+    std::string first  = forward_words.front();
+    std::cout<<"The first word is " << first << std::endl;
+
+    // add elements to the forward list
+    int_fwd_list.push_front(77);
+    auto itr = int_fwd_list.begin();
+    ++itr; ++itr;
+
+    int_fwd_list.insert_after(itr, 17);
+    std::cout<<"The list after insertion operations \n";
+    PrintForwardList(int_fwd_list);
+
 
 
     return 0;
