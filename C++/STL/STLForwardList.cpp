@@ -20,6 +20,17 @@ int main(){
     std::cout<<"The words are \n";
     PrintForwardList(forward_words);
 
+    // Forward list methods
+    // 1. front() : access the front element
+    // 2. push_front() : add an element to the start of the list
+    // 3. insert_after() : insert an element at the position right after the given position
+    // 4. assign() : assign new contents to the list by replacing the current contents
+    // 5. pop_front() : remove the element at the front
+    // 6. remove() : remove the element with specific value
+    // 7. clear() : delete all the contencts of the list
+
+    
+
 
     return 0;
 
