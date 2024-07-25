@@ -39,10 +39,26 @@ int main(){
     numbers.push(3);
     numbers.push(2);
     numbers.push(11);
-    std::cout<<"The prime numbers are : ";
+    std::cout<<"\nThe prime numbers in the queue are : ";
     PrintQueue(numbers);
 
     // Remove element from the queue.
+    words.pop(); numbers.pop(); // pop fron the front of the queue
+    std::cout<<"\nThe words in the queue are : ";
+    PrintQueue(words);
+
+    std::cout<<"\nThe prime numbers in the queue are : ";
+    PrintQueue(numbers);
+
+    // Access the elements using front() and back()
+    std::cout<<"The front of words queue  : " << words.front() << std::endl;
+    std::cout<<"The back of numbers queue : "<< numbers.back() << std::endl;
+
+    // size() of the queue
+    std::cout<<"The size of words queue = " << words.size() << std::endl;
+
+    // check if empty()
+    
 
     return 0;
 }
