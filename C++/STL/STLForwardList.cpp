@@ -60,9 +60,5 @@ int main(){
     // firstLst.clear(); // deletes all the elements from the list
     std::cout<<"The list after deletion operations \n";
     PrintForwardList(firstLst);
-    
     return 0;
-
-    // Solved my first problem on leetcode.
-
 }
