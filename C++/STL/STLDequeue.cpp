@@ -55,5 +55,19 @@ int main(){
     PrintDeque(deque1);
     
 
+    // Iterators
+    // Syntax : std::deque<type>::iterator iterator_name;
+
+    std::deque<int>::iterator iter_int;
+    std::deque<std::string>::iterator iter_str;
+
+    int i = 2;
+    iter_int = dqnumbers.begin() + i; // element at ith index, generalized
+    iter_str = dqwords.end() - 1; // end() points to the iterator one past the last element
+
+    std::cout<<"The last word in the deque is : " << *iter_str << std::endl;
+    std::cout<<"The number at index["<<i<<"] is : " << *iter_int << std::endl;
+     
+
     return 0;
 }
