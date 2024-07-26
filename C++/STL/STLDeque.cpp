@@ -67,7 +67,26 @@ int main(){
 
     std::cout<<"The last word in the deque is : " << *iter_str << std::endl;
     std::cout<<"The number at index["<<i<<"] is : " << *iter_int << std::endl;
-     
+    
+    // FAQs
+    // 1. How to remove elements at the specified index?
+    dqnumbers.erase(dqnumbers.begin()+i); // delete at index i
+
+    // 2. How to remove elements in a certain index range?
+    dqwords.erase(dqwords.begin()+1, dqwords.begin()+3);
+    // end point is exclusive
+
+    // 3. Remove all the elements
+    // clear() method
+
+    // How to determine size?
+    // size() and empty() methos to check
+
+    // Can we use auto to initialize a deque iterator?
+    // Yes, it can be used to initialize a deque iterator but not without initialization.
+
+    auto itr = dqwords.begin(); // ok
+    // auto itr1;  is invalid
 
     return 0;
 }
