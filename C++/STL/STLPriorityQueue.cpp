@@ -10,6 +10,15 @@ template<typename T>
     std::cout<<std::endl;
     }
 
+template<typename T>
+    void PrintMinPrioQueue(std::priority_queue<T, std::vector<T>, std::greater<T>> pq){
+        while(!pq.empty()){
+            std::cout<<pq.top()<<"  ";
+            pq.pop();
+        }
+    std::cout<<std::endl;
+    }
+
 int main(){
 
     // Syntax : std::priority_queue<type> pq;
@@ -41,7 +50,20 @@ int main(){
     PrintPQueue(words);
 
     // Remove element using pop()
+    // check the PrintQueue() function
 
-    
+    // Access element using top() method
+    // empty() and size() functions are pretty straight forward.
+
+    // Min-Heap Priority Queue
+    // std::priority_queue<type, vector<type>, greater<type>> pq;
+    std::priority_queue<std::string, std::vector<std::string>, std::greater<std::string>> food;
+    food.push("apple"); food.push("oranges"); food.push("egg");
+    food.push("rice"); food.push("pudding"); food.push("broccoli");
+
+    std::cout<<"The min-heap food is : ";
+    PrintMinPrioQueue(food);
+
+
     return 0;
 }
