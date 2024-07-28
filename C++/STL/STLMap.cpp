@@ -101,6 +101,24 @@ int main(){
     std::cout<<"The alphabet after erase() : \n";
     PrintMap(alphabet);
 
+    // Delete a range of elements
+    // map_name.erase(itr_start, itr_end);
+    // iter_end is not inclusive
+
+    // The elements in the map are internally sorted by their key
+    std::map<char, std::string>::iterator iter_start, iter_end;
+    iter_start = alphabet.begin(); // index 0
+    iter_end = alphabet.end();
+
+    ++iter_start;// index 1 
+    ++iter_start;// index 2
+
+    --iter_end; // last
+
+    alphabet.erase(iter_start, iter_end);
+    std::cout<<"The map after range erase: \n";
+    PrintMap(alphabet);
+
 
     return 0;
 }
