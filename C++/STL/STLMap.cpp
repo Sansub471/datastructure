@@ -72,7 +72,7 @@ int main(){
     // map_name.find(key)
 
     std::map<int, std::string>::iterator iter;
-    int roll = 9;
+    int roll = 9; // change th roll number
     iter = students.find(roll); // find the key 9 in students map
     // returns an iterator pointing to the element if the element exists
     // otherwise iterator to the students.end()
@@ -83,6 +83,24 @@ int main(){
     else{
         std::cout<<"Student will roll number " << roll << " not found in records."<<std::endl;
     }
+
+    // Delete elements from C++ maps
+    // erase() and clear() functions
+
+    // map_name.clear(); // deletes all elements of the map
+
+
+    // erase()
+    // Delete individual elements either with iterator or key
+    alphabet.erase('G'); // using key
+    std::map<char, std::string>::iterator itr_alpha = alphabet.begin();
+    // itr_alpha+= 2; 
+    ++itr_alpha; ++itr_alpha;
+    alphabet.erase(itr_alpha);
+
+    std::cout<<"The alphabet after erase() : \n";
+    PrintMap(alphabet);
+
 
     return 0;
 }
