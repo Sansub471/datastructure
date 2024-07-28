@@ -32,10 +32,43 @@ int main(){
     std::cout<<"Set of numbers in descending order : ";
     PrintSetDes(numbers);
 
+    // Set methods
+    // 1. insert() : insert elements into a set
+    // 2. erase() : delete elements from a set
+    // 3. clear()  : remove all the elements from a set
+    // 4. empty()  : check if the set is empty
+    // 5. size()   : returns the size of the set
 
+    // Add values to the set
+    words.insert("name"); words.insert("game");
+    words.insert("fame"); words.insert("shame");
+    words.insert("tame"); words.insert("lame");
+    words.insert("pame");
+    words.insert("name");
+    words.insert("name");
 
+    std::cout<<"The words are : ";
+    PrintSet(words);
 
+    // check if an element exists in the set
+    int num = 7;
+    if(numbers.count(num)){
+        std::cout<<"The numbers set has "<< num<< std::endl;
+    }
+    else{
+        std::cout<<"The numbers set doesn't have " << num << std::endl;
+    }
 
+    // count() returns 1 if the element exists
 
+    // Delete an element from the set
+    // clear() deletes all the elements
+
+    words.erase("pame");
+    std::cout<<"The words after erasing : ";
+    PrintSet(words);
+
+    // empty() and size() methods are called capacity methods.
+    // function is self explanatory
     return 0;
 }
