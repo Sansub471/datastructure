@@ -113,7 +113,7 @@ int main(){
     ++iter_start;// index 1 
     ++iter_start;// index 2
 
-    --iter_end; // last
+    --iter_end; // last element
 
     alphabet.erase(iter_start, iter_end);
     std::cout<<"The map after range erase: \n";
