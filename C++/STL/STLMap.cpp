@@ -1,7 +1,6 @@
 #include<iostream>
 #include<map>
 
-
 template <typename key, typename value>
     void PrintMap(std::map<key, value>& mapData){
         std::cout<<"The values are : ";
@@ -118,7 +117,5 @@ int main(){
     alphabet.erase(iter_start, iter_end);
     std::cout<<"The map after range erase: \n";
     PrintMap(alphabet);
-
-
     return 0;
 }
