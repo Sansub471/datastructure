@@ -75,6 +75,51 @@ int main(){
     PrintMultiMap(alphabet);
     
     // MultiMap methods
+    // 1. insert() : inserts one or more key-value pairs
+    // 2. count()  : returns total number of occurence of the specified key
+    // 3. find()   : returns the iterator to the element with the specified key
+    // 4. size()   : returns the number of elements
+    // 5. empty()  : returns true if the multimap is empty
+    // 6. erase()  : removes elements with specified key
+    // 7. clear()  : removes all elements
+
+    // insert elements
+    alphabet.insert({{'D', "Dense"}, {'E', "Egg"}});
+    students.insert({{2, "Siddhanta"}, {7, "Sandhya"}});
+
+    // remove elements from a multimap
+    // clear() removes all elements
+
+    // erase()
+    students.erase(3);
+    std::cout<<"Students are erase and insert : \n";
+    PrintMultiMap(students);
+
+    std::cout<<"The size of alphabets multimap : "<< alphabet.size() << std::endl;
+
+    // find() a key in the multimap
+    // returns iterator to the element if the key is found, only the first instance of the key
+    // otherwise end of the container end()
+    
+    int rank = 7;
+    auto find_iter = students.find(rank);
+    if (find_iter != students.end()){
+        std::cout<<"\nThe Student's rank : " << find_iter->first << " ---> Name: "<<find_iter->second<<std::endl;
+    }
+    else{
+        std::cout<<"\nCan't find rank " << rank << std::endl;
+    }
+
+    // find() only gives the first occurence of the key
+
+    // count(): returns the total number of occurence of specified key
+    int countRank = students.count(rank);
+    if(countRank){
+        std::cout<<"\nThere are " << countRank << " students with rank " << rank << std::endl;
+    }
+    else{
+        std::cout<<"\nCan't find the student with rank " << rank << std::endl;
+    }
 
     return 0;
 }
