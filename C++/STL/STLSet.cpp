@@ -10,7 +10,7 @@ template<typename T>
     }
 
 template<typename T>
-    void PrintSetDes(std::set<T>& myset){
+    void PrintSetDes(std::set<T, std::greater<T>>& myset){
         for(const T& elem : myset){
             std::cout<<elem<<" ";
         }
