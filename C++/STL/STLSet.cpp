@@ -10,7 +10,7 @@ template<typename T>
     }
 
 template<typename T>
-    void PrintSetDes(std::set<T, std::greater<T>>& myset){
+    void PrintSetDes(std::set<T>& myset){
         for(const T& elem : myset){
             std::cout<<elem<<" ";
         }
@@ -31,6 +31,11 @@ int main(){
     std::set<int, std::greater<int>> numbers = {2,3,6,7,9,11,4,1,13,27,31,16};
     std::cout<<"Set of numbers in descending order : ";
     PrintSetDes(numbers);
+
+    std::set<std::string, std::greater<std::string>> setwords = {"here", "there", "fear", "pear",
+                                                    "shear", "gear", "mere"};
+    std::cout<<"Set of words in descending order is : ";
+    PrintSetDes(setwords);
 
     // Set methods
     // 1. insert() : insert elements into a set
