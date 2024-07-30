@@ -38,5 +38,18 @@ int main(){
     std::cout<<"Multiser of words(DES) : ";
     PrintDesMultiset(mulsetwords);
 
+
+    // Multiset methods:
+    // 1. insert() : insert elements into a multiset
+    // 2. eraser() : erase all instances of an element
+    // 3. clear()  : remove all the elements from a multiset
+    // 4. empty()  : check if the multiset is empty
+    // 5. size()   : returns the size of the multiset
+
+    numbers.insert(78); mulsetwords.insert("here"); prime_set.insert(7);
+
+    // clear() deletes all the elements in multiset
+    mulsetwords.erase("here"); // all occurences
+    
     return 0;
 }
