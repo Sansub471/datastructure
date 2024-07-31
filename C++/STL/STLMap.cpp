@@ -79,7 +79,22 @@ int main(){
     std::cout << "Capital of Nepal is " << capital_city["Nepal"] << std::endl;
     std::cout << "Capital of Australia is " << capital_city.at("Australia")<<std::endl;
     std::cout<<std::endl;
-    
+
+    // Change values of a map
+
+  // at() and [] operator
+   std::map<std::string, std::string> capital_city1{
+        {"India", "Calcutta"},
+        {"Pakistan", "Karachi"},
+    };
+   
+   capital_city1.at("Pakistan") = "Islamabad";
+   capital_city1["India"] = "New Delhi";
+
+  std::cout << "New Capitals:" << std::endl;
+  std::cout << "India : " << capital_city1.at("India") << std::endl;
+  std::cout << "Pakistan : " << capital_city1.at("Pakistan")<< std::endl;
+
     // find() function for maps
     // map_name.find(key)
 
