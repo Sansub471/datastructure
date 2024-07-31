@@ -52,6 +52,7 @@ int main(){
 
     alphabet.insert(std::make_pair('H', "Horse"));
     alphabet.insert(std::make_pair('H', "Honey")); // duplicate key
+    alphabet.insert({{'M', "Monkey"}, {'N', "Nest"}});
 
     std::cout<<"The students in Students map are : ";
     for(int i = 1; i<= students.size(); ++i){
@@ -66,7 +67,19 @@ int main(){
     std::cout<<"-------------Alphabet--------------------:\n";
     PrintMap(alphabet);
 
-
+    // Access the values of map
+    // 1. at() : returns the value of the specified key
+    // 2. [] : returns the value of the specified key
+    std::map<std::string, std::string> capital_city {
+        {"Nepal", "Kathmandu"},
+        {"India", "New Delhi"},
+        {"Australia", "Canberra"}
+    };
+  
+    std::cout << "Capital of Nepal is " << capital_city["Nepal"] << std::endl;
+    std::cout << "Capital of Australia is " << capital_city.at("Australia")<<std::endl;
+    std::cout<<std::endl;
+    
     // find() function for maps
     // map_name.find(key)
 
