@@ -74,33 +74,58 @@ int main(){
     // 1. at() : returns the value of the specified key
     // 2. [] : returns the value of the specified key
     std::unordered_map<std::string, std::string> capital_city {
-    {"Nepal", "Kathmandu"},
-    {"India", "New Delhi"},
-    {"Australia", "Canberra"}
-  };
-  
-  std::cout << "Capital of Nepal is " << capital_city["Nepal"] << std::endl;
-  std::cout << "Capital of Australia is " << capital_city.at("Australia")<<std::endl;
-
-  // at() function is preferable over [] as it throws exception if key not found
-  // while [] give garbage value
-
-  // Change values of an unordered map
-  // at() and [] operator
-   std::unordered_map<std::string, std::string> capital_city1{
-        {"India", "Calcutta"},
-        {"Pakistan", "Karachi"},
+        {"Nepal", "Kathmandu"},
+        {"India", "New Delhi"},
+        {"Australia", "Canberra"}
     };
-   
-   capital_city1.at("Pakistan") = "Islamabad";
-   capital_city1["India"] = "New Delhi";
+  
+    std::cout << "Capital of Nepal is " << capital_city["Nepal"] << std::endl;
+    std::cout << "Capital of Australia is " << capital_city.at("Australia")<<std::endl;
 
-  std::cout << "\n\nNew Capitals:" << std::endl;
-  std::cout << "India : " << capital_city1.at("India") << std::endl;
-  std::cout << "Pakistan : " << capital_city1.at("Pakistan")<< std::endl;
+    // at() function is preferable over [] as it throws exception if key not found
+    // while [] give garbage value
+
+    // Change values of an unordered map
+    // at() and [] operator
+    std::unordered_map<std::string, std::string> capital_city1{
+            {"India", "Calcutta"},
+            {"Pakistan", "Karachi"},
+        };
     
+    capital_city1.at("Pakistan") = "Islamabad";
+    capital_city1["India"] = "New Delhi";
 
+    std::cout << "\n\nNew Capitals:" << std::endl;
+    std::cout << "India : " << capital_city1.at("India") << std::endl;
+    std::cout << "Pakistan : " << capital_city1.at("Pakistan")<< std::endl;
 
+    // Remove elements from an unordered map
+    // erase(key)
+    // clear() : remove all elements
 
+    // Check if key exists in the unordered map
+    // find() : returns the iterator to the element if the key exists,
+    // else the end() iterator
+
+    // count() returns 1 if the key exists else 0
+
+    std::unordered_map<char, std::string>::iterator itr;
+    char key = 'Y'; // try another alphabet e.g. Z
+    itr = alphabet.find(key);
+    if(itr != alphabet.end()){
+        std::cout<<"\nThe alphabet pair: " << itr->first << " ---> "<< itr->second<<std::endl;
+    }
+    else{
+        std::cout<<"\nNo element with key " << key << " !! "<< std::endl;
+    }
+
+    // returns 1 if found otherwise 0
+    key = 'Z';
+    if(alphabet.count(key)){
+        std::cout<<"\nThe alphabet pair: " << key << " ---> "<< alphabet.at(key) <<std::endl;
+    }
+    else{
+        std::cout<<"\nNo element with key " << key << " !! "<< std::endl;
+    }
     return 0;
 }
