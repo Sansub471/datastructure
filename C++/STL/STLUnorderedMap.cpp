@@ -82,7 +82,24 @@ int main(){
   std::cout << "Capital of Nepal is " << capital_city["Nepal"] << std::endl;
   std::cout << "Capital of Australia is " << capital_city.at("Australia")<<std::endl;
 
-  
+  // at() function is preferable over [] as it throws exception if key not found
+  // while [] give garbage value
+
+  // Change values of an unordered map
+  // at() and [] operator
+   std::unordered_map<std::string, std::string> capital_city1{
+        {"India", "Calcutta"},
+        {"Pakistan", "Karachi"},
+    };
+   
+   capital_city1.at("Pakistan") = "Islamabad";
+   capital_city1["India"] = "New Delhi";
+
+  std::cout << "\n\nNew Capitals:" << std::endl;
+  std::cout << "India : " << capital_city1.at("India") << std::endl;
+  std::cout << "Pakistan : " << capital_city1.at("Pakistan")<< std::endl;
+    
+
 
 
     return 0;
