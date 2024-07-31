@@ -35,7 +35,7 @@ int main(){
     // duplicated key not allowed, once the key is initialized duplicate value
     // with the same key won't be inserted
     // same in map and set as well
-    
+
     std::cout<<"Unordered map: Students-----\n";
     PrintUnorderedMap(students);
 
@@ -52,5 +52,38 @@ int main(){
 
     // The difference with the map is that the keys are not ordered.
     // It's like dictionary data structure.
+
+    // Methods of unordered map
+    // 1. insert() : insert one or more key-value pairs
+    // 2. count()  : returns 1 if key exists and 0 if not
+    // 3. find()   : returns the iterator to the element with the specified key
+    // 4. at()     : returns the element at the specified key
+    // 5. size()   : returns the number of elements
+    // 6. empty()  : returns true if the unordered map is empty
+    // 7. erase()  : removes elements with specified key
+    // 8. clear()  : removes all elements
+
+    // Add element in the unordered map
+    // 1. insert() : key-value pair/s
+    // 2. unmap[key] = value; insert a key and value
+
+    alphabet['X'] = "Xeros"; alphabet.insert({{'M', "Monkey"}, {'N', "Nest"}});
+    alphabet.insert(std::make_pair('Q', "Quill"));
+
+    // Access the values of unordered map
+    // 1. at() : returns the value of the specified key
+    // 2. [] : returns the value of the specified key
+    std::unordered_map<std::string, std::string> capital_city {
+    {"Nepal", "Kathmandu"},
+    {"India", "New Delhi"},
+    {"Australia", "Canberra"}
+  };
+  
+  std::cout << "Capital of Nepal is " << capital_city["Nepal"] << std::endl;
+  std::cout << "Capital of Australia is " << capital_city.at("Australia")<<std::endl;
+
+  
+
+
     return 0;
 }
