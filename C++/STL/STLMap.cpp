@@ -48,7 +48,7 @@ int main(){
 
     students[10] = "Aayusha";
     students[10] = "Aayesha"; // Adding duplicate keys
-    // it overwrites previous value
+
 
     alphabet.insert(std::make_pair('H', "Horse"));
     alphabet.insert(std::make_pair('H', "Honey")); // duplicate key
