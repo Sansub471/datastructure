@@ -7,6 +7,11 @@ template<typename T>
             std::cout<<elem<<" ";
         }
         std::cout<<std::endl;
+
+        // for(auto itr=myset.begin(); itr!=myset.end(); ++itr){
+        //     std::cout<< *itr << "  ";
+        // }
+        // std::cout<<std::endl;
     }
 
 template<typename T>
