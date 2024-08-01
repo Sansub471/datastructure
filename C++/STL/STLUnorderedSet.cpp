@@ -37,5 +37,36 @@ int main(){
     std::cout<<"Ranged intialized words : ";
     PrintUnorderedSet(words);
 
+    // Methods 
+    // 1. insert() : inserts an element 
+    // 2. count()  : returns 1 if the specified value exists otherwise 0
+    // 3. find()   : returns the iterator to the element with the specified value
+    //               else returns end() iterator
+    // 4. size()   : returns the number of unique elements
+    // 5. empty()  : returns true if the unordered set is empty
+    // 6. erase()  : removes element with the specified value
+    // 7. clear()  : removes all elements
 
+
+    // Inser()
+    std::unordered_set<std::string> countries;
+    countries.insert("Nepal");
+    countries.insert({"China", "India", "USA", "England"});
+
+    std::cout<<"The countries are : ";
+    PrintUnorderedSet(countries);
+
+    // erase()
+    countries.erase("India");
+    countries.erase("Pakistan"); // no error if key not found
+
+    PrintUnorderedSet(countries);
+
+    // clear() : removes all
+
+    // Check if value exists
+    std::string countryName = "Pakistan";
+    // find() and count() similar to before.
+
+    // size() and empty() self explanatory
 }
