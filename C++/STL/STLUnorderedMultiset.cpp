@@ -30,5 +30,17 @@ int main(){
 
     std::cout<<"Multiser of words : ";
     PrintUnMultiset(unmulsetwords);
+
+    // Methods of unordered multiset
+    // 1. insert() : insert elements into an unordered set
+    // 2. erase()  : erase all instances of an element
+    // 3. clear()  : remove all the elements from a multiset
+    // 4. empty()  : check if the multiset is empty
+    // 5. size()   : returns the size of the multiset
+    // 6. found()  : find the occurence of a value
+    // 7. count()  : count the frequency of a value
+
+    // Insert
+    
     return 0;
 }
