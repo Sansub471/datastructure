@@ -56,5 +56,42 @@ int main(){
     std::cout<<"The alphabets are : \n";
     PrintUnorderedMultimap(alphabet);
 
+    // The methods
+    // 1. insert() : inserts elements into the multimap
+    // 2. find()   : finds the value of the given key
+    // 3. count()  : counts the number of elements with a specific key
+    // 4. empty()  : checks the size of the multimap
+    // 5. erase()  : deletes an element from the multimap
+    // 6. clear()  : deletes all values from the multimap
+
+    // insert elements
+    students.insert({{1, "Subash"}, {3, "Sandhya"}});
+    students.insert({7, "Susham"});
+
+    //find a key
+    // iterator to the element if the key is found 
+    // iterator to the end of the container if the key is not found
+    char key = 'A';
+    auto itr = alphabet.find(key); // first occurence
+    if(itr != alphabet.end()){
+        std::cout<<"The key-value pair is : " << itr->first << " -- > " << itr->second << std::endl;
+    }
+    else{
+        std::cout<<"The key " << key << " is not found."<< std::endl;
+    }
+
+    // count the occurence 
+    std::cout<<"The key: " << key << " occurs " << alphabet.count(key) << " times."<< std::endl;
+    
+    // empty() and size() same as before
+
+
+    // Delete an element
+    key = 'C'; 
+    alphabet.erase(key); // delete all instances of key
+
+    // clear() deletes every element from the multimap
+    
+
     return 0;
 }
