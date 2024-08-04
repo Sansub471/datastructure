@@ -95,5 +95,3 @@ int main(){
 
     return 0;
 }
-
-// Had a good day so far.
