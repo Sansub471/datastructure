@@ -41,3 +41,5 @@ int main(){
     PrintStack(food);
     return 0;
 }
+
+// DSA and Telecommunicatino lesson
