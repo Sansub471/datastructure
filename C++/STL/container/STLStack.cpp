@@ -41,4 +41,3 @@ int main(){
     PrintStack(food);
     return 0;
 }
-// के यो नाया छोममेनत हो त ? 
