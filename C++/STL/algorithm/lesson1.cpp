@@ -20,3 +20,12 @@ int main() {
 
     return 0;
 }
+
+// Functions	Description
+// sort()	Sort the elements of the container.
+// copy()	Copy elements within a given range.
+// move()	Move the given range of elements.
+// swap()	Exchange values of two objects.
+// merge()	Merge sorted ranges.
+// replace()	Replace the value of an element.
+// remove()	Remove an element.
