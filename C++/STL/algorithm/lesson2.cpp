@@ -40,3 +40,5 @@ int main() {
 
     return 0;
 }
+
+// lesson closed for the day
