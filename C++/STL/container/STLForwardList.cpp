@@ -62,4 +62,3 @@ int main(){
     PrintForwardList(firstLst);
     return 0;
 }
-// Another container lesson completed.
