@@ -95,3 +95,4 @@ int main(){
     return 0;
 }
 
+// learning electromagnetics and book hunt for the day
