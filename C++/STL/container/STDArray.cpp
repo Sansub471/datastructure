@@ -94,3 +94,5 @@ int main(){
 
     return 0;
 }
+
+// Life sucks, be ready to work for it.
