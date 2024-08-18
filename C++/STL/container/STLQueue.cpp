@@ -63,4 +63,3 @@ int main(){
     return 0;
 }
 
-// It's never easy to be at the back of a queue.
