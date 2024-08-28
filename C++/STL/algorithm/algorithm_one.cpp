@@ -37,7 +37,7 @@ int main(){
     std::cout<<"The number of elements is : " << size << std::endl;
 
     // sorting ascending
-    std::cout<<"Before sorting, ";
+    std::cout<<"\nBefore sorting, ";
     PrintVector(numbers);
 
     std::sort(numbers.begin(), numbers.end());
@@ -48,7 +48,7 @@ int main(){
     std::cout<<"After sorting, ";
     PrintVector(numbers);
 
-    std::cout<<"The copied vector cpnum, ";
+    std::cout<<"\nThe copied vector cpnum, ";
     PrintVector(cpnum);
 
     // descending sorting
@@ -56,6 +56,67 @@ int main(){
     //std::sort(cpnum.rbegin(), cpnum.rend()); // T and S are same
     
     std::cout<<"After descending sort cpnum, ";
+    PrintVector(cpnum);
+
+    // move operation
+    std::vector<std::string> source {"here", "there", "fear", "pear", "shear", "gear", "mere"};
+    std::vector<std::string> destination(source.size());
+
+    std::cout<<"\nThe source, "; PrintVector(source);
+    std::cout<<"The destination, "; PrintVector(destination);
+
+    std::move(source.begin(), source.end()-2, destination.begin());
+    std::cout<<"After the move operation : \n";
+    std::cout<<"The source, "; PrintVector(source);
+    std::cout<<"The destination, "; PrintVector(destination);
+
+    // syntax : move(first, last, destination)
+    // last is exclusive
+
+    // swap operation
+    std::swap(source, destination);
+    std::cout<<"\nThe swapping operation:\n";
+    std::cout<<"The source, "; PrintVector(source);
+    std::cout<<"The destination, "; PrintVector(destination);
+
+    // merge operation
+    // merge(first1, last1, first2,  last2, result);
+    // Here,
+
+    // first1, last1 - iterators specifying the first input range.
+    // first2, last2 - iterators specifying the second input range.
+    // result - iterator specifying the beginning of the destination range.
+    std::vector<std::string> merged(source.size());
+    std::vector<std::string>::iterator first1, last1, first2, last2, result;
+    std::merge(source.begin(), source.begin() + 5, destination.end()-2, destination.end(), merged.begin());
+    std::cout<<"The merged vector, ";
+    PrintVector(merged);
+
+    // merged vector is returned in sorted order
+
+    // Replace a vector element
+    // replace(first, last, old_value, new_value);
+    // Here,
+
+    // first, last - iterators specifying the range to transform.
+    // old_value - value to be replaced.
+    // new_value - replacement value.
+    std::cout<<"\nThe cpnum before replacement, ";
+    PrintVector(cpnum);
+
+    std::replace(cpnum.begin(), cpnum.end(), 2, 13);
+    std::cout<<"The replaced cpnum elements, ";
+    PrintVector(cpnum);
+
+    // Delete a first occurence of an element
+    // remove(first, last, val);
+    // Here,
+
+    // first, last - iterators specifying the range to transform
+    // val - value to be removed
+
+    std::remove(cpnum.begin(), cpnum.end(), 13);
+    std::cout<<"After removing first occurence of 13, ";
     PrintVector(cpnum);
     return 0;
 }
