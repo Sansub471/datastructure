@@ -23,31 +23,23 @@ template<typename T>
         }
         std::cout<<std::endl;
     }
+
+template<typename T>
+    void SortGenericFunctor(std::vector<T>& myVec){
+        std::cout<<"\nBefore sorting, "; PrintVector(myVec);
+        std::sort(myVec.begin(), myVec.end(), GreaterThan<T>());
+        std::cout<<"After sorting, "; PrintVector(myVec);
+    }
+
 int main(){
     std::vector<int> integers{12,45,1,2,4,90,23,03, 20, 21,24};
     std::vector<float> decimals{12.45, 1.2, 4.9, 2.30, 20.21, 24.21, 89.23, 1.34};
     std::vector<char> characters{'D', 'F', 'A', 'I', 'O', 'E', 'U', 'S', 'T'};
     std::vector<std::string> words {"name", "fame", "shame", "game", "tame", "lame", "pame", "hame"};
-
-    std::cout<<"Before sorting, "; PrintVector(integers);
-    std::sort(integers.begin(), integers.end(), GreaterThan<int>());
-    std::cout<<"After sorting, "; PrintVector(integers);
-
-    std::cout<<"\nBefore sorting, "; PrintVector(decimals);
-    std::sort(decimals.begin(), decimals.end(), GreaterThan<float>());
-    std::cout<<"After sorting, "; PrintVector(decimals);
-
-    std::cout<<"\nBefore sorting, "; PrintVector(characters);
-    std::sort(characters.begin(), characters.end(), GreaterThan<char>());
-    std::cout<<"After sorting, "; PrintVector(characters);
-
-    std::cout<<"\nBefore sorting, "; PrintVector(words);
-    std::sort(words.begin(), words.end(), GreaterThan<std::string>());
-    std::cout<<"After sorting, "; PrintVector(words);
-
-
-
     
-
+    SortGenericFunctor(integers);
+    SortGenericFunctor(decimals);
+    SortGenericFunctor(characters);
+    SortGenericFunctor(words);
     return 0;
 }
