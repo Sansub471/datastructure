@@ -9,10 +9,22 @@ class Greet{
         }
 };
 
+
+// Functor can be created with structure as well
+struct Namaskar{
+    void operator()(){
+        std::cout<<"Namaskar from structor functor! Happy coding!!"<<std::endl;
+    }
+
+};
 int main(){
 
     Greet greet;
     greet(); // calling the object as function
     greet.operator()(); // it also calls the function
+
+    // For structure functor
+    struct Namaskar namaskar;
+    namaskar();
     return 0;
 }
