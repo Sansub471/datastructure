@@ -12,11 +12,13 @@ struct BstNode{
 
 struct BstNode* newBstNode(int data);
 struct BstNode* Insert(struct BstNode* rootPtr, int data);
+
 // Find min and max element.
 int FindMinIterative(struct BstNode* rootPtr);
 int FindMaxIterative(struct BstNode* rootPtr);
 int FindMinRecursion(struct BstNode* rootPtr);
 int FindMaxRecursion(struct BstNode* rootPtr);
+
 // Recursive approach
 int FindTreeHeight(struct BstNode* rootPtr);
 bool Search(struct BstNode* rootPtr, int data);
