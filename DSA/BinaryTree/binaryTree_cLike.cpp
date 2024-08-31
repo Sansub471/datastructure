@@ -1,50 +1,6 @@
 // The structure implementation is more C like
-#include<iostream>
-
-struct Node{
-    int data;
-    struct Node* left;
-    struct Node* right;
-};
-
-// create a new node
-struct Node* newNode(int data){
-    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
-    node->data = data; // same as (*node).data = data
-    node->left = nullptr;
-    node->right = nullptr;
-    return node;
-}
-
-// preorder traversal
-void Preorder(struct Node* node){
-    if(node == nullptr){
-        return;
-    }
-    std::cout<< node->data << ", ";
-    Preorder(node->left);
-    Preorder(node->right);
-}
-
-// inorder traversal
-void Inorder(struct Node* node){
-    if(node == nullptr){
-        return;
-    }
-    Inorder(node->left);
-    std::cout<< node->data<<", ";
-    Inorder(node->right);
-}
-
-// post order traversal
-void Postorder(struct Node* node){
-    if (node == nullptr){
-        return;
-    }
-    Postorder(node->left);
-    Postorder(node->right);
-    std::cout<< node->data<< ", ";
-}
+#include"binaryTree.hpp"
+#include"isFullBinaryTree.cpp"
 
 int main(){
     struct Node* root = newNode(7);
@@ -61,6 +17,10 @@ int main(){
     std::cout<<"\nThe in-order traversal  : "; Inorder(root);
     std::cout<<"\nThe post-order traversal: "; Postorder(root);
     std::cout<<std::endl;
-    return 0;
 
+    std::cout<<"The tree is Full Binary or not? : " << isFullBinaryTree(root) << std::endl;
+    // to check if full binary add one more element at the extreme left and check if full binary
+    root->left->left->left = newNode(17);
+    std::cout<<"The tree is Full Binary or not? : " << isFullBinaryTree(root) << std::endl;
+    return 0;
 }
