@@ -28,7 +28,7 @@ int depth(struct Node* root){
 
 bool isPerfectBinaryTree(struct Node* root, int d, int level=0){
     // empty root node
-    if(root == nullptr) return false;
+    if(root == nullptr) return true;
 
     // A leaf node, depth must equal to level + 1
     if(root -> left == nullptr && root -> right == nullptr){
