@@ -5,6 +5,7 @@
 #include"isFullBinary.cpp"
 #include"isPerfectBinary.cpp"
 #include"isCompleteBinary.cpp"
+#include"isBalancedBinary.cpp"
 
 int main(){
     struct Node* root = newNode(7);
@@ -52,5 +53,16 @@ int main(){
         std::cout<<"The tree is not a complete binary tree."<<std::endl;
     }
 
+    struct Node* bbt = balancedBinaryTree();
+    std::cout<<"\n-------------Balanced Binary Tree--------"<<std::endl;
+    std::cout<<"The inorder traversal of tree : "; Inorder(bbt); std::cout<<std::endl;
+    int height = 0; 
+    if(isBalancedBinary(bbt, &height)){
+        std::cout<<"The tree is a balanced binary tree."<<std::endl;
+    }
+    else{
+        std::cout<<"The tree is not a balanced binary tree."<<std::endl;
+    }
+    std::cout<<"The height of the tree is : " << height << std::endl; // gives +1
     return 0;
 }
