@@ -50,6 +50,7 @@ CNode* newCNode(int data){
 }
 
 // Example BST Trees
+// Using structure node
 SNode* BST_ONE(){
     SNode* root = newSNode(8);
     root->left = newSNode(3);
@@ -61,6 +62,7 @@ SNode* BST_ONE(){
     return root;
 }
 
+// using class node
 CNode* BST_TWO(){
     CNode* root = newCNode(8);
     root->left = newCNode(3);
@@ -81,18 +83,24 @@ CNode* BST_TWO(){
 template <typename T>
     void preorderDFS(T* root){
         if(root == nullptr) return;
-        std::cout<<root->data<<" ,";
+        std::cout<<root->data<<", ";
         preorderDFS(root->left);
         preorderDFS(root->right);
     }
 
 template <typename T>
     void inorderDFS(T* root){
-
+        if(root == nullptr) return;
+        inorderDFS(root->left);
+        std::cout<<root->data<<", ";
+        inorderDFS(root->right);
     }
 
 template <typename T>
     void postorderDFS(T* root){
+        postorderDFS(root->left);
+        postorderDFS(root->right);
+        std::cout<<root->data<<", ";
 
     }
 
