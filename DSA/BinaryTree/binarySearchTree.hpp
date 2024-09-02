@@ -49,6 +49,32 @@ CNode* newCNode(int data){
     return root;
 }
 
+// Example BST Trees
+SNode* BST_ONE(){
+    SNode* root = newSNode(8);
+    root->left = newSNode(3);
+    root->right = newSNode(10);
+
+    root->left->left = newSNode(1);
+    root->left->right = newSNode(6);
+    root->left->right->left = newSNode(4);
+    return root;
+}
+
+CNode* BST_TWO(){
+    CNode* root = newCNode(8);
+    root->left = newCNode(3);
+    root->right = newCNode(10);
+    root->right->right = newCNode(14);
+
+    root->left->left = newCNode(1);
+    root->left->right = newCNode(6);
+    root->left->right->left = newCNode(4);
+    root->left->right->right = newCNode(7);
+    return root;
+
+}
+
 #include<iostream>
 // Tree traversal functions: DFS techniques
 // Recursive technique
@@ -67,7 +93,7 @@ template <typename T>
 
 template <typename T>
     void postorderDFS(T* root){
-        
+
     }
 
 #endif
