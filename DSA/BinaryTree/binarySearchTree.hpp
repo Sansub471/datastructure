@@ -27,7 +27,8 @@ struct SNode {
 class CNode {
 public:
     int data;
-    CNode* left, * right;
+    CNode* left;
+    CNode* right;
 
     CNode(int key) {
         data = key;
@@ -92,7 +93,7 @@ template <typename T>
     void inorderDFS(T* root){
         if(root == nullptr) return;
         inorderDFS(root->left);
-        std::cout<<root->data<<", ";
+        std::cout<< root->data <<", ";
         inorderDFS(root->right);
     }
 
@@ -100,7 +101,7 @@ template <typename T>
     void postorderDFS(T* root){
         postorderDFS(root->left);
         postorderDFS(root->right);
-        std::cout<<root->data<<", ";
+        std::cout<< root->data <<", ";
 
     }
 
