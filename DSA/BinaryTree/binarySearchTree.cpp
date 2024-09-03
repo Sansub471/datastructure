@@ -28,6 +28,51 @@ template <typename T>
         return root;
     }
 
+template <typename T>
+    T* findInorderSuccessor(T* root){
+        T* current = root;
+        // find the leftmost node(leaf)
+        while(current && current->left != nullptr){
+            current = current->left;
+        }
+        return current;
+    }
+
+template <typename T>
+    T* deleteBSTNode(T* root, int data){
+        if(root == nullptr) return root; // return if node is empty
+        // find the node to be deleted.
+        if(data < root->data){
+            root->left = deleteBSTNode(root->left, data);
+        }
+        else if(data > root->data){
+            root->right = deleteBSTNode(root->right, data);
+        }
+        else{
+            // if the node is with only one child or no child
+            if(root->left == nullptr){
+                T* temp = root->right;
+                delete root;
+                return temp;
+            }
+            else if(root->right == nullptr){
+                T* temp = root->left;
+                delete root;
+                return temp;
+            }
+
+            // if the node has two children
+            T* temp = findInorderSuccessor(root->right);
+
+            // place the inorder successor in position of the node to be deleted
+            root->data = temp->data;
+
+            // delete the inorder successor
+            root->right = deleteBSTNode(root->right, temp->data);
+        }
+        return root;
+    }
+
 int main(){
     SNode* bst1 = BST_ONE();
     CNode* bst2 = BST_TWO();
