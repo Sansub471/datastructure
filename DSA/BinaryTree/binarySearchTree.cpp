@@ -32,6 +32,8 @@ template <typename T>
     T* findInorderSuccessor(T* root){
         T* current = root;
         // find the leftmost node(leaf)
+        // This would be the minimum value in the right subtree
+        // We could also use, max value in the left sub-tree.
         while(current && current->left != nullptr){
             current = current->left;
         }
@@ -48,6 +50,7 @@ template <typename T>
         else if(data > root->data){
             root->right = deleteBSTNode(root->right, data);
         }
+        //this implies data == root->data case
         else{
             // if the node is with only one child or no child
             if(root->left == nullptr){
@@ -95,5 +98,10 @@ int main(){
     std::cout<<"Tree one has " << key << " ? : " << SearchBST(bst1, key) << std::endl;
     std::cout<<"Tree two has " << key << " ? : " << SearchBST(bst2, key) << std::endl;
 
+    // delete a node
+    key = 7 ; // leaf node deletion
+    bst2 = deleteBSTNode(bst2, key);
+    std::cout<<"Tree two, deleted node : " << key << std::endl;
+    std::cout<<"Tree two(inorder) : "; inorderDFS(bst2); std::cout<<std::endl;
     return 0;
 }
