@@ -31,5 +31,3 @@ Node* newNode(int data){
 }
 
 #endif
-
-// Seems easy but not so easy
