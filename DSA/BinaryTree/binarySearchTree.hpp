@@ -38,22 +38,22 @@ public:
 };
 #endif
 
-#ifndef BINARY_TREE_GENERIC_NODE
-#define BINARY_TREE_GENERIC_NODE
-template <typename T>
-    class Node{
-        public:
-            T data;
-            Node* left;
-            Node* right;
+// #ifndef BINARY_TREE_GENERIC_NODE
+// #define BINARY_TREE_GENERIC_NODE
+// template <typename T>
+//     class Node{
+//         public:
+//             T data;
+//             Node* left;
+//             Node* right;
 
-            Node(T key){
-                data = key;
-                left = nullptr;
-                right = nullptr;
-            }
-    };
-#endif
+//             Node(T key){
+//                 data = key;
+//                 left = nullptr;
+//                 right = nullptr;
+//             }
+//     };
+// #endif
 
 // create a new SNode
 SNode* newSNode(int data){
