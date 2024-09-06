@@ -30,4 +30,18 @@ Node* newNode(int data){
     return root;
 }
 
+// calculate height
+int height(Node* node);
+
+int max(int a, int b);
+Node* rightRotate(Node* Y);
+Node* leftRotate(Node* X);
+
+int getBalanceFactor(Node* node);
+
+// Insert a node
+Node* insertNode(Node* node, int key);
+
+
+
 #endif
