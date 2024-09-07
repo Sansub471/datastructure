@@ -93,14 +93,14 @@ int main(){
 
     std::cout<<"\nFinal AVL Tree: inorder DFS: "; inorderDFS(root); std::cout<<std::endl;
 
-    // // AVL tree with Left-Right rotation
-    // std::vector<int> lravl {50,30,70,10,40,35};
-    // Node* root1 = nullptr;
-    // std::cout<<"\nAVL Tree with left-right rotation."<<std::endl;
-    // for(const auto& elem : lravl){
-    //     root1 = insertNode(root1, elem);
-    //     std::cout<<"AVL Tree: inorder DFS: "; inorderDFS(root1); std::cout<<std::endl;
-    // }
-    // std::cout<<"\nAVL Tree: inorder DFS: "; inorderDFS(root1); std::cout<<std::endl;
+    // AVL tree with Left-Right rotation
+    std::vector<int> lravl {50,30,70,10,40,35};
+    Node* root1 = nullptr;
+    std::cout<<"\nAVL Tree with left-right rotation."<<std::endl;
+    for(const auto& elem : lravl){
+        root1 = insertNode(root1, elem);
+        std::cout<<"AVL Tree: inorder DFS: "; inorderDFS(root1); std::cout<<std::endl;
+    }
+    std::cout<<"\nAVL Tree: inorder DFS: "; inorderDFS(root1); std::cout<<std::endl;
     return 0;
 }
