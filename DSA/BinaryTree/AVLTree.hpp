@@ -25,10 +25,7 @@ class Node{
 #include"binarySearchTree.hpp"
 
 // To create a new node
-Node* newNode(int data){
-    Node* root = new Node(data);
-    return root;
-}
+Node* newNode(int data);
 
 // calculate height
 int height(Node* node);
