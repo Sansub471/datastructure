@@ -42,6 +42,7 @@ Node* insertNode(Node* node, int key);
 // Delete a node
 Node* deleteNode(Node* node, int key);
 
-
+// tree creation function
+Node* createAVLTree(std::vector<int> avlElems, const std::string& task);
 
 #endif
