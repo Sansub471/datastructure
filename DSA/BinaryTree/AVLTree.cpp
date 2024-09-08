@@ -159,45 +159,52 @@ Node* createAVLTree(std::vector<int> avlElems, const std::string& task){
 }
 
 
+
 int main(){
     // Create an array to insert elements into AVL tree
     std::vector<int> avltree {33,13,53,61,13,21,11,12,8,9};
-    const std::string task = "create AVL tree and check balancing, left and right turns.";
+    const std::string task = " create AVL tree and check balancing, left and right turns. ";
     Node* root = createAVLTree(avltree, task);
-    // for(const auto& elem: avltree){
-    //     root = insertNode(root, elem);
-    //     std::cout<<"AVL Tree: inorder DFS: "; inorderDFS(root); std::cout<<std::endl;
-    // }
-
-    // std::cout<<"\nFinal AVL Tree: inorder DFS: "; inorderDFS(root); std::cout<<std::endl;
 
     // AVL tree with Left-Right rotation
     std::vector<int> lravl {50,30,70,10,40,35};
-    Node* root1 = nullptr;
+    const std::string task1 = " with Left-Right rotation case.";
+    Node* root1 = createAVLTree(lravl, task1);
     std::cout<<"\nAVL Tree with left-right rotation."<<std::endl;
-    for(const auto& elem : lravl){
-        root1 = insertNode(root1, elem);
-        std::cout<<"AVL Tree: inorder DFS: "; inorderDFS(root1); std::cout<<std::endl;
-    }
-    std::cout<<"\nFinal AVL Tree: inorder DFS: "; inorderDFS(root1); std::cout<<std::endl;
-
-
+ 
     // AVL Tree with Right-Left Rotation
     std::vector<int> rlavl {30,50,10,70,60};
-    Node* root2 = nullptr;
+    const std::string task2 = " with Right-Left rotation.";
+    Node* root2 = createAVLTree(rlavl, task2);
     std::cout<<"\nAVL Tree with right-left rotation."<<std::endl;
-    for(const auto& elem : rlavl){
-        root2 = insertNode(root2, elem);
-        std::cout<<"AVL Tree: inorder DFS: "; inorderDFS(root2); std::cout<<std::endl;
-    }
-    std::cout<<"\nFinalAVL Tree : inorder DFS: "; inorderDFS(root2); std::cout<<std::endl;
-
+ 
     // Delete example
     std::vector<int> delAVL {33,13,53,21,61,9,11,8};
-    Node* root3 = nullptr;
-    for(const auto& elem : delAVL){
-        root3 = insertNode(root3, elem);
-    }
-    std::cout<<"\nAVL Tree : inorder DFS: "; inorderDFS(root3); std::cout<<std::endl;
+    const std::string task3 = " delete node.";
+    Node* root3 = createAVLTree(delAVL, task3);
+
+    int key = 13;
+    // node with both children
+    std::cout<<"\nDeleting node " << key << std::endl;
+    root3 = deleteNode(root3, key);
+    std::cout<<"AVL Tree, inorder : "; inorderDFS(root3); std::cout<<std::endl;
+
+    // delete leafnode
+    key = 35;
+    std::cout<<"\nDeleting node "<< key << std::endl;
+    root1 = deleteNode(root1, key);
+    std::cout<<"AVL Tree, inorder : "; inorderDFS(root1); std::cout<<std::endl;
+
+    // delete node with one children
+    key = 60;
+    std::cout<<"\nDeleting node "<< key << std::endl;
+    root2 = deleteNode(root2, key);
+    std::cout<<"AVL Tree, inorder : "; inorderDFS(root2); std::cout<<std::endl;
+
+    // non-existent node
+    key = 25;
+    std::cout<<"\nDeleting node " << key << std::endl;
+    root = deleteNode(root, key);
+    std::cout<<"AVL Tree, inorder : "; inorderDFS(root); std::cout<<std::endl;    
     return 0;
 }
