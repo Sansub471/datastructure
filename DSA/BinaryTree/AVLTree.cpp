@@ -25,8 +25,8 @@ Node* rightRotate(Node* Y){
     Node* temp = X->right;
     X->right = Y;
     Y->left = temp;
-    Y->height = max(height(Y->left), height(Y->right)) + 1;
-    X->height = max(height(X->left), height(X->right)) + 1;
+    Y->height = 1 + max(height(Y->left), height(Y->right));
+    X->height = 1 + max(height(X->left), height(X->right));
     return X;
 }
 
@@ -36,8 +36,8 @@ Node* leftRotate(Node* X){
     Node* temp = Y->left;
     Y->left = X;
     X->right = temp;
-    X->height = max(height(X->left), height(X->right)) + 1;
-    Y->height = max(height(Y->left), height(Y->right)) + 1;
+    X->height = 1 + max(height(X->left), height(X->right));
+    Y->height = 1 + max(height(Y->left), height(Y->right));
     return Y;
 }
 
@@ -57,7 +57,7 @@ Node* insertNode(Node* node, int key){
 
     // update the balance factor for each node, nodes in the path of newly
     // inserted node and balance the tree 
-    node->height = 1 + max(height(node->left), height(node->right)); // newNode inserted in this path, so +1
+    node->height = 1 + max(height(node->left), height(node->right));
     int balanceFactor = getBalanceFactor(node);
 
     // rotation if BF is greater than 1 or less than -1 
@@ -81,6 +81,71 @@ Node* insertNode(Node* node, int key){
     return node; // tree is balanced simply return the root
 }
 
+// Find minimum value in the subtree
+Node* inorderSuccessor(Node* root){
+    Node* current = root;
+    while(current->left != nullptr) {
+        current = current->left;
+    }
+    return current;
+}
+
+// // delete a node
+// Node* deleteAVLNode(Node* root, int key){
+//     // BST deleteNode steps
+//     if(root == nullptr) return root;
+//     if(key < root->data) root->left = deleteAVLNode(root->left, key);
+//     else if(key > root->data) root->right = deleteAVLNode(root->right, key);
+//     // key == root->data case
+//     else{
+//         // nodeToBeDeleted has one child or no child
+//         if((root->left == nullptr) || (root->right == nullptr)){
+//             Node* temp = root->left ? root->left : root->right;
+//             if(temp == nullptr){ // implies no child; leafnode 
+//                 temp = root;
+//                 root = nullptr;
+//             }else{ 
+//                 // one child case; replace the node with its child node
+//                 *root = *temp;
+//             }
+//             delete temp;
+//         }else{
+//             // nodeToBeDeleted has both children
+//             // minimun value in the right subtree, approach
+//             Node* temp = inorderSuccessor(root->right);
+//             root->data = temp->data;
+//             root->right = deleteAVLNode(root->right, temp->data);
+//         }
+//     }
+//     // leafnode deletion case
+//     // no need to update height and BF for deleted leafnode, return to its parent
+//     if(root == nullptr) return root;
+
+//     // update the BF and balance the tree if required for each node
+//     root->height = 1 + max(height(root->left), height(root->right));
+//     int balanceFactor = getBalanceFactor(root);
+
+//     // balancing part
+//     if(balanceFactor > 1){
+//         if(getBalanceFactor(root->left) >= 0){
+//             return rightRotate(root);
+//         }else{
+//             root->left = leftRotate(root->left);
+//             return rightRotate(root);
+//         }
+//     }
+
+//     if(balanceFactor < -1){
+//         if(getBalanceFactor(root->right) <= 0){
+//             return leftRotate(root);
+//         }else{
+//             root->right = rightRotate(root->right);
+//             return leftRotate(root);
+//         }
+//     }
+//     return root;
+// }
+
 
 int main(){
     // Create an array to insert elements into AVL tree
@@ -102,5 +167,15 @@ int main(){
         std::cout<<"AVL Tree: inorder DFS: "; inorderDFS(root1); std::cout<<std::endl;
     }
     std::cout<<"\nAVL Tree: inorder DFS: "; inorderDFS(root1); std::cout<<std::endl;
+
+
+    // AVL Tree with Right-Left Rotation
+    std::vector<int> rlavl {30,50,10,70,60};
+    Node* root2 = nullptr;
+    for(const auto& elem : rlavl){
+        root2 = insertNode(root2, elem);
+        std::cout<<"AVL Tree: inorder DFS: "; inorderDFS(root2); std::cout<<std::endl;
+    }
+    std::cout<<"\nAVL Tree : inorder DFS: "; inorderDFS(root2); std::cout<<std::endl;
     return 0;
 }
