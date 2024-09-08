@@ -39,6 +39,9 @@ int getBalanceFactor(Node* node);
 // Insert a node
 Node* insertNode(Node* node, int key);
 
+// Delete a node
+Node* deleteNode(Node* node, int key);
+
 
 
 #endif
