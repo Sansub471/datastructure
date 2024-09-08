@@ -90,61 +90,61 @@ Node* inorderSuccessor(Node* root){
     return current;
 }
 
-// // delete a node
-// Node* deleteAVLNode(Node* root, int key){
-//     // BST deleteNode steps
-//     if(root == nullptr) return root;
-//     if(key < root->data) root->left = deleteAVLNode(root->left, key);
-//     else if(key > root->data) root->right = deleteAVLNode(root->right, key);
-//     // key == root->data case
-//     else{
-//         // nodeToBeDeleted has one child or no child
-//         if((root->left == nullptr) || (root->right == nullptr)){
-//             Node* temp = root->left ? root->left : root->right;
-//             if(temp == nullptr){ // implies no child; leafnode 
-//                 temp = root;
-//                 root = nullptr;
-//             }else{ 
-//                 // one child case; replace the node with its child node
-//                 *root = *temp;
-//             }
-//             delete temp;
-//         }else{
-//             // nodeToBeDeleted has both children
-//             // minimun value in the right subtree, approach
-//             Node* temp = inorderSuccessor(root->right);
-//             root->data = temp->data;
-//             root->right = deleteAVLNode(root->right, temp->data);
-//         }
-//     }
-//     // leafnode deletion case
-//     // no need to update height and BF for deleted leafnode, return to its parent
-//     if(root == nullptr) return root;
+// delete a node
+Node* deleteAVLNode(Node* root, int key){
+    // BST deleteNode steps
+    if(root == nullptr) return root;
+    if(key < root->data) root->left = deleteAVLNode(root->left, key);
+    else if(key > root->data) root->right = deleteAVLNode(root->right, key);
+    // key == root->data case
+    else{
+        // nodeToBeDeleted has one child or no child
+        if((root->left == nullptr) || (root->right == nullptr)){
+            Node* temp = root->left ? root->left : root->right;
+            if(temp == nullptr){ // implies no child; leafnode 
+                temp = root;
+                root = nullptr;
+            }else{ 
+                // one child case; replace the node with its child node
+                *root = *temp;
+            }
+            delete temp;
+        }else{
+            // nodeToBeDeleted has both children
+            // minimun value in the right subtree, approach
+            Node* temp = inorderSuccessor(root->right);
+            root->data = temp->data;
+            root->right = deleteAVLNode(root->right, temp->data);
+        }
+    }
+    // leafnode deletion case
+    // no need to update height and BF for deleted leafnode, return to its parent
+    if(root == nullptr) return root;
 
-//     // update the BF and balance the tree if required for each node
-//     root->height = 1 + max(height(root->left), height(root->right));
-//     int balanceFactor = getBalanceFactor(root);
+    // update the BF and balance the tree if required for each node
+    root->height = 1 + max(height(root->left), height(root->right));
+    int balanceFactor = getBalanceFactor(root);
 
-//     // balancing part
-//     if(balanceFactor > 1){
-//         if(getBalanceFactor(root->left) >= 0){
-//             return rightRotate(root);
-//         }else{
-//             root->left = leftRotate(root->left);
-//             return rightRotate(root);
-//         }
-//     }
+    // balancing part
+    if(balanceFactor > 1){
+        if(getBalanceFactor(root->left) >= 0){
+            return rightRotate(root);
+        }else{
+            root->left = leftRotate(root->left);
+            return rightRotate(root);
+        }
+    }
 
-//     if(balanceFactor < -1){
-//         if(getBalanceFactor(root->right) <= 0){
-//             return leftRotate(root);
-//         }else{
-//             root->right = rightRotate(root->right);
-//             return leftRotate(root);
-//         }
-//     }
-//     return root;
-// }
+    if(balanceFactor < -1){
+        if(getBalanceFactor(root->right) <= 0){
+            return leftRotate(root);
+        }else{
+            root->right = rightRotate(root->right);
+            return leftRotate(root);
+        }
+    }
+    return root;
+}
 
 
 int main(){
