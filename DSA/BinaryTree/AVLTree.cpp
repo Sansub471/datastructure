@@ -147,7 +147,7 @@ Node* deleteNode(Node* root, int key){
 }
 
 // helper function to create AVL tree from a given elements
-Node* createAVLTree(std::vector<int> avlElems, const std::string& task){
+Node* createAVLTree(std::vector<int>& avlElems, const std::string& task){
     Node* root = nullptr;
     std::cout<<"\nAVL Tree: " << task << std::endl;
     for(const auto& elem : avlElems){
@@ -158,7 +158,15 @@ Node* createAVLTree(std::vector<int> avlElems, const std::string& task){
     return root;
 }
 
-
+// helper function to delete nodes: all cases checked.
+Node* removeAVLNode(Node* root, int key, const std::string& task){
+    std::cout<<"\nDeleting " << task << std::endl;
+    std::cout<<"AVL Tree, inorder : "; inorderDFS(root); std::cout<<std::endl;
+    std::cout<<"Deleting node " << key << std::endl;
+    root = deleteNode(root, key);
+    std::cout<<"AVL Tree, inorder : "; inorderDFS(root); std::cout<<std::endl;
+    return root;
+}
 
 int main(){
     // Create an array to insert elements into AVL tree
@@ -170,41 +178,35 @@ int main(){
     std::vector<int> lravl {50,30,70,10,40,35};
     const std::string task1 = " with Left-Right rotation case.";
     Node* root1 = createAVLTree(lravl, task1);
-    std::cout<<"\nAVL Tree with left-right rotation."<<std::endl;
  
     // AVL Tree with Right-Left Rotation
     std::vector<int> rlavl {30,50,10,70,60};
     const std::string task2 = " with Right-Left rotation.";
     Node* root2 = createAVLTree(rlavl, task2);
-    std::cout<<"\nAVL Tree with right-left rotation."<<std::endl;
  
     // Delete example
     std::vector<int> delAVL {33,13,53,21,61,9,11,8};
     const std::string task3 = " delete node.";
     Node* root3 = createAVLTree(delAVL, task3);
 
-    int key = 13;
     // node with both children
-    std::cout<<"\nDeleting node " << key << std::endl;
-    root3 = deleteNode(root3, key);
-    std::cout<<"AVL Tree, inorder : "; inorderDFS(root3); std::cout<<std::endl;
+    int key = 13;
+    const std::string dtask1 = "node with both children.";
+    root3 = removeAVLNode(root3, key, dtask1);
 
     // delete leafnode
     key = 35;
-    std::cout<<"\nDeleting node "<< key << std::endl;
-    root1 = deleteNode(root1, key);
-    std::cout<<"AVL Tree, inorder : "; inorderDFS(root1); std::cout<<std::endl;
+    const std::string dtask2 = "leafnode.";
+    root1 = removeAVLNode(root1, key, dtask2);
 
     // delete node with one children
-    key = 60;
-    std::cout<<"\nDeleting node "<< key << std::endl;
-    root2 = deleteNode(root2, key);
-    std::cout<<"AVL Tree, inorder : "; inorderDFS(root2); std::cout<<std::endl;
-
+    key = 8;
+    const std::string dtask3 = "node with one children.";
+    root = removeAVLNode(root, key, dtask3);
+ 
     // non-existent node
-    key = 25;
-    std::cout<<"\nDeleting node " << key << std::endl;
-    root = deleteNode(root, key);
-    std::cout<<"AVL Tree, inorder : "; inorderDFS(root); std::cout<<std::endl;    
+    key = 78;
+    const std::string dtask4 = "non-existent node.";
+    root2 = removeAVLNode(root2, key, dtask4);   
     return 0;
 }
