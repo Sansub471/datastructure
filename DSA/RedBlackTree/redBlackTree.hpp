@@ -5,5 +5,5 @@
 #define RED_BLACK_NODE
 
 #endif
-// start the day
+
 #endif
