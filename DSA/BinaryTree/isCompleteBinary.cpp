@@ -2,12 +2,13 @@
 
 struct Node* completeBinaryTree(){
     struct Node* root = newNode(1);
-    root->left = newNode(2);
-    root->left->left = newNode(6);
-    root->left->right = newNode(4);
+    root->left = newNode(12);
+    root->left->left = newNode(5);
+    //root->left->right = newNode(6);
 
-    root->right = newNode(3);
-    root->right->right = newNode(5);
+    root->right = newNode(9);
+    // root->right->right = newNode(5);
+    root->right->left = newNode(10);
     return root;
 }
 
