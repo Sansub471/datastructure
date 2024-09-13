@@ -26,5 +26,5 @@ bool isCompleteBinary(struct Node* root, int index, int numberNodes){
     if(index >= numberNodes) return false;
 
     return (isCompleteBinary(root->left, 2 * index + 1, numberNodes) && 
-            isCompleteBinary(root->right, 2 * index + 1, numberNodes));
+            isCompleteBinary(root->right, 2 * index + 2, numberNodes));
 }
