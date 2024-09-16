@@ -33,6 +33,21 @@ void RedBlackTree::postOrderHelper(Node* node){
         std::cout<<node->data<<", ";
     }
 }
+
+Node* RedBlackTree::searchTreeHelper(Node* root, int key){
+    if(root == TNULL || key == root->data) return root;
+    if(key < root->data) return searchTreeHelper(root->left, key);
+    return searchTreeHelper(root->right, key);
+}
+
+RedBlackTree::RedBlackTree(){
+    TNULL = new Node;
+    TNULL->color = false;
+    TNULL->left = nullptr;
+    TNULL->right = nullptr;
+    root = TNULL;
+}
+
 int main(){
     return 0;
 }
