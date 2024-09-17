@@ -1,12 +1,21 @@
-#include<iostream>
 #include"redBlackTree.hpp"
 
+// private methods
 void RedBlackTree::initializeNULLNode(Node* node, Node* parent){
     node->data = 0;
     node->parent = parent;
     node->left = nullptr;
     node->right = nullptr;
-    node->color = false;
+    node->color = false; // black
+}
+
+Node* RedBlackTree::newNode(int key){
+    Node* node = new Node;
+    node->parent = nullptr;
+    node->data = key;
+    node->left = TNULL;
+    node->right = TNULL;
+    node->color = true; // red
 }
 
 void RedBlackTree::preOrderHelper(Node* node){
@@ -40,6 +49,69 @@ Node* RedBlackTree::searchTreeHelper(Node* root, int key){
     return searchTreeHelper(root->right, key);
 }
 
+void RedBlackTree::insertFix(Node* k){
+    RBNodePtr u;
+    // parent is RED
+    while(k->parent->color == true){
+        if(k->parent == k->parent->parent->right){
+            u = k->parent->parent->left;
+            if(u->color == true){
+                u->color = false;
+                k->parent->color = false;
+                k->parent->parent->color = true;
+                k = k->parent->parent;
+            }else{
+                if(k == k->parent->left){
+                    k = k->parent;
+                    rightRotate(k);
+                }
+                k->parent->color = false;
+                k->parent->parent->color = true;
+                leftRotate(k->parent->parent);
+            }
+        }else{
+            u = k->parent->parent->right;
+            if(u->color == true){
+                u->color = false;
+                k->parent->color = false;
+                k->parent->parent->color = true;
+                k = k->parent->parent;
+            }else{
+                if(k == k->parent->right){
+                    k = k->parent;
+                    leftRotate(k);
+                }
+                k->parent->color = false;
+                k->parent->parent->color = true;
+                rightRotate(k->parent->parent);
+            }
+        }
+
+        if(k == root) break;
+
+    }
+    root->color = false;
+}
+
+void RedBlackTree::printHelper(Node* root, std::string indent, bool last){
+    if(root != TNULL){
+        std::cout<< indent;
+        if(last){
+            std::cout<<"R----";
+            indent+= "  ";
+        }else{
+            std::cout<<"L----";
+            indent += "|  ";
+        }
+    }
+
+    std::string sColor = root->color ? "RED" : "BLACK";
+    std::cout<<root->data << "("<<sColor<<")"<<std::endl;
+    printHelper(root->left, indent, false);
+    printHelper(root->right, indent, true);
+}
+
+// public methods
 RedBlackTree::RedBlackTree(){
     TNULL = new Node;
     TNULL->color = false;
@@ -114,6 +186,46 @@ void RedBlackTree::rightRotate(Node* X){
     X->parent = Y;
 }
 
+void RedBlackTree::insert(int key){
+    // creating a newNode
+    Node* node = new Node;
+    node->parent = nullptr;
+    node->data = key;
+    node->left = TNULL;
+    node->right = TNULL;
+    node->color = 1;
+
+    // Y be leaf and X be root
+    Node* Y = nullptr;
+    RBNodePtr X = this->root; // typedef Node* RBNodePtr
+
+    while(X != TNULL){
+        Y = X;
+        //X = node->data < X->data ? X->left : X->right;
+        if(node->data < X->data){
+            X = X->left;
+        }else{
+            X = X->right;
+        }
+    }
+
+    node->parent = Y;
+    if(Y == nullptr){
+        root = node;
+    }else if(node->data < Y->data){
+        Y->left = node;
+    }else{
+        Y->right = node;
+    }
+
+    if(node->parent == nullptr){
+        node->color = false;
+        return;
+    }
+
+    if(node->parent->parent == nullptr) return;
+    insertFix(node);
+}
 
 
 int main(){

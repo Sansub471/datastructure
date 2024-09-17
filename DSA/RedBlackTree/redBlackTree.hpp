@@ -1,6 +1,8 @@
 #ifndef RED_BLACK_TREE
 #define RED_BLACK_TREE
 
+#include<iostream>
+
 #ifndef RED_BLACK_NODE
 #define RED_BLACK_NODE
 // RED is true, BLACK is false
@@ -13,13 +15,14 @@
         bool color;
     };
 #endif
-    typedef Node* NodePtr;
+    typedef Node* RBNodePtr;
     class RedBlackTree{
         private:
             Node* root;
             Node* TNULL;
         
             void initializeNULLNode(Node* node, Node* parent);
+            Node* newNode(int key);
             // preorder
             void preOrderHelper(Node* node);
             // inorder
@@ -29,7 +32,11 @@
 
             // Search helper function
             Node* searchTreeHelper(Node* node, int key);
-        
+
+            // For balancing tree after insertion
+            void insertFix(Node* node);
+
+            void printHelper(Node* root, std::string indent, bool last);
         public:
             RedBlackTree(); // constructor
             void preOrder(){
@@ -55,7 +62,10 @@
 
             void leftRotate(Node* X);
             void rightRotate(Node* Y);
-            
+
+            // Inserting a node
+            void insert(int key);
+
 
             
 
