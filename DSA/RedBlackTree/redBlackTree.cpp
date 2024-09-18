@@ -16,6 +16,7 @@ Node* RedBlackTree::newNode(int key){
     node->left = TNULL;
     node->right = TNULL;
     node->color = true; // red
+    return node;
 }
 
 void RedBlackTree::preOrderHelper(Node* node){
@@ -98,17 +99,16 @@ void RedBlackTree::printHelper(Node* root, std::string indent, bool last){
         std::cout<< indent;
         if(last){
             std::cout<<"R----";
-            indent+= "  ";
+            indent+= "   ";
         }else{
             std::cout<<"L----";
-            indent += "|  ";
+            indent += "|   ";
         }
-    }
-
     std::string sColor = root->color ? "RED" : "BLACK";
     std::cout<<root->data << "("<<sColor<<")"<<std::endl;
     printHelper(root->left, indent, false);
     printHelper(root->right, indent, true);
+    }
 }
 
 // public methods
@@ -193,12 +193,13 @@ void RedBlackTree::insert(int key){
     node->data = key;
     node->left = TNULL;
     node->right = TNULL;
-    node->color = 1;
+    node->color = true;
 
     // Y be leaf and X be root
     Node* Y = nullptr;
     RBNodePtr X = this->root; // typedef Node* RBNodePtr
 
+    // check if the tree is empty, if it is won't execute
     while(X != TNULL){
         Y = X;
         //X = node->data < X->data ? X->left : X->right;
@@ -209,8 +210,12 @@ void RedBlackTree::insert(int key){
         }
     }
 
+    // Y - tracks the parent of X, when X is TNULL, 
+    // Y is the parent of leaf(i.e. TNULL or NIL)
     node->parent = Y;
-    if(Y == nullptr){
+
+    // implies empty tree
+    if(Y == nullptr){ 
         root = node;
     }else if(node->data < Y->data){
         Y->left = node;
@@ -218,16 +223,29 @@ void RedBlackTree::insert(int key){
         Y->right = node;
     }
 
+    // empty tree, coloring root black
     if(node->parent == nullptr){
         node->color = false;
         return;
     }
 
+    // for height 2, no balancing or recoloring required.
     if(node->parent->parent == nullptr) return;
     insertFix(node);
 }
 
 
 int main(){
+    RedBlackTree rbt;
+    rbt.insert(55);
+    rbt.insert(40);
+    //rbt.insert(40);
+    rbt.insert(65);
+    rbt.insert(60);
+    rbt.insert(75);
+    rbt.insert(57);
+
+    rbt.printTree();
     return 0;
 }
+// insert fix still on for me.

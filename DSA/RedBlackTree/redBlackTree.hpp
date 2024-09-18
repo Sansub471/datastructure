@@ -66,8 +66,14 @@
             // Inserting a node
             void insert(int key);
 
+            RBNodePtr getRoot(){
+                return this->root;
+            }
 
-            
-
+            void printTree(){
+                if(root){
+                    printHelper(this->root, "", true);
+                }
+            }
     };
 #endif
