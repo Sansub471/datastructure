@@ -248,4 +248,3 @@ int main(){
     rbt.printTree();
     return 0;
 }
-// insert fix still on for me.
