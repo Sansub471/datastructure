@@ -234,7 +234,7 @@ void RedBlackTree::insert(int key){
     insertFix(node);
 }
 
-
+// the day is going great
 int main(){
     RedBlackTree rbt;
     rbt.insert(55);
