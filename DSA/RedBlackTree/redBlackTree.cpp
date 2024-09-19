@@ -248,3 +248,6 @@ int main(){
     rbt.printTree();
     return 0;
 }
+
+
+// Let's start the day right now.
