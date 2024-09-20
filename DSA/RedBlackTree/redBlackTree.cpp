@@ -234,7 +234,6 @@ void RedBlackTree::insert(int key){
     insertFix(node);
 }
 
-
 int main(){
     RedBlackTree rbt;
     rbt.insert(55);
