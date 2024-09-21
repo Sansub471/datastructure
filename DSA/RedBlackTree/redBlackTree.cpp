@@ -243,7 +243,6 @@ int main(){
     rbt.insert(60);
     rbt.insert(75);
     rbt.insert(57);
-
     rbt.printTree();
     return 0;
 }
