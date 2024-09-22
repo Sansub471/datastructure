@@ -54,14 +54,18 @@ void RedBlackTree::insertFix(Node* newNode){
     RBNodePtr uncleNode; // 
     // parent is RED
     while(newNode->parent->color == true){
+        // newNode's parent is the right child of its grandparent
         if(newNode->parent == newNode->parent->parent->right){
             uncleNode = newNode->parent->parent->left;
+            // newNode's uncle(left sibling of newNode's parent) is RED
             if(uncleNode->color == true){
                 uncleNode->color = false;
                 newNode->parent->color = false;
                 newNode->parent->parent->color = true;
                 newNode = newNode->parent->parent;
-            }else{
+            }// newNode'e uncle(left sibling of newNode's parent) is BLACK
+            else{
+                // newNode is the left child of its parent
                 if(newNode == newNode->parent->left){
                     newNode = newNode->parent;
                     rightRotate(newNode);
@@ -70,14 +74,18 @@ void RedBlackTree::insertFix(Node* newNode){
                 newNode->parent->parent->color = true;
                 leftRotate(newNode->parent->parent);
             }
-        }else{
+        }// newNode's parent is the left child of its grandparent
+        else{
             uncleNode = newNode->parent->parent->right;
+            // newNode's uncle(right sibling of newNode's parent) is RED
             if(uncleNode->color == true){
                 uncleNode->color = false;
                 newNode->parent->color = false;
                 newNode->parent->parent->color = true;
                 newNode = newNode->parent->parent;
-            }else{
+            }//newNode's uncle(right sibling of newNode's parent) is BLACK
+            else{
+                // newNode is the right child of its parent
                 if(newNode == newNode->parent->right){
                     newNode = newNode->parent;
                     leftRotate(newNode);
@@ -87,9 +95,7 @@ void RedBlackTree::insertFix(Node* newNode){
                 rightRotate(newNode->parent->parent);
             }
         }
-
         if(newNode == root) break;
-
     }
     root->color = false;
 }
