@@ -50,45 +50,45 @@ Node* RedBlackTree::searchTreeHelper(Node* root, int key){
     return searchTreeHelper(root->right, key);
 }
 
-void RedBlackTree::insertFix(Node* k){
-    RBNodePtr u;
+void RedBlackTree::insertFix(Node* newNode){
+    RBNodePtr uncleNode; // 
     // parent is RED
-    while(k->parent->color == true){
-        if(k->parent == k->parent->parent->right){
-            u = k->parent->parent->left;
-            if(u->color == true){
-                u->color = false;
-                k->parent->color = false;
-                k->parent->parent->color = true;
-                k = k->parent->parent;
+    while(newNode->parent->color == true){
+        if(newNode->parent == newNode->parent->parent->right){
+            uncleNode = newNode->parent->parent->left;
+            if(uncleNode->color == true){
+                uncleNode->color = false;
+                newNode->parent->color = false;
+                newNode->parent->parent->color = true;
+                newNode = newNode->parent->parent;
             }else{
-                if(k == k->parent->left){
-                    k = k->parent;
-                    rightRotate(k);
+                if(newNode == newNode->parent->left){
+                    newNode = newNode->parent;
+                    rightRotate(newNode);
                 }
-                k->parent->color = false;
-                k->parent->parent->color = true;
-                leftRotate(k->parent->parent);
+                newNode->parent->color = false;
+                newNode->parent->parent->color = true;
+                leftRotate(newNode->parent->parent);
             }
         }else{
-            u = k->parent->parent->right;
-            if(u->color == true){
-                u->color = false;
-                k->parent->color = false;
-                k->parent->parent->color = true;
-                k = k->parent->parent;
+            uncleNode = newNode->parent->parent->right;
+            if(uncleNode->color == true){
+                uncleNode->color = false;
+                newNode->parent->color = false;
+                newNode->parent->parent->color = true;
+                newNode = newNode->parent->parent;
             }else{
-                if(k == k->parent->right){
-                    k = k->parent;
-                    leftRotate(k);
+                if(newNode == newNode->parent->right){
+                    newNode = newNode->parent;
+                    leftRotate(newNode);
                 }
-                k->parent->color = false;
-                k->parent->parent->color = true;
-                rightRotate(k->parent->parent);
+                newNode->parent->color = false;
+                newNode->parent->parent->color = true;
+                rightRotate(newNode->parent->parent);
             }
         }
 
-        if(k == root) break;
+        if(newNode == root) break;
 
     }
     root->color = false;
@@ -188,12 +188,12 @@ void RedBlackTree::rightRotate(Node* X){
 
 void RedBlackTree::insert(int key){
     // creating a newNode
-    Node* node = new Node;
-    node->parent = nullptr;
-    node->data = key;
-    node->left = TNULL;
-    node->right = TNULL;
-    node->color = true;
+    Node* newNode = new Node;
+    newNode->parent = nullptr;
+    newNode->data = key;
+    newNode->left = TNULL;
+    newNode->right = TNULL;
+    newNode->color = true; // RED
 
     // Y be leaf and X be root
     Node* Y = nullptr;
@@ -203,7 +203,7 @@ void RedBlackTree::insert(int key){
     while(X != TNULL){
         Y = X;
         //X = node->data < X->data ? X->left : X->right;
-        if(node->data < X->data){
+        if(newNode->data < X->data){
             X = X->left;
         }else{
             X = X->right;
@@ -212,26 +212,28 @@ void RedBlackTree::insert(int key){
 
     // Y - tracks the parent of X, when X is TNULL, 
     // Y is the parent of leaf(i.e. TNULL or NIL)
-    node->parent = Y;
+    newNode->parent = Y;
 
     // implies empty tree
     if(Y == nullptr){ 
-        root = node;
-    }else if(node->data < Y->data){
-        Y->left = node;
+        root = newNode;
+    }else if(newNode->data < Y->data){
+        Y->left = newNode;
     }else{
-        Y->right = node;
+        Y->right = newNode;
     }
 
     // empty tree, coloring root black
-    if(node->parent == nullptr){
-        node->color = false;
+    if(newNode->parent == nullptr){
+        newNode->color = false;
         return;
     }
 
     // for height 2, no balancing or recoloring required.
-    if(node->parent->parent == nullptr) return;
-    insertFix(node);
+    if(newNode->parent->parent == nullptr) return;
+
+    // pass newNode to insertFix()
+    insertFix(newNode);
 }
 
 int main(){
