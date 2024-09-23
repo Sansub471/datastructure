@@ -176,20 +176,20 @@ void RedBlackTree::leftRotate(Node* X){
     X->parent = Y;
 }
 
-void RedBlackTree::rightRotate(Node* X){
-    Node* Y = X->left;
-    X->left = Y->right;
-    if(Y->right != TNULL) Y->right->parent = X;
-    Y->parent = X->parent;
-    if(X->parent == nullptr){
-        this->root = Y;
-    }else if(X == X->parent->right){
-        X->parent->right = Y;
+void RedBlackTree::rightRotate(Node* Y){
+    Node* X = Y->left;
+    Y->left = X->right;
+    if(X->right != TNULL) X->right->parent = Y;
+    X->parent = Y->parent;
+    if(Y->parent == nullptr){
+        this->root = X;
+    }else if(Y == Y->parent->right){
+        Y->parent->right = X;
     }else{
-        X->parent->left = Y;
+        Y->parent->left = X;
     }
-    Y->right = X;
-    X->parent = Y;
+    X->right = Y;
+    Y->parent = X;
 }
 
 void RedBlackTree::insert(int key){
@@ -216,8 +216,8 @@ void RedBlackTree::insert(int key){
         }
     }
 
-    // Y - tracks the parent of X, when X is TNULL, 
-    // Y is the parent of leaf(i.e. TNULL or NIL)
+    // Y - tracks the parent of X. When X is TNULL,
+    // Y is the parent of leaf(i.e. TNULL or NIL) 
     newNode->parent = Y;
 
     // implies empty tree
@@ -244,13 +244,13 @@ void RedBlackTree::insert(int key){
 
 int main(){
     RedBlackTree rbt;
-    rbt.insert(55);
-    rbt.insert(40);
-    //rbt.insert(40);
-    rbt.insert(65);
-    rbt.insert(60);
-    rbt.insert(75);
-    rbt.insert(57);
+    rbt.insert(33);
+    rbt.insert(53);
+    rbt.insert(21);
+    rbt.insert(31);
+    rbt.insert(13);
+    rbt.insert(10);
+    rbt.insert(9);
     rbt.printTree();
     return 0;
 }
