@@ -1,6 +1,10 @@
 #ifndef RED_BLACK_TREE
 #define RED_BLACK_TREE
 
+// use macro to represent color
+#define RED true
+#define BLACK false
+
 #include<iostream>
 
 #ifndef RED_BLACK_NODE
@@ -32,6 +36,9 @@
 
             // Search helper function
             Node* searchTreeHelper(Node* node, int key);
+
+            // For balancing tree after deletion
+            void deleteFix(Node* x);
 
             // For balancing tree after insertion
             void insertFix(Node* node);
