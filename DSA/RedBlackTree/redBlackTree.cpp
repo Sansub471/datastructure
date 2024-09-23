@@ -6,7 +6,7 @@ void RedBlackTree::initializeNULLNode(Node* node, Node* parent){
     node->parent = parent;
     node->left = nullptr;
     node->right = nullptr;
-    node->color = false; // black
+    node->color = BLACK;
 }
 
 Node* RedBlackTree::newNode(int key){
@@ -50,18 +50,25 @@ Node* RedBlackTree::searchTreeHelper(Node* root, int key){
     return searchTreeHelper(root->right, key);
 }
 
+void RedBlackTree::deleteFix(Node* x){
+    RBNodePtr s;
+    while(x != root && x->color == BLACK){
+
+    }
+}
+
 void RedBlackTree::insertFix(Node* newNode){
     RBNodePtr uncleNode; // 
     // parent is RED
-    while(newNode->parent->color == true){
+    while(newNode->parent->color == RED){
         // newNode's parent is the right child of its grandparent
         if(newNode->parent == newNode->parent->parent->right){
             uncleNode = newNode->parent->parent->left;
             // newNode's uncle(left sibling of newNode's parent) is RED
-            if(uncleNode->color == true){
-                uncleNode->color = false;
-                newNode->parent->color = false;
-                newNode->parent->parent->color = true;
+            if(uncleNode->color == RED){
+                uncleNode->color = BLACK;
+                newNode->parent->color = BLACK;
+                newNode->parent->parent->color = RED;
                 newNode = newNode->parent->parent;
             }// newNode'e uncle(left sibling of newNode's parent) is BLACK
             else{
@@ -70,18 +77,18 @@ void RedBlackTree::insertFix(Node* newNode){
                     newNode = newNode->parent;
                     rightRotate(newNode);
                 }
-                newNode->parent->color = false;
-                newNode->parent->parent->color = true;
+                newNode->parent->color = BLACK;
+                newNode->parent->parent->color = RED;
                 leftRotate(newNode->parent->parent);
             }
         }// newNode's parent is the left child of its grandparent
         else{
             uncleNode = newNode->parent->parent->right;
             // newNode's uncle(right sibling of newNode's parent) is RED
-            if(uncleNode->color == true){
-                uncleNode->color = false;
-                newNode->parent->color = false;
-                newNode->parent->parent->color = true;
+            if(uncleNode->color == RED){
+                uncleNode->color = BLACK;
+                newNode->parent->color = BLACK;
+                newNode->parent->parent->color = RED;
                 newNode = newNode->parent->parent;
             }//newNode's uncle(right sibling of newNode's parent) is BLACK
             else{
@@ -90,14 +97,14 @@ void RedBlackTree::insertFix(Node* newNode){
                     newNode = newNode->parent;
                     leftRotate(newNode);
                 }
-                newNode->parent->color = false;
-                newNode->parent->parent->color = true;
+                newNode->parent->color = BLACK;
+                newNode->parent->parent->color = RED;
                 rightRotate(newNode->parent->parent);
             }
         }
         if(newNode == root) break;
     }
-    root->color = false;
+    root->color = BLACK;
 }
 
 void RedBlackTree::printHelper(Node* root, std::string indent, bool last){
@@ -120,7 +127,7 @@ void RedBlackTree::printHelper(Node* root, std::string indent, bool last){
 // public methods
 RedBlackTree::RedBlackTree(){
     TNULL = new Node;
-    TNULL->color = false;
+    TNULL->color = BLACK;
     TNULL->left = nullptr;
     TNULL->right = nullptr;
     root = TNULL;
@@ -199,7 +206,7 @@ void RedBlackTree::insert(int key){
     newNode->data = key;
     newNode->left = TNULL;
     newNode->right = TNULL;
-    newNode->color = true; // RED
+    newNode->color = RED;
 
     // Y be leaf and X be root
     Node* Y = nullptr;
@@ -231,7 +238,7 @@ void RedBlackTree::insert(int key){
 
     // empty tree, coloring root black
     if(newNode->parent == nullptr){
-        newNode->color = false;
+        newNode->color = BLACK;
         return;
     }
 
