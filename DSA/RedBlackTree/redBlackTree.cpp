@@ -15,7 +15,7 @@ Node* RedBlackTree::newNode(int key){
     node->data = key;
     node->left = TNULL;
     node->right = TNULL;
-    node->color = true; // red
+    node->color = RED;
     return node;
 }
 
@@ -53,8 +53,60 @@ Node* RedBlackTree::searchTreeHelper(Node* root, int key){
 void RedBlackTree::deleteFix(Node* x){
     RBNodePtr s;
     while(x != root && x->color == BLACK){
+        if(x == x->parent->left){
+            s = x->parent->right;
+            if(s->color == RED){
+                s->color = BLACK;
+                x->parent->color = RED;
+                leftRotate(x->parent);
+                s = x->parent->right;
+            }
 
+            if(s->left->color == BLACK && s->right->color == BLACK){
+                s->color = RED;
+                x = x->parent;
+            }else{
+                if(s->right->color == BLACK){
+                    s->left->color = BLACK;
+                    s->color = RED;
+                    rightRotate(s);
+                    s = x->parent->right;
+                }
+
+                s->color = x->parent->color;
+                x->parent->color = BLACK;
+                s->right->color = BLACK;
+                leftRotate(x->parent);
+                x =  root;
+            }
+        }else{
+            s = x->parent->left;
+            if(s->color == RED){
+                s->color = BLACK;
+                x->parent->color = RED;
+                rightRotate(x->parent);
+                s = x->parent->left;
+            }
+
+            if(s->right->color == BLACK && s->right->color == BLACK){
+                s->color = RED;
+                x = x->parent;
+            }else{
+                if(s->left->color == BLACK){
+                    s->right->color = BLACK;
+                    s->color = RED;
+                    leftRotate(s);
+                    s = x->parent->left;
+                }
+                s->color = x->parent->color;
+                x->parent->color = BLACK;
+                s->left->color = BLACK;
+                rightRotate(x->parent);
+                x = root;
+            }
+        }
     }
+    x->color = BLACK;
 }
 
 void RedBlackTree::insertFix(Node* newNode){
@@ -70,7 +122,7 @@ void RedBlackTree::insertFix(Node* newNode){
                 newNode->parent->color = BLACK;
                 newNode->parent->parent->color = RED;
                 newNode = newNode->parent->parent;
-            }// newNode'e uncle(left sibling of newNode's parent) is BLACK
+            }// newNode's uncle(left sibling of newNode's parent) is BLACK
             else{
                 // newNode is the left child of its parent
                 if(newNode == newNode->parent->left){
