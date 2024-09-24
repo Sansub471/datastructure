@@ -109,6 +109,70 @@ void RedBlackTree::deleteFix(Node* x){
     x->color = BLACK;
 }
 
+void RedBlackTree::rbTransplant(Node* u, Node* v){
+    if(u->parent == nullptr){
+        root = v;
+    }else if(u == u->parent->left){
+        u->parent->left = v;
+    }else{
+        u->parent->right = v;
+    }
+    v->parent = u->parent;
+}
+
+void RedBlackTree::deleteNodeHelper(Node* node, int key){
+    RBNodePtr z = TNULL;
+    RBNodePtr x, y;
+    while(node != TNULL){
+        if(node->data == key){
+            z = node;
+        }
+
+        // equal key is kept in right?
+        if(node->data <= key){
+            node = node->right;
+        }else{
+            node = node->left;
+        }
+    }
+
+    if(z = TNULL){
+        std::cout<<"Key not found in the tree."<<std::endl;
+        return;
+    }
+
+    y = z;
+    bool y_original_color = y->color;
+    if(z->left == TNULL){
+        x = z->right;
+        rbTransplant(z, z->right);
+    }else if(z->right == TNULL){
+        x = z->left;
+        rbTransplant(z, z->left);
+    }else{
+        y = minimun(z->right);
+        y_original_color = y->color;
+        x = y->right;
+        if(y->parent == z){
+            x->parent = y;
+        }else{
+            rbTransplant(y, y->right);
+            y->right = z->right;
+            y->right->parent = y;
+        }
+
+        rbTransplant(z, y);
+        y->left = z->left;
+        y->left->parent = y;
+        y->color = z->color;
+    }
+
+    delete z;
+    if(y_original_color == BLACK){
+        deleteFix(x);
+    }
+}
+
 void RedBlackTree::insertFix(Node* newNode){
     RBNodePtr uncleNode; // 
     // parent is RED
