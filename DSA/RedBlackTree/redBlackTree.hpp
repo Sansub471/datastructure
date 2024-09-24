@@ -39,6 +39,8 @@
 
             // For balancing tree after deletion
             void deleteFix(Node* x);
+            void rbTransplant(Node* u, Node* v);
+            void deleteNodeHelper(Node* node, int key);
 
             // For balancing tree after insertion
             void insertFix(Node* node);
