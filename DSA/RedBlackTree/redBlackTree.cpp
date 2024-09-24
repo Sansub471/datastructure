@@ -171,6 +171,7 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
     if(y_original_color == BLACK){
         deleteFix(x);
     }
+
 }
 
 void RedBlackTree::insertFix(Node* newNode){
@@ -363,6 +364,20 @@ void RedBlackTree::insert(int key){
 
     // pass newNode to insertFix()
     insertFix(newNode);
+}
+
+RBNodePtr RedBlackTree::getRoot(){
+                return this->root;
+}
+
+void RedBlackTree::deleteNode(int data){
+    deleteNodeHelper(this->root, data);
+}
+
+void RedBlackTree::printTree(){
+    if(root){
+        printHelper(this->root, "", true);
+    }
 }
 
 int main(){
