@@ -407,6 +407,3 @@ int main(){
     rbt.printTree();
     return 0;
 }
-
-// Let's begin the day.
-// Deletion is taking too long for me.
