@@ -16,6 +16,7 @@ Node* RedBlackTree::newNode(int key){
     node->left = TNULL;
     node->right = TNULL;
     node->color = RED;
+    //node->colour = Red;
     return node;
 }
 
@@ -121,14 +122,21 @@ void RedBlackTree::rbTransplant(Node* u, Node* v){
 }
 
 void RedBlackTree::deleteNodeHelper(Node* node, int key){
+    //RBNodePtr node = this->root;
     RBNodePtr z = TNULL;
     RBNodePtr x, y;
     while(node != TNULL){
         if(node->data == key){
             z = node;
-        }
+            //break;
+            // break will delete the first occurence of the key
+            // without it, it will delete the rightmost occurence of duplicate keys
+            // can implement to delete the leftmost occurence of the duplicate key as well.
 
-        // equal key is kept in right?
+            // Visualizer : https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
+            // deleted from the left, but this code does it from the right, hence result might be different
+        }
+        // previous : key <= node->data hence confused but same
         if(node->data <= key){
             node = node->right;
         }else{
@@ -136,7 +144,7 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
         }
     }
 
-    if(z = TNULL){
+    if(z == TNULL){
         std::cout<<"Key not found in the tree."<<std::endl;
         return;
     }
@@ -389,6 +397,16 @@ int main(){
     rbt.insert(13);
     rbt.insert(10);
     rbt.insert(9);
+    rbt.insert(13);
+    rbt.insert(13);
+    rbt.insert(13);
+    rbt.insert(13);
+    rbt.printTree();
+
+    rbt.deleteNode(33);
     rbt.printTree();
     return 0;
 }
+
+// Let's begin the day.
+// Deletion is taking too long for me.

@@ -5,6 +5,9 @@
 #define RED true
 #define BLACK false
 
+// can use enumerator as well
+enum COLOR {Black, Red};
+
 #include<iostream>
 
 #ifndef RED_BLACK_NODE
@@ -17,6 +20,7 @@
         Node* left;
         Node* right;
         bool color;
+        //COLOR colour;
     };
 #endif
     typedef Node* RBNodePtr;
