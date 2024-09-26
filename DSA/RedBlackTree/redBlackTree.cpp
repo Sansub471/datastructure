@@ -123,20 +123,13 @@ void RedBlackTree::rbTransplant(Node* u, Node* v){
 
 void RedBlackTree::deleteNodeHelper(Node* node, int key){
     //RBNodePtr node = this->root;
-    RBNodePtr z = TNULL;
+    RBNodePtr z = TNULL; // nTBd
     RBNodePtr x, y;
     while(node != TNULL){
         if(node->data == key){
             z = node;
-            //break;
-            // break will delete the first occurence of the key
-            // without it, it will delete the rightmost occurence of duplicate keys
-            // can implement to delete the leftmost occurence of the duplicate key as well.
-
-            // Visualizer : https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
-            // deleted from the left, but this code does it from the right, hence result might be different
+            break; // nodeToBeDeleted found; nTBd 
         }
-        // previous : key <= node->data hence confused but same
         if(node->data <= key){
             node = node->right;
         }else{
@@ -148,7 +141,8 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
         std::cout<<"Key not found in the tree."<<std::endl;
         return;
     }
-
+    // y is nTBd, v in geeks
+    // x is children that replaces y, u in geeks
     y = z;
     bool y_original_color = y->color;
     if(z->left == TNULL){
@@ -405,7 +399,7 @@ void getrbTree(RedBlackTree* rbt, std::vector<int>& rbElems){
 int main(){
     RedBlackTree rbt;
     
-    std::vector<int> rbtElemOne = {33, 53, 21, 31, 13, 10, 9, 12, 40, 45};
+    std::vector<int> rbtElemOne = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13, 40, 45};
     RedBlackTree* rbtOne = getRBTree(rbtElemOne);
     rbtOne->printTree();  //(*rbtOne).printTree();
 
@@ -413,7 +407,7 @@ int main(){
     getrbTree(&rbt, rbtElemOne);
     rbt.printTree();
 
-    //rbt.deleteNode(33);
-    //rbt.printTree();
+    rbt.deleteNode(33);
+    rbt.printTree();
     return 0;
 }
