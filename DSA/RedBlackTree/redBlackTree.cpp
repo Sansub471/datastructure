@@ -388,22 +388,32 @@ void RedBlackTree::printTree(){
     }
 }
 
+
+RedBlackTree* getRBTree(std::vector<int>& rbElems){
+    RedBlackTree* rbt = new RedBlackTree;
+    for(const auto& elem : rbElems){
+        rbt->insert(elem);
+    }
+    return rbt;
+}
+
+void getrbTree(RedBlackTree* rbt, std::vector<int>& rbElems){
+    for(const auto& elem : rbElems){
+        (*rbt).insert(elem); // rbt->insert(elem); 
+    }
+}
 int main(){
     RedBlackTree rbt;
-    rbt.insert(33);
-    rbt.insert(53);
-    rbt.insert(21);
-    rbt.insert(31);
-    rbt.insert(13);
-    rbt.insert(10);
-    rbt.insert(9);
-    rbt.insert(13);
-    rbt.insert(13);
-    rbt.insert(13);
-    rbt.insert(13);
+    
+    std::vector<int> rbtElemOne = {33, 53, 21, 31, 13, 10, 9, 12, 40, 45};
+    RedBlackTree* rbtOne = getRBTree(rbtElemOne);
+    rbtOne->printTree();  //(*rbtOne).printTree();
+
+    std::cout<<std::endl;
+    getrbTree(&rbt, rbtElemOne);
     rbt.printTree();
 
-    rbt.deleteNode(33);
-    rbt.printTree();
+    //rbt.deleteNode(33);
+    //rbt.printTree();
     return 0;
 }
