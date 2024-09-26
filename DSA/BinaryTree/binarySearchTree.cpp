@@ -52,12 +52,12 @@ template <typename T>
         }
         //this implies data == root->data case
         else{
-            // if the node is with only one child or no child
+            // if the node is with only left child or no child
             if(root->left == nullptr){
                 T* temp = root->right;
                 delete root;
                 return temp;
-            }
+            } // only right child
             else if(root->right == nullptr){
                 T* temp = root->left;
                 delete root;
