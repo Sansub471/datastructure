@@ -46,6 +46,7 @@ void RedBlackTree::postOrderHelper(Node* node){
 }
 
 Node* RedBlackTree::searchTreeHelper(Node* root, int key){
+    // root is local here
     if(root == TNULL || key == root->data) return root;
     if(key < root->data) return searchTreeHelper(root->left, key);
     return searchTreeHelper(root->right, key);
@@ -53,13 +54,13 @@ Node* RedBlackTree::searchTreeHelper(Node* root, int key){
 
 void RedBlackTree::deleteFix(Node* x){
     RBNodePtr s;
-    while(x != root && x->color == BLACK){
+    while(x != this->root && x->color == BLACK){
         if(x == x->parent->left){
             s = x->parent->right;
             if(s->color == RED){
                 s->color = BLACK;
                 x->parent->color = RED;
-                leftRotate(x->parent);
+                this->leftRotate(x->parent);
                 s = x->parent->right;
             }
 
@@ -70,22 +71,22 @@ void RedBlackTree::deleteFix(Node* x){
                 if(s->right->color == BLACK){
                     s->left->color = BLACK;
                     s->color = RED;
-                    rightRotate(s);
+                    this->rightRotate(s);
                     s = x->parent->right;
                 }
 
                 s->color = x->parent->color;
                 x->parent->color = BLACK;
                 s->right->color = BLACK;
-                leftRotate(x->parent);
-                x =  root;
+                this->leftRotate(x->parent);
+                x =  this->root;
             }
         }else{
             s = x->parent->left;
             if(s->color == RED){
                 s->color = BLACK;
                 x->parent->color = RED;
-                rightRotate(x->parent);
+                this->rightRotate(x->parent);
                 s = x->parent->left;
             }
 
@@ -96,14 +97,14 @@ void RedBlackTree::deleteFix(Node* x){
                 if(s->left->color == BLACK){
                     s->right->color = BLACK;
                     s->color = RED;
-                    leftRotate(s);
+                    this->leftRotate(s);
                     s = x->parent->left;
                 }
                 s->color = x->parent->color;
                 x->parent->color = BLACK;
                 s->left->color = BLACK;
-                rightRotate(x->parent);
-                x = root;
+                this->rightRotate(x->parent);
+                x = this->root;
             }
         }
     }
@@ -112,7 +113,7 @@ void RedBlackTree::deleteFix(Node* x){
 
 void RedBlackTree::rbTransplant(Node* u, Node* v){
     if(u->parent == nullptr){
-        root = v;
+        this->root = v;
     }else if(u == u->parent->left){
         u->parent->left = v;
     }else{
@@ -148,26 +149,26 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
     // nTBd is leaf or only left child
     if(z->left == TNULL){
         x = z->right;
-        rbTransplant(z, x);
+        this->rbTransplant(z, x);
     }// nTBd has only right child
     else if(z->right == TNULL){
         x = z->left;
-        rbTransplant(z, x);
+        this->rbTransplant(z, x);
     }// nTBd has both children
     else{
-        y = minimun(z->right); // in-order successor, leaf node or a node with only right child
+        y = this->minimun(z->right); // in-order successor, leaf node or a node with only right child
         nTBdColor = y->color; // the node is copied in place of original nTBd, and y is actually deleted from memory
         x = y->right; // if y has a child it must be the right child
         // right-subtree of z has no left child or z's right child is the minimum node in right-subtree of z
         if(y->parent == z){
             x->parent = y; // y->right->parent = y;
         }else{
-            rbTransplant(y, x);
+            this->rbTransplant(y, x);
             y->right = z->right;
             y->right->parent = y;
         }
 
-        rbTransplant(z, y);
+        this->rbTransplant(z, y);
         y->left = z->left;
         y->left->parent = y;
         y->color = z->color;
@@ -175,7 +176,7 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
 
     delete z;
     if(nTBdColor == BLACK){
-        deleteFix(x);
+        this->deleteFix(x);
     }
 
 }
@@ -382,9 +383,11 @@ void RedBlackTree::deleteNode(int data){
 }
 
 bool RedBlackTree::search(int data){
-    if(this->searchTreeHelper(this->root, data)){
-
+    Node* node = this->searchTreeHelper(this->root, data);
+    if(node != TNULL){
+        return true;
     }
+    return false;
 }
 
 void RedBlackTree::printTree(){
