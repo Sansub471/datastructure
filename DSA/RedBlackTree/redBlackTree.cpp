@@ -124,7 +124,12 @@ void RedBlackTree::rbTransplant(Node* u, Node* v){
 
 void RedBlackTree::deleteNodeHelper(Node* node, int key){
     RBNodePtr z = TNULL; // nTBd
-    RBNodePtr x, y; 
+    RBNodePtr y; // inorder successor of nTBd
+    RBNodePtr x; // child of nTBd(z or y)
+    // for leaf node or node with one child case, z is nTBd
+    // for node with two children, y becomes nTBd
+
+    // From BST deletion, nTBd with no child or one child cases would be enough
     // BST search for nTBd
     while(node != TNULL){
         if(node->data == key){
@@ -137,7 +142,7 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
             node = node->left;
         }
     }
-    // if not found or tree is NULL case
+    
     if(z == TNULL){
         std::cout<<"Key not found or tree NULL."<<std::endl;
         return;
@@ -159,13 +164,18 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
         y = this->minimun(z->right); // in-order successor, leaf node or a node with only right child
         nTBdColor = y->color; // the node is copied in place of original nTBd, and y is actually deleted from memory
         x = y->right; // if y has a child it must be the right child
-        // right-subtree of z has no left child or z's right child is the minimum node in right-subtree of z
-        if(y->parent == z){
-            x->parent = y; // y->right->parent = y;
-        }else{
+        x->parent = y;
+        // TNULL can be double-black so it can have parent here.
+        // if(y->parent == z){
+        //     x->parent = y; 
+        // }else{
+        //     this->rbTransplant(y, x);
+        //     y->right = z->right;
+        //     y->right->parent = y; // x->parent = y
+        // }
+        if(y->parent != z){
             this->rbTransplant(y, x);
-            y->right = z->right;
-            y->right->parent = y;
+            x = z->right;
         }
 
         this->rbTransplant(z, y);
