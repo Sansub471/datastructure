@@ -122,43 +122,47 @@ void RedBlackTree::rbTransplant(Node* u, Node* v){
 }
 
 void RedBlackTree::deleteNodeHelper(Node* node, int key){
-    //RBNodePtr node = this->root;
     RBNodePtr z = TNULL; // nTBd
-    RBNodePtr x, y;
+    RBNodePtr x, y; 
+    // BST search for nTBd
     while(node != TNULL){
         if(node->data == key){
             z = node;
             break; // nodeToBeDeleted found; nTBd 
         }
-        if(node->data <= key){
+        if(key >= node->data){
             node = node->right;
         }else{
             node = node->left;
         }
     }
-
+    // if not found or tree is NULL case
     if(z == TNULL){
-        std::cout<<"Key not found in the tree."<<std::endl;
+        std::cout<<"Key not found or tree NULL."<<std::endl;
         return;
     }
-    // y is nTBd, v in geeks
-    // x is children that replaces y, u in geeks
-    y = z;
-    bool y_original_color = y->color;
+
+    //y = z; // What's the purpose of this assignment?
+    bool nTBdColor = z->color;
+
+    // nTBd is leaf or only left child
     if(z->left == TNULL){
         x = z->right;
-        rbTransplant(z, z->right);
-    }else if(z->right == TNULL){
+        rbTransplant(z, x);
+    }// nTBd has only right child
+    else if(z->right == TNULL){
         x = z->left;
-        rbTransplant(z, z->left);
-    }else{
-        y = minimun(z->right);
-        y_original_color = y->color;
-        x = y->right;
+        rbTransplant(z, x);
+    }// nTBd has both children
+    else{
+        y = minimun(z->right); // in-order successor, leaf node or a node with only right child
+        nTBdColor = y->color; // the node is copied in place of original nTBd, and y is actually deleted from memory
+        x = y->right; // if y has a child it must be the right child
+        // right-subtree of z has no left child or z's right child is the minimum node in right-subtree of z
         if(y->parent == z){
-            x->parent = y;
+            x->parent = y; // y->right->parent = y;
         }else{
-            rbTransplant(y, y->right);
+            rbTransplant(y, x);
             y->right = z->right;
             y->right->parent = y;
         }
@@ -170,7 +174,7 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
     }
 
     delete z;
-    if(y_original_color == BLACK){
+    if(nTBdColor == BLACK){
         deleteFix(x);
     }
 
@@ -194,11 +198,11 @@ void RedBlackTree::insertFix(Node* newNode){
                 // newNode is the left child of its parent
                 if(newNode == newNode->parent->left){
                     newNode = newNode->parent;
-                    rightRotate(newNode);
+                    this->rightRotate(newNode);
                 }
                 newNode->parent->color = BLACK;
                 newNode->parent->parent->color = RED;
-                leftRotate(newNode->parent->parent);
+                this->leftRotate(newNode->parent->parent);
             }
         }// newNode's parent is the left child of its grandparent
         else{
@@ -214,11 +218,11 @@ void RedBlackTree::insertFix(Node* newNode){
                 // newNode is the right child of its parent
                 if(newNode == newNode->parent->right){
                     newNode = newNode->parent;
-                    leftRotate(newNode);
+                    this->leftRotate(newNode);
                 }
                 newNode->parent->color = BLACK;
                 newNode->parent->parent->color = RED;
-                rightRotate(newNode->parent->parent);
+                this->rightRotate(newNode->parent->parent);
             }
         }
         if(newNode == root) break;
@@ -257,6 +261,7 @@ Node* RedBlackTree::minimun(Node* root){
         root = root->left;
     }
     return root;
+    // root used here is local, don't be confused
 }
 
 Node* RedBlackTree::maximum(Node* root){
@@ -267,7 +272,7 @@ Node* RedBlackTree::maximum(Node* root){
 }
 
 Node* RedBlackTree::successor(Node* root){
-    if(root->right != TNULL) return minimun(root->right);
+    if(root->right != TNULL) return this->minimun(root->right);
     Node* node = root->parent;
     while(node != TNULL && root == node->right){
         root = node;
@@ -277,7 +282,7 @@ Node* RedBlackTree::successor(Node* root){
 }
 
 Node* RedBlackTree::predecessor(Node* root){
-    if(root->left != TNULL) return maximum(root->left);
+    if(root->left != TNULL) return this->maximum(root->left);
     Node* node = root->parent;
     while(node != TNULL && root == node->left){
         root = node;
@@ -318,7 +323,7 @@ void RedBlackTree::rightRotate(Node* Y){
     Y->parent = X;
 }
 
-void RedBlackTree::insert(int key){
+void RedBlackTree::insertNode(int key){
     // creating a newNode
     Node* newNode = new Node;
     newNode->parent = nullptr;
@@ -365,7 +370,7 @@ void RedBlackTree::insert(int key){
     if(newNode->parent->parent == nullptr) return;
 
     // pass newNode to insertFix()
-    insertFix(newNode);
+    this->insertFix(newNode); // this is optional, to make it clear the function is a class memeber
 }
 
 RBNodePtr RedBlackTree::getRoot(){
@@ -373,12 +378,18 @@ RBNodePtr RedBlackTree::getRoot(){
 }
 
 void RedBlackTree::deleteNode(int data){
-    deleteNodeHelper(this->root, data);
+    this->deleteNodeHelper(this->root, data);
+}
+
+bool RedBlackTree::search(int data){
+    if(this->searchTreeHelper(this->root, data)){
+
+    }
 }
 
 void RedBlackTree::printTree(){
-    if(root){
-        printHelper(this->root, "", true);
+    if(this->root){
+        this->printHelper(this->root, "", true);
     }
 }
 
@@ -386,20 +397,20 @@ void RedBlackTree::printTree(){
 RedBlackTree* getRBTree(std::vector<int>& rbElems){
     RedBlackTree* rbt = new RedBlackTree;
     for(const auto& elem : rbElems){
-        rbt->insert(elem);
+        rbt->insertNode(elem);
     }
     return rbt;
 }
 
 void getrbTree(RedBlackTree* rbt, std::vector<int>& rbElems){
     for(const auto& elem : rbElems){
-        (*rbt).insert(elem); // rbt->insert(elem); 
+        (*rbt).insertNode(elem); // rbt->insert(elem); 
     }
 }
 int main(){
     RedBlackTree rbt;
     
-    std::vector<int> rbtElemOne = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13, 40, 45};
+    std::vector<int> rbtElemOne = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13};
     RedBlackTree* rbtOne = getRBTree(rbtElemOne);
     rbtOne->printTree();  //(*rbtOne).printTree();
 
@@ -407,7 +418,10 @@ int main(){
     getrbTree(&rbt, rbtElemOne);
     rbt.printTree();
 
-    rbt.deleteNode(33);
+    int nTBd = 33; // nodeToBeDeleted
+    rbt.deleteNode(nTBd);
+    std::cout<<"\nAfter deleting node : " << nTBd << std::endl;
+
     rbt.printTree();
     return 0;
 }

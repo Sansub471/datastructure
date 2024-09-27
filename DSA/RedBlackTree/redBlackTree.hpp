@@ -78,11 +78,16 @@ enum COLOR {Black, Red};
             void rightRotate(Node* Y);
 
             // Inserting a node
-            void insert(int key);
+            void insertNode(int key);
 
             RBNodePtr getRoot();
 
+            // Delete a node
             void deleteNode(int data);
+
+            // Search the tree
+            bool search(int data);
+
             void printTree();
     };
 
