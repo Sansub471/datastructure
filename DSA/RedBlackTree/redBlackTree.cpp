@@ -147,7 +147,7 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
         std::cout<<"Key not found or tree NULL."<<std::endl;
         return;
     }
-
+    // Delete will conclude today
     //y = z; // What's the purpose of this assignment?
     bool nTBdColor = z->color;
 
