@@ -353,7 +353,7 @@ class RedBlackTree {
   }
 
   // Inserting a node
-  void insert(int key) {
+  void insertNode(int key) {
     NodePtr node = new Node;
     node->parent = nullptr;
     node->data = key;
@@ -411,12 +411,12 @@ class RedBlackTree {
 
 int main() {
   RedBlackTree bst;
-  bst.insert(55);
-  bst.insert(40);
-  bst.insert(65);
-  bst.insert(60);
-  bst.insert(75);
-  bst.insert(57);
+  bst.insertNode(55);
+  bst.insertNode(40);
+  bst.insertNode(65);
+  bst.insertNode(60);
+  bst.insertNode(75);
+  bst.insertNode(57);
 
   bst.printTree();
   cout << endl
