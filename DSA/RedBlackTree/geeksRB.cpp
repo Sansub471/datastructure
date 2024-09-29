@@ -435,6 +435,8 @@ void insert(int n) {
 	}
 }
 
+// Check geek RB too
+
 // utility function that deletes the node with given value
 void deleteByVal(int n) {
 	if (root == NULL)
