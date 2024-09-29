@@ -177,7 +177,7 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
             this->rbTransplant(y, x);
             x = z->right;
         }
-
+        // Let's start delete RB from programiz
         this->rbTransplant(z, y);
         y->left = z->left;
         y->left->parent = y;
