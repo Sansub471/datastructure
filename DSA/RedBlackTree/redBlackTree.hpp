@@ -94,4 +94,5 @@ enum COLOR {Black, Red};
 // create R-B Tree from given list of elements
 RedBlackTree* getRBTree(std::vector<int>& rbElems);
 void getrbTree(RedBlackTree* rbt, std::vector<int>& rbElems);
+void deleteOperation(RedBlackTree* rbt, int nTBd, const std::string& treeName);
 #endif

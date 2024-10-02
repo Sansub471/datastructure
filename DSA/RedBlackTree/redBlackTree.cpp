@@ -413,21 +413,44 @@ void getrbTree(RedBlackTree* rbt, std::vector<int>& rbElems){
         (*rbt).insertNode(elem); // rbt->insert(elem); 
     }
 }
+
+void deleteOperation(RedBlackTree* rbt, int nTBd, const std::string& treeName){
+    std::cout<<"RBT "<<treeName<<" , Before : "<<std::endl;
+    rbt->deleteNode(nTBd);
+    std::cout<<"RBT "<<treeName<<" , After : "<<std::endl;
+    rbt->printTree();
+    std::cout<<std::endl;
+}
 int main(){
-    RedBlackTree rbt;
+    RedBlackTree rbt, rbt1; // rbtTree and rbtFour
     
     std::vector<int> rbtElemOne = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13, 45, 40};
+    std::vector<int> rbtElemTwo = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13};
+    std::vector<int> rbtElemThree = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13, 45, 40, 32};
+    std::vector<int> rbtElemFour = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13, 45, 40, 32, 49};
+    
+     
+    // Insertion operation
     RedBlackTree* rbtOne = getRBTree(rbtElemOne);
+    RedBlackTree* rbtTwo = getRBTree(rbtElemTwo);
+    //RedBlackTree* rbtThree = getRBTree(rbtElemThree);
+    getrbTree(&rbt, rbtElemThree);
+    //RedBlackTree* rbtFour = getRBTree(rbtElemFour);
+    getrbTree(&rbt1, rbtElemFour);
+   
+    std::cout<<"RBTree one : "<<std::endl;
     rbtOne->printTree();  //(*rbtOne).printTree();
-
     std::cout<<std::endl;
-    getrbTree(&rbt, rbtElemOne);
-    rbt.printTree();
 
-    int nTBd = 33; // nodeToBeDeleted
-    rbt.deleteNode(nTBd);
-    std::cout<<"\nAfter deleting node : " << nTBd << std::endl;
-
+    std::cout<<"RBTree three : "<<std::endl;
     rbt.printTree();
+    std::cout<<std::endl;
+
+    // Delete operation
+    deleteOperation(rbtOne, 33, "one"); // nTBd with two children, it's in-order successor not the child of nTBd
+    deleteOperation(rbtTwo, 33, "two"); // nTBs with two children, it's in-order successor is a child of nTBd
+    deleteOperation(rbtOne, 12, "one"); // nTBd is the leaf node
+    deleteOperation(&rbt, 31, "three"); // nTBd with only right child
+    deleteOperation(&rbt1, 53, "four"); // nTBd with only left child
     return 0;
 }
