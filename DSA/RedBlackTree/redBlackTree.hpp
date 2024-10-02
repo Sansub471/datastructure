@@ -44,7 +44,7 @@ enum COLOR {Black, Red};
 
             // For balancing tree after deletion
             void deleteFix(Node* x);
-            void rbTransplant(Node* u, Node* v);
+            void rbTransplant(Node* v, Node* u);
             void deleteNodeHelper(Node* node, int key);
 
             // For balancing tree after insertion

@@ -111,15 +111,15 @@ void RedBlackTree::deleteFix(Node* x){
     x->color = BLACK;
 }
 
-void RedBlackTree::rbTransplant(Node* u, Node* v){
-    if(u->parent == nullptr){
-        this->root = v;
-    }else if(u == u->parent->left){
-        u->parent->left = v;
+void RedBlackTree::rbTransplant(Node* v, Node* u){
+    if(v->parent == nullptr){
+        this->root = u;
+    }else if(v == v->parent->left){
+        v->parent->left = u;
     }else{
-        u->parent->right = v;
+        v->parent->right = u;
     }
-    v->parent = u->parent;
+    u->parent = v->parent;
 }
 
 void RedBlackTree::deleteNodeHelper(Node* node, int key){
