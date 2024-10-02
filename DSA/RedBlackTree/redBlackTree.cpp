@@ -148,7 +148,6 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
         return;
     }
   
-    //y = z; // What's the purpose of this assignment?
     bool nTBdColor = z->color;
 
     // nTBd is leaf or only left child
@@ -164,20 +163,15 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
         y = this->minimun(z->right); // in-order successor, leaf node or a node with only right child
         nTBdColor = y->color; // the node is copied in place of original nTBd, and y is actually deleted from memory
         x = y->right; // if y has a child it must be the right child
-        x->parent = y; // TNULL can be double-black so it can have parent here.
-        // if(y->parent == z){
-        //     x->parent = y; 
-        // }else{
-        //     this->rbTransplant(y, x);
-        //     y->right = z->right;
-        //     y->right->parent = y; // x->parent = y
-        // }
-        if(y->parent != z){
-            this->rbTransplant(y, x);
-            x = z->right;
-        }
-
-        this->rbTransplant(z, y);
+        
+        if(y->parent == z){
+            x->parent = y; 
+        }else{
+            this->rbTransplant(y, x); // x takes the place of y
+            y->right = z->right;
+            y->right->parent = y;
+        } 
+        this->rbTransplant(z, y); // y takes the place of z
         y->left = z->left;
         y->left->parent = y;
         y->color = z->color;
@@ -422,7 +416,7 @@ void getrbTree(RedBlackTree* rbt, std::vector<int>& rbElems){
 int main(){
     RedBlackTree rbt;
     
-    std::vector<int> rbtElemOne = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13};
+    std::vector<int> rbtElemOne = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13, 45, 40};
     RedBlackTree* rbtOne = getRBTree(rbtElemOne);
     rbtOne->printTree();  //(*rbtOne).printTree();
 
