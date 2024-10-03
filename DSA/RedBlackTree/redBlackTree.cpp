@@ -416,6 +416,7 @@ void getrbTree(RedBlackTree* rbt, std::vector<int>& rbElems){
 
 void deleteOperation(RedBlackTree* rbt, int nTBd, const std::string& treeName){
     std::cout<<"RBT "<<treeName<<" , Before : "<<std::endl;
+    rbt->printTree();
     rbt->deleteNode(nTBd);
     std::cout<<"RBT "<<treeName<<" , After : "<<std::endl;
     rbt->printTree();
@@ -454,3 +455,4 @@ int main(){
     deleteOperation(&rbt1, 53, "four"); // nTBd with only left child
     return 0;
 }
+// Now move on to deleteFix() algorithm
