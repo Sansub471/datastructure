@@ -453,6 +453,7 @@ int main(){
     deleteOperation(rbtOne, 12, "one"); // nTBd is the leaf node
     deleteOperation(&rbt, 31, "three"); // nTBd with only right child
     deleteOperation(&rbt1, 53, "four"); // nTBd with only left child
+    deleteOperation(&rbt1, 21, "four"); // nTBd is the root
     return 0;
 }
 
