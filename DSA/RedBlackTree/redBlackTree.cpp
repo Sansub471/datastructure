@@ -163,7 +163,6 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
         y = this->minimun(z->right); // in-order successor, leaf node or a node with only right child
         nTBdColor = y->color; // the node is copied in place of original nTBd, and y is actually deleted from memory
         x = y->right; // if y has a child it must be the right child
-        
         if(y->parent == z){
             x->parent = y; 
         }else{
@@ -429,8 +428,7 @@ int main(){
     std::vector<int> rbtElemTwo = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13};
     std::vector<int> rbtElemThree = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13, 45, 40, 32};
     std::vector<int> rbtElemFour = {33, 53, 21, 31, 13, 10, 9, 12, 13, 13, 13, 13, 45, 40, 32, 49};
-    
-     
+   
     // Insertion operation
     RedBlackTree* rbtOne = getRBTree(rbtElemOne);
     RedBlackTree* rbtTwo = getRBTree(rbtElemTwo);
@@ -451,9 +449,9 @@ int main(){
     deleteOperation(rbtOne, 33, "one"); // nTBd with two children, it's in-order successor not the child of nTBd
     deleteOperation(rbtTwo, 33, "two"); // nTBs with two children, it's in-order successor is a child of nTBd
     deleteOperation(rbtOne, 12, "one"); // nTBd is the leaf node
-    deleteOperation(&rbt, 31, "three"); // nTBd with only right child
-    deleteOperation(&rbt1, 53, "four"); // nTBd with only left child
-    deleteOperation(&rbt1, 21, "four"); // nTBd is the root
+    deleteOperation(&rbt,   31, "three"); // nTBd with only right child
+    deleteOperation(&rbt1,  53, "four"); // nTBd with only left child
+    deleteOperation(&rbt1,  21, "four"); // nTBd is the root
     return 0;
 }
 
