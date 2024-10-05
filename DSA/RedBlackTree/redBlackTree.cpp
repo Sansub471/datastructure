@@ -51,7 +51,7 @@ Node* RedBlackTree::searchTreeHelper(Node* root, int key){
     if(key < root->data) return searchTreeHelper(root->left, key);
     return searchTreeHelper(root->right, key);
 }
-
+// Delete fix going strong now.
 void RedBlackTree::deleteFix(Node* x){
     RBNodePtr s; // sibling of x
     while(x != this->root && x->color == BLACK){
