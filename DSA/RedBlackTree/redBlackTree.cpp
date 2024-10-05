@@ -53,7 +53,7 @@ Node* RedBlackTree::searchTreeHelper(Node* root, int key){
 }
 
 void RedBlackTree::deleteFix(Node* x){
-    RBNodePtr s;
+    RBNodePtr s; // sibling of x
     while(x != this->root && x->color == BLACK){
         if(x == x->parent->left){
             s = x->parent->right;
@@ -150,11 +150,11 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
   
     bool nTBdColor = z->color;
 
-    // nTBd is leaf or only left child
+    // nTBd is leaf or no left child
     if(z->left == TNULL){
         x = z->right;
         this->rbTransplant(z, x);
-    }// nTBd has only right child
+    }// nTBd has no right child
     else if(z->right == TNULL){
         x = z->left;
         this->rbTransplant(z, x);
