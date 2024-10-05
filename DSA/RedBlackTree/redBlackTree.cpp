@@ -53,10 +53,12 @@ Node* RedBlackTree::searchTreeHelper(Node* root, int key){
 }
 
 void RedBlackTree::deleteFix(Node* u){
-    RBNodePtr s; // sibling of x
+    RBNodePtr s; // sibling of u
     while(u != this->root && u->color == BLACK){
+        // s is right child case
         if(u == u->parent->left){
             s = u->parent->right;
+            // if sibling is RED, Right case.
             if(s->color == RED){
                 s->color = BLACK;
                 u->parent->color = RED;
@@ -64,10 +66,14 @@ void RedBlackTree::deleteFix(Node* u){
                 s = u->parent->right;
             }
 
+            // if sibling is BLACK
+            // both children of sibling are BLACK or both nephews are BLACK
             if(s->left->color == BLACK && s->right->color == BLACK){
                 s->color = RED;
-                u = u->parent;
-            }else{
+                u = u->parent; // recur for the parent of u
+            }// at least one of the sibling's children is RED or at least one of the nephew is RED
+            else{
+                // RED child of s is the left child, Right-Left case
                 if(s->right->color == BLACK){
                     s->left->color = BLACK;
                     s->color = RED;
@@ -75,14 +81,17 @@ void RedBlackTree::deleteFix(Node* u){
                     s = u->parent->right;
                 }
 
+                // RED child of s is the right child or both children are RED, Right-Right case
                 s->color = u->parent->color;
                 u->parent->color = BLACK;
                 s->right->color = BLACK;
                 this->leftRotate(u->parent);
                 u =  this->root;
             }
-        }else{
+        }// s is left child case
+        else{
             s = u->parent->left;
+            // if sibling is RED, Left case.
             if(s->color == RED){
                 s->color = BLACK;
                 u->parent->color = RED;
@@ -90,16 +99,22 @@ void RedBlackTree::deleteFix(Node* u){
                 s = u->parent->left;
             }
 
-            if(s->right->color == BLACK && s->right->color == BLACK){
+            // if sibling is BLACK
+            // both children of sibling are BLACK or both nephews are BLACK
+            if(s->left->color == BLACK && s->right->color == BLACK){
                 s->color = RED;
-                u = u->parent;
-            }else{
+                u = u->parent; // recur for the parent of u
+            }// at least one of the sibling's children is RED or at least one of the nephew is RED
+            else{
+                // RED child of s is the right child, Left-Right case
                 if(s->left->color == BLACK){
                     s->right->color = BLACK;
                     s->color = RED;
                     this->leftRotate(s);
                     s = u->parent->left;
                 }
+
+                // RED child of s is the left child or both children are RED, Left-Left case
                 s->color = u->parent->color;
                 u->parent->color = BLACK;
                 s->left->color = BLACK;
