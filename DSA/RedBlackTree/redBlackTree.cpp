@@ -52,63 +52,63 @@ Node* RedBlackTree::searchTreeHelper(Node* root, int key){
     return searchTreeHelper(root->right, key);
 }
 
-void RedBlackTree::deleteFix(Node* x){
+void RedBlackTree::deleteFix(Node* u){
     RBNodePtr s; // sibling of x
-    while(x != this->root && x->color == BLACK){
-        if(x == x->parent->left){
-            s = x->parent->right;
+    while(u != this->root && u->color == BLACK){
+        if(u == u->parent->left){
+            s = u->parent->right;
             if(s->color == RED){
                 s->color = BLACK;
-                x->parent->color = RED;
-                this->leftRotate(x->parent);
-                s = x->parent->right;
+                u->parent->color = RED;
+                this->leftRotate(u->parent);
+                s = u->parent->right;
             }
 
             if(s->left->color == BLACK && s->right->color == BLACK){
                 s->color = RED;
-                x = x->parent;
+                u = u->parent;
             }else{
                 if(s->right->color == BLACK){
                     s->left->color = BLACK;
                     s->color = RED;
                     this->rightRotate(s);
-                    s = x->parent->right;
+                    s = u->parent->right;
                 }
 
-                s->color = x->parent->color;
-                x->parent->color = BLACK;
+                s->color = u->parent->color;
+                u->parent->color = BLACK;
                 s->right->color = BLACK;
-                this->leftRotate(x->parent);
-                x =  this->root;
+                this->leftRotate(u->parent);
+                u =  this->root;
             }
         }else{
-            s = x->parent->left;
+            s = u->parent->left;
             if(s->color == RED){
                 s->color = BLACK;
-                x->parent->color = RED;
-                this->rightRotate(x->parent);
-                s = x->parent->left;
+                u->parent->color = RED;
+                this->rightRotate(u->parent);
+                s = u->parent->left;
             }
 
             if(s->right->color == BLACK && s->right->color == BLACK){
                 s->color = RED;
-                x = x->parent;
+                u = u->parent;
             }else{
                 if(s->left->color == BLACK){
                     s->right->color = BLACK;
                     s->color = RED;
                     this->leftRotate(s);
-                    s = x->parent->left;
+                    s = u->parent->left;
                 }
-                s->color = x->parent->color;
-                x->parent->color = BLACK;
+                s->color = u->parent->color;
+                u->parent->color = BLACK;
                 s->left->color = BLACK;
-                this->rightRotate(x->parent);
-                x = this->root;
+                this->rightRotate(u->parent);
+                u = this->root;
             }
         }
     }
-    x->color = BLACK;
+    u->color = BLACK;
 }
 
 void RedBlackTree::rbTransplant(Node* v, Node* u){
@@ -125,7 +125,7 @@ void RedBlackTree::rbTransplant(Node* v, Node* u){
 void RedBlackTree::deleteNodeHelper(Node* node, int key){
     RBNodePtr z = TNULL; // nTBd
     RBNodePtr y; // inorder successor of nTBd
-    RBNodePtr x; // child of nTBd(z or y)
+    RBNodePtr x; // child of nTBd(z or y), u in geeks theory
     // for leaf node or node with one child case, z is nTBd
     // for node with two children, y becomes nTBd
 
