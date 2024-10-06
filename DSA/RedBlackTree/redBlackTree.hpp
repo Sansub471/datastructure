@@ -89,6 +89,8 @@ enum COLOR {Black, Red};
             bool search(int data);
 
             void printTree();
+
+            bool isTreeEmpty();
     };
 
 // create R-B Tree from given list of elements
