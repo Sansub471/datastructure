@@ -1,5 +1,7 @@
 #include"redBlackTree.hpp"
 
+#include"randomRBTree.cpp"
+
 // private methods
 void RedBlackTree::initializeNULLNode(Node* node, Node* parent){
     node->data = 0;
@@ -413,7 +415,12 @@ void RedBlackTree::printTree(){
     }
 }
 
+bool RedBlackTree::isTreeEmpty(){
+    if(this->root == this->TNULL) return true;
+    return false;
+}
 
+// outside methods
 RedBlackTree* getRBTree(std::vector<int>& rbElems){
     RedBlackTree* rbt = new RedBlackTree;
     for(const auto& elem : rbElems){
@@ -467,6 +474,35 @@ int main(){
     deleteOperation(&rbt,   31, "three"); // nTBd with only right child
     deleteOperation(&rbt1,  53, "four"); // nTBd with only left child
     deleteOperation(&rbt1,  21, "four"); // nTBd is the root
+
+    // search operation
+    int key = 49;
+    if(rbt1.search(key)){
+        std::cout<<"\nNode " << key << " found.\n";
+    }else{
+        std::cout<<"\nNode" << key << " not found.\n";
+    }
+
+    // create a large RB Tree with random elements
+    try{
+        RandomRBTree tree = RandomRBTree(1, 10000, 7000);
+        std::vector<int> randomElems = tree.getRandomNumbers();
+        if(!randomElems.empty()){
+            RedBlackTree* RBTree = getRBTree(randomElems);
+            RBTree->printTree();
+
+            // insert
+            int newKey = tree.getNextRandomElement();
+            RBTree->insertNode(newKey);
+
+            // delete
+            int nTBd = tree.getRandomElement();
+            RBTree->deleteNode(nTBd);          
+            
+        }
+    }catch(const std::invalid_argument& e){
+        std::cerr<<"Caught exception. " << e.what() << std::endl;
+    }
     return 0;
 }
 
