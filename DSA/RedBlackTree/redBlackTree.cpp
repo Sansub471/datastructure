@@ -1,6 +1,6 @@
 #include"redBlackTree.hpp"
 
-#include"randomRBTree.cpp"
+#include"../localLib/randomIntElems.hpp"
 
 // private methods
 void RedBlackTree::initializeNULLNode(Node* node, Node* parent){
@@ -75,7 +75,7 @@ void RedBlackTree::deleteFix(Node* u){
                 u = u->parent; // recur for the parent of u
             }// at least one of the sibling's children is RED or at least one of the nephew is RED
             else{
-                // RED child of s is the left child, Right-Left case
+                // Only left child of s is RED, Right-Left case
                 if(s->right->color == BLACK){
                     s->left->color = BLACK;
                     s->color = RED;
@@ -83,7 +83,7 @@ void RedBlackTree::deleteFix(Node* u){
                     s = u->parent->right;
                 }
 
-                // RED child of s is the right child or both children are RED, Right-Right case
+                // Right child of s is RED or both children are RED, Right-Right case
                 s->color = u->parent->color;
                 u->parent->color = BLACK;
                 s->right->color = BLACK;
@@ -108,7 +108,7 @@ void RedBlackTree::deleteFix(Node* u){
                 u = u->parent; // recur for the parent of u
             }// at least one of the sibling's children is RED or at least one of the nephew is RED
             else{
-                // RED child of s is the right child, Left-Right case
+                // Only right child of s is RED, Left-Right case
                 if(s->left->color == BLACK){
                     s->right->color = BLACK;
                     s->color = RED;
@@ -116,7 +116,7 @@ void RedBlackTree::deleteFix(Node* u){
                     s = u->parent->left;
                 }
 
-                // RED child of s is the left child or both children are RED, Left-Left case
+                // Left child of s is RED or both children are RED, Left-Left case
                 s->color = u->parent->color;
                 u->parent->color = BLACK;
                 s->left->color = BLACK;
@@ -485,7 +485,7 @@ int main(){
 
     // create a large RB Tree with random elements
     try{
-        RandomRBTree tree = RandomRBTree(1, 10000, 7000);
+        RandomIntElements tree = RandomIntElements(1, 10000, 7000);
         std::vector<int> randomElems = tree.getRandomNumbers();
         if(!randomElems.empty()){
             RedBlackTree* RBTree = getRBTree(randomElems);
