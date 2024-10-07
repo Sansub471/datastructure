@@ -245,9 +245,9 @@ void RedBlackTree::insertFix(Node* newNode){
                 this->rightRotate(newNode->parent->parent);
             }
         }
-        if(newNode == root) break;
+        if(newNode == this->root) break;
     }
-    root->color = BLACK;
+    this->root->color = BLACK;
 }
 
 void RedBlackTree::printHelper(Node* root, std::string indent, bool last){
@@ -373,7 +373,7 @@ void RedBlackTree::insertNode(int key){
 
     // implies empty tree
     if(Y == nullptr){ 
-        root = newNode;
+        this->root = newNode;
     }else if(newNode->data < Y->data){
         Y->left = newNode;
     }else{
@@ -390,7 +390,7 @@ void RedBlackTree::insertNode(int key){
     if(newNode->parent->parent == nullptr) return;
 
     // pass newNode to insertFix()
-    this->insertFix(newNode); // this is optional, to make it clear the function is a class memeber
+    this->insertFix(newNode);
 }
 
 RBNodePtr RedBlackTree::getRoot(){
