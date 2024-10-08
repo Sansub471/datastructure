@@ -201,7 +201,7 @@ void RedBlackTree::deleteNodeHelper(Node* node, int key){
 }
 
 void RedBlackTree::insertFix(Node* newNode){
-    RBNodePtr uncleNode; // 
+    RBNodePtr uncleNode; 
     // parent is RED
     while(newNode->parent->color == RED){
         // newNode's parent is the right child of its grandparent
