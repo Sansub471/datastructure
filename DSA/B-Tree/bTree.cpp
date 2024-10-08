@@ -182,3 +182,6 @@ int main() {
               : cout << endl
                  << k << " is not Found\n";
 }
+
+// Starting the day for me.
+// I feel lost in my life right now.
