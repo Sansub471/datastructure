@@ -24,3 +24,10 @@ template<typename T>
         else if(root->right == nullptr) return root->data;
         return maxNode(root->right);
     }
+    
+template<typename T>
+    int minNode(T* root){
+        if(root == nullptr) return -1;
+        else if(root->left == nullptr) return root->data;
+        return minNode(root->left);
+    }
