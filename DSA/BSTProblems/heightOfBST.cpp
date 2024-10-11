@@ -6,3 +6,4 @@ template<typename T>
         int rightHeight = BSTheight(root->right);
         return std::max(leftHeight, rightHeight) + 1;
     }
+    // Time complexity = O(n)
