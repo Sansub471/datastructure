@@ -95,31 +95,17 @@ CNode* BST_TWO(){
 
 }
 
-#include<iostream>
-// Tree traversal functions: DFS techniques
-// Recursive technique
+// Tree traversal functions: DFS techniques, Recursive
 template <typename T>
-    void preorderDFS(T* root){
-        if(root == nullptr) return;
-        std::cout<<root->data<<", ";
-        preorderDFS(root->left);
-        preorderDFS(root->right);
-    }
+    void preorderDFS(T* root);
 
 template <typename T>
-    void inorderDFS(T* root){
-        if(root == nullptr) return;
-        inorderDFS(root->left);
-        std::cout<< root->data <<", ";
-        inorderDFS(root->right);
-    }
+    void inorderDFS(T* root);
 
 template <typename T>
-    void postorderDFS(T* root){
-        postorderDFS(root->left);
-        postorderDFS(root->right);
-        std::cout<< root->data <<", ";
+    void postorderDFS(T* root);
 
-    }
-
+// To print the tree structure
+template <typename T>
+    void printTree(T* root, std::string indent="", bool last=true);
 #endif
