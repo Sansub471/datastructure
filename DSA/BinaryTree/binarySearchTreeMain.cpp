@@ -1,5 +1,7 @@
+#include<iostream>
+#include<vector>
 
-#include"binarySearchTree.cpp"
+#include"binarySearchTree.hpp"
 #include"../localLib/randomIntElems.hpp"
 
 int main(){

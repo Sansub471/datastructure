@@ -84,4 +84,23 @@ template <typename T>
 // To print the tree structure
 template <typename T>
     void printTree(T* root, std::string indent="", bool last=true);
+
+// BST operations
+template <typename T>
+    bool SearchBST(T* root, int key);
+
+template <typename T>
+    T* InsertBST(T* root, int data);
+
+template <typename T>
+    T* findInorderSuccessor(T* root);
+
+template <typename T>
+    T* deleteBSTNode(T* root, int data);
+
+template<typename T>
+    T* createBSTree(T* root, std::vector<int>& treeElems);
+
+// Function implementations, for templates keep them in same file or .hpp file
+#include"binarySearchTreeImp.hpp"
 #endif
