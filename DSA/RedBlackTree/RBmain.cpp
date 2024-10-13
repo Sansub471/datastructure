@@ -57,6 +57,8 @@ int main(){
             int nTBd = tree.getRandomElement();
             RBTree->deleteNode(nTBd);          
             
+        }else{
+            std::cout<<"Empty array!"<<std::endl;
         }
     }catch(const std::invalid_argument& e){
         std::cerr<<"Caught exception. " << e.what() << std::endl;
