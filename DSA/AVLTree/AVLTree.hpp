@@ -1,7 +1,6 @@
 #ifndef AVL_TREE
 #define AVL_TREE
 
-
 #ifndef AVL_TREE_NODE
 #define AVL_TREE_NODE
 
@@ -21,8 +20,8 @@ class Node{
 };
 #endif
 
-// For traversal functions
-#include"../BinaryTree/binarySearchTree.hpp"
+//For traversal function
+
 
 // To create a new node
 Node* newNode(int data);
@@ -42,7 +41,11 @@ Node* insertNode(Node* node, int key);
 // Delete a node
 Node* deleteNode(Node* node, int key);
 
+// printTree
+void printTree(Node* root, std::string indent="", bool last=true);
+
 // tree creation function
 Node* createAVLTree(std::vector<int>& avlElems, const std::string& task);
-
+// node deletion function
+Node* removeAVLNode(Node* root, int key, const std::string& task);
 #endif
