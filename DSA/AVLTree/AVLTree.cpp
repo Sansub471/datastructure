@@ -2,7 +2,7 @@
 #include<vector>
 
 namespace bst{
-    #include"../BinaryTree/binarySearchTree.cpp"
+    #include"../BinaryTree/binarySearchTree.hpp"
 }
 #include"AVLTree.hpp"
 
