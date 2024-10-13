@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 #include"binarySearchTree.hpp"
 
 // Traversal functions
@@ -117,6 +118,14 @@ template <typename T>
 
             // delete the inorder successor
             root->right = deleteBSTNode(root->right, temp->data);
+        }
+        return root;
+    }
+
+template<typename T>
+    T* createBSTree(T* root, std::vector<int>& treeElems){
+        for(const auto& elem : treeElems){
+            root = InsertBST(root, elem);
         }
         return root;
     }
