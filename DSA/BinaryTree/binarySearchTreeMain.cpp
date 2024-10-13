@@ -7,7 +7,9 @@ int main(){
 
     std::cout<<"----------------------Binary Search Tree------------------"<<std::endl;
     std::cout<<"Tree one(inorder) : "; inorderDFS(bst1); std::cout<<std::endl;
+    printTree(bst1);
     std::cout<<"Tree two(inorder) : "; inorderDFS(bst2); std::cout<<std::endl;
+    printTree(bst2);
 
     int key = 5;
     std::cout<<"Tree one has " << key << " ? : " << SearchBST(bst1, key) << std::endl;
