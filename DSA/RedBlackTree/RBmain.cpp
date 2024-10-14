@@ -1,4 +1,4 @@
-#include"redBlackTree.cpp"
+#include"redBlackTree.hpp"
 #include"../localLib/randomIntElems.hpp"
 
 int main(){
@@ -43,7 +43,7 @@ int main(){
 
     // create a large RB Tree with random elements
     try{
-        RandomIntElements tree = RandomIntElements(1, 10000, 7000);
+        RandomIntElements tree = RandomIntElements(1, 1000, 500);
         std::vector<int> randomElems = tree.getRandomNumbers();
         if(!randomElems.empty()){
             RedBlackTree* RBTree = getRBTree(randomElems);

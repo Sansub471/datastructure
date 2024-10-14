@@ -1,4 +1,5 @@
 #include"redBlackTree.hpp"
+
 // private methods
 void RedBlackTree::initializeNULLNode(Node* node, Node* parent){
     node->data = 0;
