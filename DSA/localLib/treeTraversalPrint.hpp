@@ -1,3 +1,5 @@
+#ifndef TREE_TRAVERSAL
+#define TREE_TRAVERSAL
 #include<iostream>
 
 // Traversal functions
@@ -42,3 +44,5 @@ template <typename T>
             printTree(root->right, indent, true);
         }
     }
+
+#endif

@@ -1,3 +1,7 @@
+#ifndef RANDOM_INT_ELEMS
+#define RANDOM_INT_ELEMS
+
+
 #include<iostream>
 #include<vector>
 #include<cstdlib>
@@ -71,3 +75,5 @@ class RandomIntElements{
             return this->random_numbers.at(random_index);
         }
 };
+
+#endif
