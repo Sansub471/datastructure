@@ -3,6 +3,7 @@
 
 #include"binarySearchTree.hpp"
 #include"../localLib/randomIntElems.hpp"
+#include"../localLib/treeTraversalPrint.hpp"
 
 int main(){
     SNode* bst1 = BST_ONE();

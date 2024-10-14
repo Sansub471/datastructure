@@ -1,8 +1,6 @@
 #ifndef BINARY_SEARCH_TREE
 #define BINARY_SEARCH_TREE
 
-// Implement Nodes of binary tree
-
 #ifndef BINARY_TREE_STRUCT_NODE
 #define BINARY_TREE_STRUCT_NODE
 // 1: Using struct
@@ -70,20 +68,6 @@ CNode* newCNode(int data){
 // Example BST Trees
 SNode* BST_ONE();
 CNode* BST_TWO();
-
-// Tree traversal functions: DFS techniques, Recursive
-template <typename T>
-    void preorderDFS(T* root);
-
-template <typename T>
-    void inorderDFS(T* root);
-
-template <typename T>
-    void postorderDFS(T* root);
-
-// To print the tree structure
-template <typename T>
-    void printTree(T* root, std::string indent="", bool last=true);
 
 // BST operations
 template <typename T>
