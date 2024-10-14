@@ -1,11 +1,11 @@
 // The structure implementation is more C like
 #include"binaryTree.hpp"
-#include"binaryTreeTraversal.cpp"
+#include"binaryTreeTraversal.hpp"
 
-#include"isFullBinary.cpp"
-#include"isPerfectBinary.cpp"
-#include"isCompleteBinary.cpp"
-#include"isBalancedBinary.cpp"
+#include"isFullBinary.hpp"
+#include"isPerfectBinary.hpp"
+#include"isCompleteBinary.hpp"
+#include"isBalancedBinary.hpp"
 
 int main(){
     struct Node* root = newNode(7);
