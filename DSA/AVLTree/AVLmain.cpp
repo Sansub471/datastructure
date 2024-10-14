@@ -1,4 +1,7 @@
-#include"AVLTree.cpp"
+#include<iostream>
+#include<vector>
+
+#include"AVLTree.hpp"
 
 int main(){
     // Create an array to insert elements into AVL tree
