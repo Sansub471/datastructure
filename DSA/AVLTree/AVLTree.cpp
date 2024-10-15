@@ -148,48 +148,61 @@ Node* deleteNode(Node* root, int key){
 }
 
 //printTree
+void printTree(Node* root, std::string indent, bool last){
+    if(root != nullptr){
+        std::cout<<indent;
+        if(last){
+            std::cout<<"R----"; // Right child indicator
+            indent += "     ";
+        }else{
+            std::cout<<"L----"; // Left child indicator
+            indent += "|    ";
+        }
+        std::cout<< root->data <<"(BF="<<getBalanceFactor(root)<<")"<<std::endl;
+        printTree(root->left, indent, false);
+        printTree(root->right, indent, true);
+    }
+}
+
+
+// helper function to create AVL tree from a given elements
+Node* createAVLTree(std::vector<int>& avlElems, const std::string& task){
+    Node* root = nullptr;
+    std::cout<<"\nAVL Tree: " << task << std::endl;
+    for(const auto& elem : avlElems){
+        root = insertNode(root, elem);
+        //std::cout<<"AVL Tree, inorder : "; inorderDFS(root); std::cout<<std::endl;
+    }
+    std::cout<<"\nFinal AVL Tree, inorder : "; Traversal::inorderDFS(root); std::cout<<std::endl;
+    //printTree(root);
+    printTree(root);
+    return root;
+}
+
+// helper function to delete nodes: all cases checked.
+Node* removeAVLNode(Node* root, int key, const std::string& task){
+    std::cout<<"\nDeleting " << task << std::endl;
+    std::cout<<"AVL Tree, inorder : "; Traversal::inorderDFS(root); std::cout<<std::endl;
+    printTree(root);
+    std::cout<<"Deleting node " << key << std::endl;
+    root = deleteNode(root, key);
+    std::cout<<"AVL Tree, inorder : "; Traversal::inorderDFS(root); std::cout<<std::endl;
+    printTree(root);
+    return root;
+}
+
+// define helper functions inside this namespace to access the above functions, import as library
 namespace AVL{
-    void printTree(Node* root, std::string indent, bool last){
-        if(root != nullptr){
-            std::cout<<indent;
-            if(last){
-                std::cout<<"R----"; // Right child indicator
-                indent += "     ";
-            }else{
-                std::cout<<"L----"; // Left child indicator
-                indent += "|    ";
-            }
-            std::cout<< root->data <<"(BF="<<getBalanceFactor(root)<<")"<<std::endl;
-            AVL::printTree(root->left, indent, false);
-            AVL::printTree(root->right, indent, true);
-        }
+    void printAVLTree(Node* root){
+        printTree(root, "", true);
     }
 
-
-    // helper function to create AVL tree from a given elements
-    Node* createAVLTree(std::vector<int>& avlElems, const std::string& task){
-        Node* root = nullptr;
-        std::cout<<"\nAVL Tree: " << task << std::endl;
-        for(const auto& elem : avlElems){
-            root = insertNode(root, elem);
-            //std::cout<<"AVL Tree, inorder : "; inorderDFS(root); std::cout<<std::endl;
-        }
-        std::cout<<"\nFinal AVL Tree, inorder : "; Traversal::inorderDFS(root); std::cout<<std::endl;
-        //printTree(root);
-        printTree(root);
-        return root;
+    // tree creation
+    Node* AVLTree(std::vector<int>& avlElems, const std::string& task){
+        return createAVLTree(avlElems, task);
     }
 
-
-    // helper function to delete nodes: all cases checked.
-    Node* removeAVLNode(Node* root, int key, const std::string& task){
-        std::cout<<"\nDeleting " << task << std::endl;
-        std::cout<<"AVL Tree, inorder : "; Traversal::inorderDFS(root); std::cout<<std::endl;
-        printTree(root);
-        std::cout<<"Deleting node " << key << std::endl;
-        root = deleteNode(root, key);
-        std::cout<<"AVL Tree, inorder : "; Traversal::inorderDFS(root); std::cout<<std::endl;
-        printTree(root);
-        return root;
+    Node* AVLremove(Node* root, int key, const std::string& task){
+        return removeAVLNode(root, key, task);
     }
 }
