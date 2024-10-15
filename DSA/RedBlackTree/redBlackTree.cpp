@@ -441,3 +441,12 @@ void deleteOperation(RedBlackTree* rbt, int nTBd, const std::string& treeName){
     rbt->printTree();
     std::cout<<std::endl;
 }
+
+namespace RB{
+    RedBlackTree* RBTree(std::vector<int>& rbElems){
+        RedBlackTree* temp =  getRBTree(rbElems);
+        std::cout<<"\nThe red-black tree is : "<<std::endl;
+        temp->printTree();
+        return temp;
+    }
+}

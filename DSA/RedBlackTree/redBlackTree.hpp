@@ -97,4 +97,7 @@ enum COLOR {Black, Red};
 RedBlackTree* getRBTree(std::vector<int>& rbElems);
 void getrbTree(RedBlackTree* rbt, std::vector<int>& rbElems);
 void deleteOperation(RedBlackTree* rbt, int nTBd, const std::string& treeName);
+
+// For library import
+RedBlackTree* RBTree(std::vector<int>& rbElems);
 #endif
