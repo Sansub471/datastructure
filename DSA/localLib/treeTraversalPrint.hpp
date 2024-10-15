@@ -1,7 +1,9 @@
 #ifndef TREE_TRAVERSAL
 #define TREE_TRAVERSAL
 #include<iostream>
+#include<queue>
 
+namespace Traversal{
 // Traversal functions
 template <typename T>
     void preorderDFS(T* root){
@@ -27,6 +29,27 @@ template <typename T>
 
     }
 
+// Breadth-first traversal(BFS)
+// Level order traversal
+template<typename T>
+    void levelOrder(T* root){
+        if(root == nullptr) return; // empty tree
+        std::queue<T*> Q;
+        Q.push(root);
+        while(!Q.empty()){
+            // print front of queue and remove it from queue
+            T* node = Q.front();
+            std::cout<< node->data << " ";
+            Q.pop();
+
+            // Enqueue left child
+            if(node->left != nullptr) Q.push(node->left);
+
+            // Enqueue right child
+            if(node->right != nullptr) Q.push(node->right);
+        }
+    }
+
 // tree print function
 template <typename T>
     void printTree(T* root, std::string indent="", bool last=true){
@@ -45,4 +68,5 @@ template <typename T>
         }
     }
 
+}
 #endif
