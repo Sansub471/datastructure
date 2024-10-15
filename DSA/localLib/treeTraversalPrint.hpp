@@ -30,7 +30,7 @@ template <typename T>
     }
 
 // Breadth-first traversal(BFS)
-// Level order traversal
+// Level order traversal(left-right)
 template<typename T>
     void levelOrder(T* root){
         if(root == nullptr) return; // empty tree
@@ -47,6 +47,27 @@ template<typename T>
 
             // Enqueue right child
             if(node->right != nullptr) Q.push(node->right);
+        }
+    }
+
+// Breadth-first traversal(BFS)
+// Level order traversal(right-left)
+template<typename T>
+    void levelOrderR(T* root){
+        if(root == nullptr) return; // empty tree
+        std::queue<T*> Q;
+        Q.push(root);
+        while(!Q.empty()){
+            // print front of queue and remove it from queue
+            T* node = Q.front();
+            std::cout<< node->data << " ";
+            Q.pop();
+
+            // Enqueue right child
+            if(node->right != nullptr) Q.push(node->right);
+
+            // Enqueue left child
+            if(node->left != nullptr) Q.push(node->left);
         }
     }
 
