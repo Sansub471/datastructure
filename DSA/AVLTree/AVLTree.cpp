@@ -160,8 +160,8 @@ namespace AVL{
                 indent += "|    ";
             }
             std::cout<< root->data <<"(BF="<<getBalanceFactor(root)<<")"<<std::endl;
-            printTree(root->left, indent, false);
-            printTree(root->right, indent, true);
+            AVL::printTree(root->left, indent, false);
+            AVL::printTree(root->right, indent, true);
         }
     }
 

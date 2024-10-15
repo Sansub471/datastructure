@@ -42,12 +42,12 @@ Node* insertNode(Node* node, int key);
 Node* deleteNode(Node* node, int key);
 
 namespace AVL{
-// printTree
-void printTree(Node* root, std::string indent="", bool last=true);
+    // printTree
+    void printTree(Node* root, std::string indent="", bool last=true);
 
-// tree creation function
-Node* createAVLTree(std::vector<int>& avlElems, const std::string& task);
-// node deletion function
-Node* removeAVLNode(Node* root, int key, const std::string& task);
+    // tree creation function
+    Node* createAVLTree(std::vector<int>& avlElems, const std::string& task);
+    // node deletion function
+    Node* removeAVLNode(Node* root, int key, const std::string& task);
 }
 #endif
