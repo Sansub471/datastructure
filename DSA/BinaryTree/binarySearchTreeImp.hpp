@@ -28,6 +28,16 @@ CNode* BST_TWO(){
 
 }
 
+CNode* BST_THREE(){
+    CNode* root = newCNode(3);
+    root->left = newCNode(9);
+    root->right = newCNode(20);
+
+    root->right->left = newCNode(15);
+    root->right->right = newCNode(7);
+    return root;
+}
+
 template <typename T>
     bool SearchBST(T* root, int key){
         // check for emptiness

@@ -5,6 +5,8 @@
 #include"../localLib/randomIntElems.hpp"
 #include"../localLib/treeTraversalPrint.hpp"
 
+#include"../BSTProblems/levelTraversalArray.hpp"
+
 int main(){
     SNode* bst1 = BST_ONE();
     CNode* bst2 = BST_TWO();
@@ -55,7 +57,18 @@ int main(){
     Traversal::levelOrderR(cbst);
     std::cout<<std::endl;
 
+    // array of levelwise nodes
+    std::vector<std::vector<int>> treeOne = levelTraversalArray(bst1);
+    std::vector<std::vector<int>> treeTwo = levelTraversalArray(bst2);
+
+    CNode* bst3 = BST_THREE();
+    std::vector<std::vector<int>> treeThree = levelTraversalArray(bst3);
+    
+
+
 
     delete bst2;
+    delete bst1;
+    delete cbst;
     return 0;
 }

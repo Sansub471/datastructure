@@ -68,6 +68,7 @@ CNode* newCNode(int data){
 // Example BST Trees
 SNode* BST_ONE();
 CNode* BST_TWO();
+CNode* BST_THREE();
 
 // BST operations
 template <typename T>
