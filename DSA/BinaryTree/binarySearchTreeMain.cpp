@@ -59,14 +59,17 @@ int main(){
 
     // array of levelwise nodes
     std::vector<std::vector<int>> treeOne = levelTraversalArray(bst1);
+    std::cout<<"Level Order, tree one : ";
+    Traversal::printVector(treeOne);
+
     std::vector<std::vector<int>> treeTwo = levelTraversalArray(bst2);
+    std::cout<<"Level Order, tree two : ";
+    Traversal::printVector(treeTwo);
 
     CNode* bst3 = BST_THREE();
     std::vector<std::vector<int>> treeThree = levelTraversalArray(bst3);
-    
-
-
-
+    std::cout<<"Level Order, tree three : ";
+    Traversal::printVector(treeThree);
     delete bst2;
     delete bst1;
     delete cbst;
