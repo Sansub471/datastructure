@@ -7,6 +7,7 @@
 
 #include"../BSTProblems/levelTraversalArray.hpp"
 #include"../BSTProblems/levelOrderBottom.hpp"
+#include"../BSTProblems/avgOfLevels.hpp"
 
 int main(){
     SNode* bst1 = BST_ONE();
@@ -52,30 +53,34 @@ int main(){
 
     std::cout<<"\nThe level order traversal(left-right) is:";
     Traversal::levelOrder(cbst);
-    std::cout<<std::endl;
-
     std::cout<<"\nThe level order traversal(right-left) is:";
-    Traversal::levelOrderR(cbst);
-    std::cout<<std::endl;
+    Traversal::levelOrderR(cbst); std::cout<<std::endl; std::cout<<std::endl;
 
     // array of levelwise nodes
     std::vector<std::vector<int>> treeOne = levelTraversalArray(bst1);
     std::cout<<"Level Order, tree one : ";
-    Traversal::printVector(treeOne);
+    Traversal::printVector2D(treeOne);
 
     std::vector<std::vector<int>> treeTwo = levelTraversalArray(bst2);
     std::cout<<"Level Order, tree two : ";
-    Traversal::printVector(treeTwo);
+    Traversal::printVector2D(treeTwo);
+    std::cout<<std::endl;
 
     //CNode* bst3 = BST_THREE();
     std::vector<std::vector<int>> treeThree = levelTraversalArray(cbst);
     std::cout<<"Level Order, cbst : ";
-    Traversal::printVector(treeThree);
+    Traversal::printVector2D(treeThree);
 
     // reverse level wise nodes
     std::vector<std::vector<int>> treeThreeRev = levelOrderBottom(cbst);
     std::cout<<"Reverse level order, cbst : ";
-    Traversal::printVector(treeThreeRev);
+    Traversal::printVector2D(treeThreeRev);
+    std::cout<<std::endl;
+
+    // average of tree levels
+    std::vector<double> avgLevelOne = avgOfLevels(bst1);
+    std::cout<<"Average of levels, tree one : ";
+    Traversal::printVector1D(avgLevelOne);
 
     delete bst2;
     delete bst1;
