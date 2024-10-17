@@ -10,6 +10,8 @@ template<typename T>
         if(root->right) r = minDepthRecur(node->right);
         return std::min(l, r) + 1;
     }
+// Time : O(n)
+// Space : O(h)
 
 // Method II : level order traversal approach
 template<typename T>
@@ -44,3 +46,4 @@ template<typename T>
         }
         return 0;
     }
+// Time and Space : O(n)
