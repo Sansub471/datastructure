@@ -6,6 +6,7 @@
 #include"../localLib/treeTraversalPrint.hpp"
 
 #include"../BSTProblems/levelTraversalArray.hpp"
+#include"../BSTProblems/levelOrderBottom.hpp"
 
 int main(){
     SNode* bst1 = BST_ONE();
@@ -66,10 +67,16 @@ int main(){
     std::cout<<"Level Order, tree two : ";
     Traversal::printVector(treeTwo);
 
-    CNode* bst3 = BST_THREE();
-    std::vector<std::vector<int>> treeThree = levelTraversalArray(bst3);
-    std::cout<<"Level Order, tree three : ";
+    //CNode* bst3 = BST_THREE();
+    std::vector<std::vector<int>> treeThree = levelTraversalArray(cbst);
+    std::cout<<"Level Order, cbst : ";
     Traversal::printVector(treeThree);
+
+    // reverse level wise nodes
+    std::vector<std::vector<int>> treeThreeRev = levelOrderBottom(cbst);
+    std::cout<<"Reverse level order, cbst : ";
+    Traversal::printVector(treeThreeRev);
+
     delete bst2;
     delete bst1;
     delete cbst;
