@@ -2,6 +2,7 @@
 #define TREE_TRAVERSAL
 #include<iostream>
 #include<queue>
+#include<vector>
 
 namespace Traversal{
 // Traversal functions
@@ -89,23 +90,37 @@ template <typename T>
         }
     }
 
-// To print the vector<vector<int>> type
-void printVector(const std::vector<std::vector<int>>& vec) {
-    std::cout << "[";
-    for (size_t i = 0; i < vec.size(); ++i) {
+// print 1D vector
+template <typename T>
+    void printVector1D(const std::vector<T>& vec) {
         std::cout << "[";
-        for (size_t j = 0; j < vec[i].size(); ++j) {
-            std::cout << vec[i][j];
-            if (j < vec[i].size() - 1) {
+        for (size_t i = 0; i < vec.size(); ++i) {
+            std::cout << vec[i];
+            if (i < vec.size() - 1) {
+                std::cout << ", ";
+            }
+        }
+        std::cout << "]" << std::endl;
+    }
+
+// print 2D vector
+template <typename T>
+    void printVector2D(const std::vector<std::vector<T>>& vec) {
+        std::cout << "[";
+        for (size_t i = 0; i < vec.size(); ++i) {
+            std::cout << "[";
+            for (size_t j = 0; j < vec[i].size(); ++j) {
+                std::cout << vec[i][j];
+                if (j < vec[i].size() - 1) {
+                    std::cout << ",";
+                }
+            }
+            std::cout << "]";
+            if (i < vec.size() - 1) {
                 std::cout << ",";
             }
         }
-        std::cout << "]";
-        if (i < vec.size() - 1) {
-            std::cout << ",";
-        }
+        std::cout << "]" << std::endl;
     }
-    std::cout << "]" << std::endl;
-} 
 }
 #endif
