@@ -8,6 +8,8 @@
 #include"../BSTProblems/levelTraversalArray.hpp"
 #include"../BSTProblems/levelOrderBottom.hpp"
 #include"../BSTProblems/avgOfLevels.hpp"
+#include"../BSTProblems/treeTilt.hpp"
+#include"../BSTProblems/uniqueBST1toN.hpp"
 
 int main(){
     SNode* bst1 = BST_ONE();
@@ -40,10 +42,10 @@ int main(){
     std::cout<<"Tree two(inorder) : "; Traversal::inorderDFS(bst2); std::cout<<std::endl;
 
     // creating a BST with randomly generated array
-    RandomIntElements tree = RandomIntElements(2, 100, 10);
-    std::vector<int> randomElems = tree.getRandomNumbers();
+    RandomIntElements treeElems = RandomIntElements(2, 100, 10);
+    std::vector<int> randomElems = treeElems.getRandomNumbers();
     std::cout<<"\nThe array to create BST is: "; 
-    tree.printElements();
+    treeElems.printElements();
 
     CNode* cbst = createBSTree(static_cast<CNode*>(nullptr), randomElems);
     Traversal::printTree(cbst);
@@ -81,6 +83,17 @@ int main(){
     std::vector<double> avgLevelOne = avgOfLevels(bst1);
     std::cout<<"Average of levels, tree one : ";
     Traversal::printVector1D(avgLevelOne);
+
+    // tree tilt
+    int tilt = treeTilt(bst2);
+    std::cout<<"\nThe tilt of tree two = " << tilt << std::endl;
+    Traversal::printTree(bst2);
+
+    // unique BST from numbers 1 to N
+    std::vector<CNode*> trees = uniqueBST1toN<CNode>(3);
+    std::cout<<"\nThe unique BSTs are(pre-order) :";
+    Traversal::printBST1toN(trees);
+
 
     delete bst2;
     delete bst1;
