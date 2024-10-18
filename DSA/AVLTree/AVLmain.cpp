@@ -28,20 +28,27 @@ int main(){
     int key = 13;
     const std::string dtask1 = "node with both children.";
     root3 = removeAVLNode(root3, key, dtask1);
+    printTree(root3);
 
     // delete leafnode
     key = 35;
     const std::string dtask2 = "leafnode.";
     root1 = removeAVLNode(root1, key, dtask2);
+    printTree(root1);
 
     // delete node with one children
     key = 8;
     const std::string dtask3 = "node with one children.";
     root = removeAVLNode(root, key, dtask3);
+    printTree(root);
  
     // non-existent node
     key = 78;
     const std::string dtask4 = "non-existent node.";
-    root2 = removeAVLNode(root2, key, dtask4);   
+    root2 = removeAVLNode(root2, key, dtask4);
+    printTree(root2);
+
+    // delete allocated memory
+    delete root, root1, root2, root3;   
     return 0;
 }

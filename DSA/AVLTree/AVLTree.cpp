@@ -187,7 +187,7 @@ Node* removeAVLNode(Node* root, int key, const std::string& task){
     std::cout<<"Deleting node " << key << std::endl;
     root = deleteNode(root, key);
     std::cout<<"AVL Tree, inorder : "; Traversal::inorderDFS(root); std::cout<<std::endl;
-    printTree(root);
+    //printTree(root);
     return root;
 }
 
