@@ -29,49 +29,53 @@ template <typename T>
         result.push_back(root->data); // just for printing purpose
     }
 
-void printFormattedDFS(const std::vector<int>& result) {
-    std::cout << "[";
-    for (size_t i = 0; i < result.size(); ++i) {
-        std::cout << result[i];
-        if (i < result.size() - 1) {
-            std::cout << ",";
+// print 1D vector
+template <typename T>
+    void printVector1D(const std::vector<T>& vec) {
+        std::cout << "[";
+        for (size_t i = 0; i < vec.size(); ++i) {
+            std::cout << vec[i];
+            if (i < vec.size() - 1) {
+                std::cout << ", ";
+            }
         }
+        std::cout << "]";
     }
-    std::cout << "]";
-}
 
 template <typename T>
     void preorderDFS(T* root) {
         std::vector<int> result;
         preorderDFSHelper(root, result);
-        printFormattedDFS(result);
+        printVector1D(result);
     }
 
 template <typename T>
     void inorderDFS(T* root) {
         std::vector<int> result;
         inorderDFSHelper(root, result);
-        printFormattedDFS(result);
+        printVector1D(result);
     }
 
 template <typename T>
     void postorderDFS(T* root) {
         std::vector<int> result;
         postorderDFSHelper(root, result);
-        printFormattedDFS(result);
+        printVector1D(result);
     }
 
 // Breadth-first traversal(BFS)
 // Level order traversal(left-right)
+// The vector element is just for printing, you could simply cout the data there
 template<typename T>
-    void levelOrder(T* root){
+    void levelOrderHelper(T* root, std::vector<int>& result){
         if(root == nullptr) return; // empty tree
         std::queue<T*> Q;
         Q.push(root);
         while(!Q.empty()){
             // print front of queue and remove it from queue
             T* node = Q.front();
-            std::cout<< node->data << " ";
+            //std::cout<< node->data << " ";
+            result.push_back(node->data);
             Q.pop();
 
             // Enqueue left child
@@ -80,6 +84,13 @@ template<typename T>
             // Enqueue right child
             if(node->right != nullptr) Q.push(node->right);
         }
+    }
+
+template<typename T>
+    void levelOrder(T* root){
+        std::vector<int> result;
+        levelOrderHelper(root, result);
+        printVector1D(result);
     }
 
 // Breadth-first traversal(BFS)
@@ -121,18 +132,7 @@ template <typename T>
         }
     }
 
-// print 1D vector
-template <typename T>
-    void printVector1D(const std::vector<T>& vec) {
-        std::cout << "[";
-        for (size_t i = 0; i < vec.size(); ++i) {
-            std::cout << vec[i];
-            if (i < vec.size() - 1) {
-                std::cout << ", ";
-            }
-        }
-        std::cout << "]" << std::endl;
-    }
+
 
 // print 2D vector
 template <typename T>
