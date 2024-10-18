@@ -49,3 +49,26 @@ template<typename T>
 // Input : Binary Tree or BST or AVL or RB Tree
 // Output : [[L0-Array], [L1-Array], ..., [Ln-Array]]
 // Time complexity: O(n), just like traversal only 
+
+// Better leetcode solution 
+template<typename T>
+    std::vector<std::vector<int>> levelOrderTraverse(T* root) {
+        std::vector<std::vector<int>> leveledNodes; // nodes of all levels
+        if(root == nullptr) return {{}};
+        std::queue<T*> q;
+        q.push(root);
+        std::vector<int> lvlNodes; // nodes of one level
+        while(!q.empty()) {
+            int n = q.size();
+            for(int i = 0; i < n; i++) {
+                T* currNode = q.front();
+                q.pop();
+                lvlNodes.push_back(currNode->data);
+                if(currNode->left != nullptr) q.push(currNode->left);
+                if(currNode->right != nullptr) q.push(currNode->right);
+            }
+            leveledNodes.push_back(lvlNodes);
+            lvlNodes.clear();
+        }
+        return leveledNodes;
+    }
