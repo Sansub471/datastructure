@@ -5,29 +5,60 @@
 #include<vector>
 
 namespace Traversal{
-// Traversal functions
 template <typename T>
-    void preorderDFS(T* root){
-        if(root == nullptr) return;
-        std::cout<<root->data<<", ";
-        preorderDFS(root->left);
-        preorderDFS(root->right);
+    void preorderDFSHelper(T* root, std::vector<int>& result) {
+        if (root == nullptr) return;
+        result.push_back(root->data); // just for printing purpose
+        preorderDFSHelper(root->left, result);
+        preorderDFSHelper(root->right, result);
     }
 
 template <typename T>
-    void inorderDFS(T* root){
-        if(root == nullptr) return;
-        inorderDFS(root->left);
-        std::cout<< root->data <<", ";
-        inorderDFS(root->right);
+    void inorderDFSHelper(T* root, std::vector<int>& result) {
+        if (root == nullptr) return;
+        inorderDFSHelper(root->left, result);
+        result.push_back(root->data); // just for printing purpose
+        inorderDFSHelper(root->right, result);
     }
 
 template <typename T>
-    void postorderDFS(T* root){
-        postorderDFS(root->left);
-        postorderDFS(root->right);
-        std::cout<< root->data <<", ";
+    void postorderDFSHelper(T* root, std::vector<int>& result) {
+        if (root == nullptr) return;
+        postorderDFSHelper(root->left, result);
+        postorderDFSHelper(root->right, result);
+        result.push_back(root->data); // just for printing purpose
+    }
 
+void printFormattedDFS(const std::vector<int>& result) {
+    std::cout << "[";
+    for (size_t i = 0; i < result.size(); ++i) {
+        std::cout << result[i];
+        if (i < result.size() - 1) {
+            std::cout << ",";
+        }
+    }
+    std::cout << "]";
+}
+
+template <typename T>
+    void preorderDFS(T* root) {
+        std::vector<int> result;
+        preorderDFSHelper(root, result);
+        printFormattedDFS(result);
+    }
+
+template <typename T>
+    void inorderDFS(T* root) {
+        std::vector<int> result;
+        inorderDFSHelper(root, result);
+        printFormattedDFS(result);
+    }
+
+template <typename T>
+    void postorderDFS(T* root) {
+        std::vector<int> result;
+        postorderDFSHelper(root, result);
+        printFormattedDFS(result);
     }
 
 // Breadth-first traversal(BFS)
@@ -122,5 +153,17 @@ template <typename T>
         }
         std::cout << "]" << std::endl;
     }
+
+// print BST trees, 1 to N
+template<typename T>
+    void printBST1toN(const std::vector<T*>& trees){
+        std::cout<<"[";
+        for (int i = 0; i < trees.size(); ++i) {
+            preorderDFS(trees[i]);
+            if(i != trees.size() - 1) std::cout << ", ";
+        }
+        std::cout<<"]"<<std::endl;
+    }
+
 }
 #endif
