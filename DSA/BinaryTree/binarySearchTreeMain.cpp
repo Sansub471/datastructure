@@ -10,6 +10,8 @@
 #include"../BSTProblems/avgOfLevels.hpp"
 #include"../BSTProblems/treeTilt.hpp"
 #include"../BSTProblems/uniqueBST1toN.hpp"
+#include"../BSTProblems/sortedArrayToBST.hpp"
+#include"../BSTProblems/zigzagLevelOrder.hpp"
 
 int main(){
     SNode* bst1 = BST_ONE();
@@ -73,9 +75,21 @@ int main(){
     std::cout<<"Level Order, cbst : ";
     Traversal::printVector2D(treeThree);
 
+    treeThree = levelOrderTraverse(cbst);
+    std::cout<<"Level Order, cbst : ";
+    Traversal::printVector2D(treeThree);
+
+    // zig-zag level order traversal
+    std::vector<std::vector<int>> zigzagTreeThree = zigzagLevelOrder(cbst);
+    std::cout<<"\nZig-zag Level order, cbst : ";
+    Traversal::printVector2D(zigzagTreeThree);
+    zigzagTreeThree = zigzagLevelOrderLeet(cbst);
+    std::cout<<"Zig-zag Level order, cbst : ";
+    Traversal::printVector2D(zigzagTreeThree);
+
     // reverse level wise nodes
     std::vector<std::vector<int>> treeThreeRev = levelOrderBottom(cbst);
-    std::cout<<"Reverse level order, cbst : ";
+    std::cout<<"\nReverse level order, cbst : ";
     Traversal::printVector2D(treeThreeRev);
     std::cout<<std::endl;
 
@@ -93,6 +107,12 @@ int main(){
     std::vector<CNode*> trees = uniqueBST1toN<CNode>(3);
     std::cout<<"\nThe unique BSTs are(pre-order) :";
     Traversal::printBST1toN(trees);
+
+    // sorted array to BST
+    std::vector<int> nums {1,2,3};
+    CNode* arr2bst = sortedArrayToBST<CNode>(nums);
+    std::cout<<"\nSorted Array Binary Search Tree is :\n";
+    Traversal::printTree(arr2bst);
 
 
     delete bst2;
