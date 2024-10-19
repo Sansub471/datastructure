@@ -7,7 +7,7 @@
 #include<cstdlib>
 #include<ctime>
 
-// generate elements within a range for a RB tree 
+// generate elements within a range
 class RandomIntElements{
     private:
         int lower, upper, max_size;
@@ -18,7 +18,7 @@ class RandomIntElements{
             int min_size = range_size / 2;
             if(this->max_size == -1){
                 std::srand(std::time(0));
-                this->max_size = min_size + (std::rand() % (range_size - min_size + 1));
+                this->max_size = min_size + (std::rand() % (range_size - min_size + 1)); 
             }
 
             for(int i=0; i < this->max_size; ++i){
