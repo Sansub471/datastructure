@@ -12,6 +12,7 @@
 #include"../BSTProblems/uniqueBST1toN.hpp"
 #include"../BSTProblems/sortedArrayToBST.hpp"
 #include"../BSTProblems/zigzagLevelOrder.hpp"
+#include"../BSTProblems/sortedLinkedListToBST.hpp"
 
 int main(){
     SNode* bst1 = BST_ONE();
@@ -114,6 +115,16 @@ int main(){
     std::cout<<"\nSorted Array Binary Search Tree is :\n";
     Traversal::printTree(arr2bst);
 
+    // sorted linkedList to BST
+    LinkedList::Node* head = sortedLinkedList(10, 100, 10);
+    std::cout<<"The linked list : "; 
+    LinkedList::PrintList(head);
+    CNode* linkedBST = sortedListToBST<CNode>(head);
+    std::cout<<"\nSorted linked list to BST : \n";
+    Traversal::printTree(linkedBST);
+    linkedBST = sortedListToBSTLeet<CNode>(head);
+    std::cout<<"\nsortedListToBSTLeet: \n";
+    Traversal::printTree(linkedBST);
 
     delete bst2;
     delete bst1;
