@@ -1,46 +1,39 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
+#include <iostream>
 
-namespace LinkedList{
-    #ifndef LINKED_NODE
-    #define LINKED_NODE
+namespace LinkedList {
+    struct Node {
+        int data; 
+        Node* next;
 
-    struct Node
-    {
-        int data;
-        struct Node* next;
+        // Constructors
+        Node() : data(0), next(nullptr) {}
+        Node(int x) : data(x), next(nullptr) {}
+        Node(int x, Node* nextNode) : data(x), next(nextNode) {}
     };
 
-    #endif
-    struct Node* headpoint;
+    Node* headpoint = nullptr;
 
-    //Insert at he beginning
-    struct Node* Insert(struct Node* head, int x)
-    {
-        struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
-        //(*temp).data = x;
-        temp->data = x;
-        temp->next = NULL;
-        if (head != NULL) temp->next = head;
+    // Insert at the beginning
+    Node* Insert(Node* head, int x) {
+        Node* temp = new Node(x);
+        temp->next = head;
         head = temp;
         return head;
     }
 
-    struct Node* InsertPosition(struct Node* head,int data, int n)
-    {
-        struct Node* temp1 = (struct Node*)malloc(sizeof(struct Node));
-        temp1->data = data;
-        temp1->next = NULL;
+    // Insert at a specific position
+    Node* InsertPosition(Node* head, int data, int n) {
+        Node* temp1 = new Node(data);
         if (n == 1) { 
-            temp1 ->next = head;
+            temp1->next = head;
             head = temp1;
             return head;
         }
-        struct Node* temp2 = head;
-        // need to reach upto n - 1 th node
-        for(int i=0; i<n-2; i++)
-        {
+        Node* temp2 = head;
+        for(int i = 0; i < n - 2; ++i) {
             temp2 = temp2->next;
         }
         temp1->next = temp2->next;
@@ -48,49 +41,44 @@ namespace LinkedList{
         return head;
     }
 
-    struct Node* InsertAtEnd(struct Node* head, int data)
-    {
-        struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
-        temp->data = data;
-        temp->next = NULL;
-        if (head == NULL){
-            head = temp;  
+    // Insert at the end
+    Node* InsertAtEnd(Node* head, int data) {
+        Node* temp = new Node(data);
+        if (head == nullptr) {
+            head = temp;
             return head;
         }
-        struct Node* temp1 = head;
-        while(temp1->next != NULL) temp1 = temp1->next;
+        Node* temp1 = head;
+        while (temp1->next != nullptr) {
+            temp1 = temp1->next;
+        }
         temp1->next = temp;
         return head;
     }
 
-    // Try deleting given value, first occurence or all occurences.
-    // Assume valid value if n is given.
-    struct Node* DeletePosition(struct Node* head, int n)
-    {
-        struct Node* temp = head;
-        if (n == 1)
-        {
-            head = temp->next; // (*temp).next
-            free(temp);
+    // Delete a node at a given position
+    Node* DeletePosition(Node* head, int n) {
+        Node* temp = head;
+        if (n == 1) {
+            head = temp->next;
+            delete temp;
             return head;
         }
-        for (int i=0; i<n-2; i++)
-        {
-            temp = temp->next; //itereate the list upto n - 1 th Node
+        for (int i = 0; i < n - 2; ++i) {
+            temp = temp->next;
         }
-        struct Node* temp1 = temp->next; // nth Node
-        temp->next = temp1->next;// (n + 1) Node
-        free(temp1);
+        Node* temp1 = temp->next;
+        temp->next = temp1->next;
+        delete temp1;
         return head;
     }
 
-    struct Node* ReverseByIteration(struct Node* head)
-    {
-        struct Node* current = head;
-        struct Node* prev = NULL;
-        struct Node* next;
-        while(current != NULL)
-        {
+    // Reverse the linked list iteratively
+    Node* ReverseByIteration(Node* head) {
+        Node* current = head;
+        Node* prev = nullptr;
+        Node* next;
+        while (current != nullptr) {
             next = current->next;
             current->next = prev;
             prev = current;
@@ -100,41 +88,42 @@ namespace LinkedList{
         return head;
     }
 
-    void PrintList(struct Node* head)
-    {
-        while(head != NULL)
-        {
-            printf(" %d", head->data);
+    // Print the list iteratively
+    void PrintList(Node* head) {
+        while (head != nullptr) {
+            std::cout << head->data << " ";  
             head = head->next;
         }
-        printf("\n");
+        std::cout << std::endl;
     }
 
-    void ReverseByRecursion(struct Node* p)
-    {
-        // Base case : empty list or only one node
-        if (p->next == NULL){
+    // Reverse the list recursively
+    void ReverseByRecursion(Node* p) {
+        if (p->next == nullptr) {
             headpoint = p;
             return;
         }
-        LinkedList::ReverseByRecursion(p->next);
-        struct Node* q = p->next;
+        ReverseByRecursion(p->next);
+        Node* q = p->next;
         q->next = p;
-        p->next = NULL;
+        p->next = nullptr;
     }
 
-    void PrintRecursion(struct Node* head)
-    {
-        if (head == NULL) {printf("\n"); return ;} // Exit condition
-        printf("%d ", head->data);
-        LinkedList::PrintRecursion(head->next);
+    // Print the list recursively
+    void PrintRecursion(Node* head) {
+        if (head == nullptr) {
+            std::cout << std::endl;
+            return;
+        }
+        std::cout << head->data << " ";  
+        PrintRecursion(head->next);
     }
 
-    void ReversePrintRecursion(struct Node* head)
-    {
-        if (head == NULL) return;
-        LinkedList::ReversePrintRecursion(head->next);
-        printf("%d ", head->data);
+    // Reverse print the list recursively
+    void ReversePrintRecursion(Node* head) {
+        if (head == nullptr) return;
+        ReversePrintRecursion(head->next);
+        std::cout << head->data << " ";  
     }
 }
 #endif
