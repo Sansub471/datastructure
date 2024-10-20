@@ -3,15 +3,12 @@
 // If at any level the current node is a leaf node and the remaining sum is equal to zero then return true.   
 template<typename T>
     bool PathSum(T* root, int sum) {
-        if (root == NULL) return 0;
-
-        int subSum = sum - root->val;     
-        if (subSum == 0 && root->left == nullptr && root->right == nullptr)
-            return 1;
+        if (root == nullptr) return 0;
+        int subSum = sum - root->data;     
+        if (subSum == 0 && root->left == nullptr && root->right == nullptr) return 1;
 
         // Otherwise check both subtrees
         bool left = 0, right = 0;
-        
         if (root->left)
             left = PathSum(root->left, subSum);
         if (root->right)
@@ -19,3 +16,6 @@ template<typename T>
 
         return left || right;
     }
+
+// part II of the problem. 
+// Return all the paths that has the pathSum 

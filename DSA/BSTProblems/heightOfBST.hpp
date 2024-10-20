@@ -1,3 +1,4 @@
+#pragma once
 // Find the height of a BST, should work for AVL as well as RB Tree.
 template<typename T>
     int BSTheight(T* root){

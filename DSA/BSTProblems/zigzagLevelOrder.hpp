@@ -1,5 +1,7 @@
 // zig-zag level order traversal 
 //left-right, right-left and so on
+#pragma once
+
 #include<vector>
 #include<queue>
 #include<algorithm>

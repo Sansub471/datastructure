@@ -4,6 +4,8 @@
 // Trick : Try to reverse the levelTraversalArray.hpp 
 // Reverse the 'leveledNodes', time complexity = O(n)
 // The traversal itself had O(n) complexity
+#pragma once
+
 #include<stack>
 #include<queue>
 #include<vector>

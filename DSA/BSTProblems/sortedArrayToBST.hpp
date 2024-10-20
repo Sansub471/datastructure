@@ -1,3 +1,4 @@
+#pragma once
 #include<vector>
 template<typename T>
     T* sortedArrayToBSTHelper(std::vector<int>& nums, int start, int end){

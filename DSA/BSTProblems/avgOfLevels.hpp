@@ -1,4 +1,5 @@
 // given a binary tree, find the average of each levels
+#pragma once
 #include<vector>
 #include<queue>
 

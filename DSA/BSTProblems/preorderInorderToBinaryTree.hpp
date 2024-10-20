@@ -35,3 +35,5 @@ public:
         return makeTree(0, inorder.size() - 1);        
     }
 };
+
+// Better solution using unordered map

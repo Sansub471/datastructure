@@ -1,3 +1,4 @@
+#pragma once
 // Tilt of a binary tree = sum of tilt of each node
 // tilt of each node = |sum of left subtree nodes - sum of right sub tree node|
 

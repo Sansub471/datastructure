@@ -1,3 +1,4 @@
+#pragma once
 #include<queue>
 
 // Method I : Recursive approach
