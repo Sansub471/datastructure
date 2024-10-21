@@ -1,3 +1,4 @@
+#pragma once
 #include"binaryTree.hpp"
 
 struct Node* completeBinaryTree(){

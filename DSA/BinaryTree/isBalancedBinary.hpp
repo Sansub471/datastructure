@@ -1,5 +1,5 @@
+#pragma once
 #include"binaryTree.hpp"
-
 
 struct Node* balancedBinaryTree(){
     // give a tree to test balancec binary condition

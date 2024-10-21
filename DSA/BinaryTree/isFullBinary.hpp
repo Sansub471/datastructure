@@ -1,3 +1,4 @@
+#pragma once
 #include"binaryTree.hpp"
 
 // To check whether a binary tree is full binary tree or not?
