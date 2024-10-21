@@ -6,6 +6,7 @@
 #include"isPerfectBinary.hpp"
 #include"isCompleteBinary.hpp"
 #include"isBalancedBinary.hpp"
+#include"isBinarySearchTree.hpp"
 
 int main(){
     struct Node* root = newNode(7);
