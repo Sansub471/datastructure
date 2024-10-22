@@ -5,7 +5,11 @@
 
 namespace LinkedList {
     struct Node {
-        int data; 
+        // Just to make code compatible, you can omit union and use one int 
+        union {
+            int data; // Original member
+            int val;  // Alias for 'data'
+        };
         Node* next;
 
         // Constructors
