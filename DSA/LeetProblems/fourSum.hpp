@@ -1,6 +1,7 @@
 #pragma once
 #include<vector>
 #include<algorithm>
+#include<unordered_map>
 
 std::vector<std::vector<int>> fourSum(std::vector<int>& nums, int target) {
     int n = nums.size();
@@ -36,3 +37,26 @@ std::vector<std::vector<int>> fourSum(std::vector<int>& nums, int target) {
     return _4sums;
 }
 // Time complexity : O(n^3)
+
+// Four sum II : O(n^2)
+int fourSumCount(std::vector<int>& nums1, std::vector<int>& nums2, std::vector<int>& nums3, std::vector<int>& nums4) {
+    int count = 0;
+    std::unordered_map<long, int> sumMap;
+    // creating sum map: O(n^2)
+    for(int i = 0; i < nums1.size(); ++i){
+        for(int j = 0; j < nums2.size(); ++j){
+            long sum = nums1[i] + nums2[j];
+            sumMap[sum]++; // if key doesn't exist, value initialized zero
+        }
+    }
+    // search for complement sum, O(n^2)
+    for(int k = 0; k < nums3.size(); ++k){
+        for(int l = 0; l < nums4.size(); ++l){
+            int compSum = -(nums3[k] + nums4[l]);
+            if(sumMap.find(compSum) != sumMap.end()){
+                count += sumMap[compSum];
+            }
+        }
+    }
+    return count;
+}
