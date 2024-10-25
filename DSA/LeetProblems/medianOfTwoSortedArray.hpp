@@ -25,3 +25,5 @@ double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) 
         return ((merged[n / 2 - 1] + merged[n / 2]) / 2.0);
     }      
 }
+
+// Try binary search approach without merging both arrays.
