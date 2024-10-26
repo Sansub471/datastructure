@@ -58,3 +58,43 @@ ListNode* reorderList(ListNode* head) {
 }
 
 // O(n) time complexity
+
+// Leet code solution
+void reorderListLeet(ListNode* head) {
+    if(!head || !head->next) {
+            return;
+    }
+
+    ListNode *slow=head;
+    ListNode *fast=head;
+
+    // go upto the middle node
+    while(fast && fast->next) {
+            slow=slow->next;
+            fast=fast->next->next;
+    }
+
+    ListNode *prev=nullptr;
+    ListNode *curr=slow;
+    ListNode *next=nullptr;
+
+    // reverse the lower half
+    while(curr) {
+            next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+    }
+    // merge the original and reversed(lower half) one after the other.
+    ListNode *first=head;
+    ListNode *second=prev;
+    while(second->next) {
+            ListNode *tmp1=first->next;
+            ListNode *tmp2=second->next;
+            first->next=second;
+            second->next=tmp1;
+
+            first=tmp1;
+            second=tmp2;
+    }
+}
