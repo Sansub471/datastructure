@@ -9,11 +9,11 @@ int main()
     // Inserting at the beginning
     printf("How many numbers?\n");
     int n, i, x;
-    scanf("%d", &n);
+    scanf_s("%d", &n);
     for (i=0; i<n; i++)
     {
         printf("Enter the number: \n");
-        scanf("%d", &x);
+        scanf_s("%d", &x);
         head = Insert(head, x);
         PrintList(head);
     }
