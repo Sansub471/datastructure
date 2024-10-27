@@ -7,8 +7,8 @@ template<typename T>
         if(root == nullptr) return 0;
         if(root->left == nullptr && root->right == nullptr) return 1;
         int l = __INT_MAX__, r = __INT_MAX__;
-        if(root->left) l = minDepthRecur(node->left);
-        if(root->right) r = minDepthRecur(node->right);
+        if(root->left) l = minDepthRecur(root->left);
+        if(root->right) r = minDepthRecur(root->right);
         return std::min(l, r) + 1;
     }
 // Time : O(n)
