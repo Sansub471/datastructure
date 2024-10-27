@@ -18,7 +18,7 @@ ListNode* reverseList(ListNode* head){
 bool isPalindrome(ListNode* head) {
     ListNode* slow = head;
     ListNode* fast = head;
-    while(fast->next!=NULL && fast->next->next!=NULL){
+    while(fast->next!=nullptr && fast->next->next!=nullptr){
         slow = slow->next;
         fast = fast->next->next;
     }
