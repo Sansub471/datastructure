@@ -14,7 +14,8 @@
 
 #pragma once
 #include<vector>
-bool searchMatrix(std::vector<std::vector<int>>& matrix, int target) {
+// Search matrix I
+bool searchMatrixI(std::vector<std::vector<int>>& matrix, int target) {
     for(int i = 0; i < matrix.size(); ++i){
         if(matrix[i][0] <= target && target <= matrix[i][matrix[i].size() - 1]){
             int left = 0, right = matrix[i].size() - 1;
@@ -29,5 +30,23 @@ bool searchMatrix(std::vector<std::vector<int>>& matrix, int target) {
             }
         }
     }
+    return false;
+}
+
+// Search matrix II
+bool searchMatrixII(vector<vector<int>>& matrix, int target) {
+    int row = 0, col = matrix[row].size() - 1;
+    while(row < matrix.size() && col >= 0){
+        if(matrix[row][col] == target){
+            matrix.clear();
+            return true;
+        }
+        if(matrix[row][col] > target){
+            --col;
+        }else{
+            ++row;
+        }
+    }
+    matrix.clear();
     return false;
 }
