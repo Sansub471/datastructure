@@ -11,6 +11,7 @@
 #include"simplifyPath.hpp"
 #include"romanToInt.hpp"
 
+#include"searchMatrix.hpp"
 int main(){
     // reverse an integer
     int x = 123;
@@ -49,5 +50,11 @@ int main(){
     std::string roman = "MMMDCCCLXXXVIII";
     int romanInt = romanToInt(roman);
     std::cout<<"The roman: " << roman << "to int : " << romanInt <<std::endl;
+
+    // search matrix
+    std::vector<std::vector<int>> matrix {{-10},{-5},{-7}};
+    int target = -10;
+    bool matFound = searchMatrixI(matrix, target);
+    std::cout<<"The search result is : " << matFound << std::endl;
     return 0;
 }
