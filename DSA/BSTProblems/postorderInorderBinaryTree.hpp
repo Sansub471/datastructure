@@ -20,8 +20,8 @@ public:
         int index = search(start, end, key);
         this->postIndex--;
         TreeNode* node = new TreeNode(key);
-        node->left = makeTree(start, index - 1);
         node->right = makeTree(index + 1, end);
+        node->left = makeTree(start, index - 1);
         return node;
 
     }
