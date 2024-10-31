@@ -17,6 +17,8 @@ namespace RB{
 #include"heightOfBST.hpp"
 #include"maxMinNode.hpp"
 
+#include"postorderInorderBinaryTree.hpp"
+
 int main(){
     // Creating variations of BST trees, including AVL and RB Tree
     RandomIntElements tree = RandomIntElements(2, 100, 20);
@@ -43,4 +45,12 @@ int main(){
     std::cout<<"The height of BST = " << BSTheight(bst) << std::endl;
     std::cout<<"The height of AVL = " << BSTheight(avl) << std::endl;
     //std::cout<<"The height of RBT = " << BSTheight(rbt->getRoot()) << std::endl;
+
+    // post&inorder to binary tree
+    std::vector<int> inorderArr {9,3,15,20,7};
+    std::vector<int> postorderArr {9,15,7,20,3};
+    postorderInorderToBinaryTree postin;
+    TreeNode* posinTree = postin.buildTree(inorderArr, postorderArr);
+    Traversal::printTree(posinTree);
+    return 0;
 }
