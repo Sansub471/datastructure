@@ -34,7 +34,7 @@ bool searchMatrixI(std::vector<std::vector<int>>& matrix, int target) {
 }
 
 // Search matrix II
-bool searchMatrixII(vector<vector<int>>& matrix, int target) {
+bool searchMatrixII(std::vector<std::vector<int>>& matrix, int target) {
     int row = 0, col = matrix[row].size() - 1;
     while(row < matrix.size() && col >= 0){
         if(matrix[row][col] == target){
