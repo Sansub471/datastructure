@@ -3,7 +3,10 @@
 #define TREE_NODE_LEET
 
 struct TreeNode {
-    int val;
+    union{   
+        int val;
+        int data;
+    };
     TreeNode *left;
     TreeNode *right;
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
