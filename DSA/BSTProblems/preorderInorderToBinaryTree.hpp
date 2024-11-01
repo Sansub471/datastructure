@@ -37,4 +37,3 @@ public:
 };
 
 // Better solution using unordered map
-// The day starts for now.
