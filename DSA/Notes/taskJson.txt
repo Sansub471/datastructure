@@ -1,0 +1,32 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ build active file", // you can name it to describe your task
+            "command": "/usr/bin/g++-12", // the program to run, g++
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ], // args means arguments to pass, in the correct order
+            // task tells g++ to take the active file (${file}), 
+            //compile it, and create an executable file in the current directory (${fileDirname}) with the same name as the active file but without an extension (${fileBasenameNoExtension})
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true // set task as default or not
+            },
+            "detail": "Build all cpp files in CWD"
+            // description of the task in task list, highly recommended to rename and make it distinct
+        }
+    ],
+    "version": "2.0.0"
+}
+// 
