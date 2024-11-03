@@ -103,7 +103,3 @@ int main() {
 
     return 0;
 }
-
-// Pretty similar to my ides, just using map for constant lookup process.
-
-// Beats 100% now.
