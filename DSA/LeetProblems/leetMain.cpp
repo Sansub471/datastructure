@@ -12,6 +12,8 @@
 #include"romanToInt.hpp"
 
 #include"searchMatrix.hpp"
+#include"combinationSum.hpp"
+
 int main(){
     // reverse an integer
     int x = 123;
@@ -49,12 +51,19 @@ int main(){
     // Convert roman number to integer
     std::string roman = "MMMDCCCLXXXVIII";
     int romanInt = romanToInt(roman);
-    std::cout<<"The roman: " << roman << "to int : " << romanInt <<std::endl;
+    std::cout<<"\nThe roman: " << roman << "to int : " << romanInt <<std::endl;
 
     // search matrix
     std::vector<std::vector<int>> matrix {{-10},{-5},{-7}};
     int target = -10;
     bool matFound = searchMatrixI(matrix, target);
-    std::cout<<"The search result is : " << matFound << std::endl;
+    std::cout<<"\nThe search result is : " << matFound << std::endl;
+
+    // combination sum
+    std::vector<int> candidates {6,3,2,7};
+    target = 7;
+    std::vector<std::vector<int>> combinations  = combinationSum(candidates, target);
+    std::cout<<"\nThe combinations are : ";
+    Traversal::printVector2D(combinations);
     return 0;
 }
