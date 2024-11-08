@@ -75,3 +75,42 @@ std::vector<std::vector<int>> combinationSum2(std::vector<int>& candidates, int 
     backtrack(candidates, combinations, currComb, target, startIndex);
     return combinations;
 }
+
+// Generate combinations from given array
+// unlike next_permutation, next_combination is not part of the standard C++ library. 
+// To generate combinations, you typically need to write a custom function or use techniques 
+// involving std::bitset or std::vector for binary representation.
+
+// Custom Approach for Combinations
+// Here's a common technique using std::bitset or loop control:
+
+// Use Binary Representation:
+
+// Represent the selection of elements with binary values (0 for not included, 1 for included).
+// For example, to generate all combinations of length k from an array, use binary values that have exactly k bits set to 1.
+// std::next_permutation on Binary Mask:
+
+// Create a "mask" vector where the last k elements are 1 and the rest are 0.
+// Use std::next_permutation on this mask to generate each unique combination.
+std::vector<std::vector<int>> generateCombinations(const std::vector<int>& nums, int k) {
+    std::vector<std::vector<int>> result;
+    int n = nums.size();
+    
+    // Create a binary mask with `k` 1s at the end for initial combination
+    std::vector<int> mask(n, 0);
+    std::fill(mask.end() - k, mask.end(), 1);
+    
+    do {
+        std::vector<int> combination;
+        for (int i = 0; i < n; ++i) {
+            if (mask[i] == 1) {
+                combination.push_back(nums[i]);
+            }
+        }
+        result.push_back(combination);
+    } while (std::next_permutation(mask.begin(), mask.end()));
+    
+    return result;
+}
+
+// k = number of elements taken
