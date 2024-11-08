@@ -1,6 +1,7 @@
 #pragma once
 #include<vector>
 #include<unordered_set>
+#include<algorithm>
 
 void backtrack(std::vector<int>& nums, int startIndex, 
                 std::vector<std::vector<int>>& permutations){
@@ -59,6 +60,26 @@ void backtrackUnique(std::vector<int>& nums, int startIndex,
 
 std::vector<std::vector<int>> permuteUnique(std::vector<int>& nums) {
     std::vector<std::vector<int>> permutations;
-    backtrack(nums, 0, permutations);
+    std::sort(nums.begin(), nums.end());
+    backtrackUnique(nums, 0, permutations);
     return permutations;
 }
+
+// leetcode solution
+class Solution {
+public:
+    std::vector<std::vector<int>> permuteUnique(std::vector<int>& nums) {
+        std::vector<std::vector<int>> vec;
+        std::sort(nums.begin() , nums.end());
+        do{
+            vec.push_back(nums);
+        }while(next_permutation(nums.begin() , nums.end()));
+
+        return vec;
+    }
+};
+
+// next_permutation, a standard C++ function that rearranges the elements in the next lexicographical(sorted) order. 
+// It starts with the smallest permutation (because nums is sorted) and generates the next unique permutation each time 
+// it’s called. Once all unique permutations  have been generated and nums returns to its original sorted order, 
+// next_permutation will return false, and the loop ends.
