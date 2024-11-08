@@ -65,5 +65,12 @@ int main(){
     std::vector<std::vector<int>> combinations  = combinationSum(candidates, target);
     std::cout<<"\nThe combinations are : ";
     Traversal::printVector2D(combinations);
+
+    // Combination Sum II
+    candidates = {2,1,2,5,2};
+    target = 5;
+    combinations = combinationSum2(candidates, target);
+    std::cout<<"\nThe combinations are : ";
+    Traversal::printVector2D(combinations);
     return 0;
 }
