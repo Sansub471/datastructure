@@ -11,3 +11,31 @@
 
 // The replacement must be in place and use only constant extra memory.
 
+#include<vector>
+#include<algorithm>
+
+void nextPermutation(std::vector<int>& nums) {
+    int n = nums.size();
+    int i = n - 2; // 1. i). right most decreasing pair
+    while(i >= 0 && nums[i] >= nums[i + 1]){
+        i--;
+    }
+
+    // ii). no such pair found
+    if( i < 0){
+        std::reverse(nums.begin(), nums.end());
+        return;
+    }
+
+    //2. Find smallest element larger than nums[i] in the right
+    int j = n - 1;
+    while(nums[j] <= nums[i]){
+        j--;
+    }
+
+    //3. Swap
+    std::swap(nums[i], nums[j]);
+
+    // 4. Reverse the suffix, elements after i
+    std::reverse(nums.begin() + i + 1, nums.end());
+}
