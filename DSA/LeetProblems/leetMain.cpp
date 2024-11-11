@@ -14,6 +14,8 @@
 #include"searchMatrix.hpp"
 #include"combinationSum.hpp"
 
+#include"majorityElement.hpp"
+
 int main(){
     // reverse an integer
     int x = 123;
@@ -72,5 +74,10 @@ int main(){
     combinations = combinationSum2(candidates, target);
     std::cout<<"\nThe combinations are : ";
     Traversal::printVector2D(combinations);
+
+    // majority element
+    std::vector<int> majority {2,2,1,1,1,2,2};
+    int mjrElem = majorityElement(majority);
+    std::cout<<"\nThe majority element is : " << mjrElem << std::endl;
     return 0;
 }
