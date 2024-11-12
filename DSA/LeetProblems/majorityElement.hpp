@@ -64,9 +64,10 @@ std::vector<int> majorityElement2(std::vector<int>& nums) {
     // return result;
 
     // Liner complexity 
+    // k = 3, hence at most k - 1 candidates
     int candidate1 =0, candidate2 = 1;
     int count1 = 0, count2 = 0;
-    vector<int> result;
+    std::vector<int> result;
     int n = nums.size();
     for(int num: nums){
         if(num == candidate1){
