@@ -94,3 +94,5 @@ std::vector<int> majorityElement2(std::vector<int>& nums) {
     if(count2 > n / 3) result.push_back(candidate2);
     return result;
 }
+
+// Let's move on to python now
