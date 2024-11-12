@@ -1,0 +1,8 @@
+auto init = []() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    return 0;
+}();
+This init block runs before anything else to disable C++-specific I/O synchronization with C’s stdio. It’s often used in 
+competitive programming to speed up I/O operations, although it’s not directly related to solution.
