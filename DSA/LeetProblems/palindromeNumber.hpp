@@ -10,3 +10,6 @@ bool isPalindrome(int x) {
     // eg. 1234321
     return x == revhalf || x == revhalf/10;
 }
+
+// T(n) = O(logN)
+// S(n) = O(1)
