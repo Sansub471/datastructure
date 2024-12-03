@@ -6,5 +6,7 @@ bool isPalindrome(int x) {
         revhalf = revhalf * 10 + x % 10;
         x /= 10;
     }
+    // revhalf = x or odd digits case reject the middle digit
+    // eg. 1234321
     return x == revhalf || x == revhalf/10;
 }
