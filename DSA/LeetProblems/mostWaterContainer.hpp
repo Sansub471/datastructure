@@ -8,3 +8,19 @@
 // Notice that you may not slant the container.
 
 #pragma once
+#include<vector>
+
+int maxArea(std::vector<int>& height) {
+    int left = 0; int right = height.size() - 1;
+    int maxArea = 0;
+    while(left < right){
+        int Area = (right - left) * std::min(height[left], height[right]);
+        if(height[left] < height[right]){
+            ++left;
+        }else{
+            --right;
+        }
+        if(Area > maxArea) maxArea = Area;
+    }
+    return maxArea;
+}
