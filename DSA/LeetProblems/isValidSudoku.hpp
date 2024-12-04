@@ -1,11 +1,14 @@
 
+#pragma once
+#include<vector>
+#include<unordered_set>
 
-bool isValidSudoku(vector<vector<char>>& board) {
+bool isValidSudoku(std::vector<std::vector<char>>& board) {
     // create unordered_sets for rows, columns and sub-boxes
     const int SIZE = 9;
-    vector<unordered_set<char>> rows(SIZE);
-    vector<unordered_set<char>> cols(SIZE);
-    vector<unordered_set<char>> boxes(SIZE);
+    std::vector<std::unordered_set<char>> rows(SIZE);
+    std::vector<std::unordered_set<char>> cols(SIZE);
+    std::vector<std::unordered_set<char>> boxes(SIZE);
 
     // size of sudoku is fixed, but for generalized solution
     for(int r = 0; r < SIZE; ++r){
@@ -26,3 +29,4 @@ bool isValidSudoku(vector<vector<char>>& board) {
 
     }
     return true; 
+}
