@@ -24,3 +24,6 @@ int maxArea(std::vector<int>& height) {
     }
     return maxArea;
 }
+
+// Time  = O(N)
+// Space = O(1)
