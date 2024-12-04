@@ -40,3 +40,13 @@ bool isValidSudoku(std::vector<std::vector<char>>& board) {
     }
     return true; 
 }
+
+// Code Analysis 
+// Time Complexity:
+
+// Each unordered_set operation (insert and lookup) is 𝑂(1).
+// The traversal of the board is O(81) (fixed size), making the overall complexity constant for a standard Sudoku board.
+
+// Space Complexity:
+
+// Each unordered_set can store up to 9 elements, so the total space usage is O(9×9)=O(81), which is constant for Sudoku.
