@@ -30,20 +30,18 @@ int removeDuplicates(std::vector<int>& nums) {
 // Same concept, at max two repetition allowed.
 int removeDuplicatesII(std::vector<int>& nums) {
     if(nums.empty()) return 0;
-    
-    const int SIZE = nums.size();
-    int tracker = 1;
-    int count = 0;
-    for(int i = 1; i < SIZE; ++i){
-        if(nums[i] == nums[i-1]){
-            if(count == 0) {
-                nums[tracker++] = nums[i]; 
+
+        const int SIZE = nums.size();
+        int tracker = 1;
+        int count = 1;
+        for(int i = 1; i < SIZE; ++i){
+            if(nums[i] == nums[i-1]){
                 count++;
+            }else{
+                count = 1;
             }
-            continue;
+            
+            if(count <= 2) nums[tracker++] = nums[i];
         }
-        count = 0;
-        nums[tracker++] = nums[i];
-    }
-    return tracker;
+        return tracker;
 }
