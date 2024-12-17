@@ -53,3 +53,5 @@ Node* connect(Node* root) {
     }
     return root;
 }
+
+// Time and Space : O(N), have to traverse every N nodes
