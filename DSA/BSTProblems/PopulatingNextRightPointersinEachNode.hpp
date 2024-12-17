@@ -40,18 +40,25 @@ Node* connect(Node* root) {
     Q.push(root);
     while(!Q.empty()){
         int SIZE = Q.size();
-        Node* prevFront = nullptr;
+        Node* prevFront;
         for(int i = 0; i < SIZE; i++){
             Node* currFront = Q.front();
-            currFront->next = prevFront;
             Q.pop();
-            if(currFront->right) Q.push(currFront->right);
+            if(i == 0){
+                prevFront = currFront;
+            }else{
+                prevFront->next = currFront;
+                prevFront = currFront;
+            }
             if(currFront->left) Q.push(currFront->left);
-            prevFront = currFront;
+            if(currFront->right) Q.push(currFront->right);
         }
-        //prevFront->next = nullptr;
+        prevFront->next = nullptr;
     }
     return root;
 }
 
 // Time and Space : O(N), have to traverse every N nodes
+
+// While using level order traversal in binary trees, natural order of traversal i.e. left-right is faster than right-left
+// The storage of binary tree ans CPU cache are designed that way.
