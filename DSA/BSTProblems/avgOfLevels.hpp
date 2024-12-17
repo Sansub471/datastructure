@@ -53,3 +53,5 @@ template<typename T>
         avgOfLevels.push_back(avg);
         return avgOfLevels;
     }
+
+// Try rewrite with leetcode version of the level order traversal
