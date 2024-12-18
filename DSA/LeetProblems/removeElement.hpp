@@ -1,6 +1,7 @@
 #pragma once
 #include<vector>
 
+// 27. Remove element Leetcode problem number
 
 int removeElement(std::vector<int>& nums, int val) {
     const int SIZE = nums.size();
@@ -18,3 +19,5 @@ int removeElement(std::vector<int>& nums, int val) {
     }
     return left;
 }
+// Time : O(N)
+// Space : O(1)
