@@ -14,7 +14,8 @@ ListNode* rotateRight(ListNode* head, int k) {
         ++countNodes;
         headptr = headptr->next;
     }
-    for(int i = 0; i < k; ++i){
+    int effRotations = k % (countNodes + 1);
+    for(int i = 0; i < effRotations; ++i){
         ListNode* fast = head;
         while(fast->next->next != nullptr) fast = fast->next;
         slow = fast->next;
