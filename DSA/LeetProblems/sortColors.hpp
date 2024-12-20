@@ -9,4 +9,21 @@
 // You must solve this problem without using the library's sort function.
 
 // Two pointer problem section
+#include<vector>
 
+void sortColors(std::vector<int>& nums) {
+    int countRED = 0, countWHITE = 0, countBLUE = 0;
+    for(auto num : nums){
+        if(num == 0){
+            ++countRED;
+        }else if(num == 1){
+            ++countWHITE;
+        }else{
+            ++countBLUE;
+        }
+    }
+    int index = 0;
+    for(int i = 0; i < countRED; ++i) nums[index++] = 0;
+    for(int i = 0; i < countWHITE; ++i) nums[index++] = 1;
+    for(int i = 0; i < countBLUE; ++i) nums[index++] = 2;
+}
