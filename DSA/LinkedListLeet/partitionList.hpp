@@ -10,3 +10,45 @@
 
 // Input: head = [2,1], x = 2
 // Output: [1,2]
+
+#include<queue>
+#include"../Linked_list/linked_list.hpp"
+
+typedef LinkedList::Node ListNode;
+
+ListNode* partition(ListNode* head, int x) {
+    if(head == nullptr || head->next == nullptr) return head;
+    // ListNode* dummy = new ListNode(0, head);
+    ListNode* headptr = head;
+    
+    std::queue<ListNode*> lesser;
+    std::queue<ListNode*> greater;
+    while(headptr->next != nullptr){
+        if(headptr->val < x){
+            lesser.push(headptr);
+        }else{
+            greater.push(headptr);
+        }
+        headptr = headptr->next;
+    }
+    if(!lesser.empty()) {
+        headptr = lesser.front();
+        lesser.pop();
+    }else{
+        headptr = greater.front();
+        greater.pop();
+    }
+    ListNode* newhead = headptr;
+    while(!lesser.empty()){
+        headptr->next = lesser.front();
+        headptr = headptr->next;
+        lesser.pop();
+    }
+    while(!greater.empty()){
+        headptr = greater.front();
+        headptr = headptr->next;
+        greater.pop();
+    }
+    headptr->next = nullptr;
+    return newhead;        
+}
