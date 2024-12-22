@@ -18,37 +18,43 @@ typedef LinkedList::Node ListNode;
 
 ListNode* partition(ListNode* head, int x) {
     if(head == nullptr || head->next == nullptr) return head;
-    // ListNode* dummy = new ListNode(0, head);
+    ListNode* lesser_dummy = new ListNode(0, nullptr);
+    ListNode* lesser_ptr = nullptr;
+
+    ListNode* greaterEqual_dummy = new ListNode(0, nullptr);
+    ListNode* greaterEqual_ptr = nullptr;
+
     ListNode* headptr = head;
-    
-    std::queue<ListNode*> lesser;
-    std::queue<ListNode*> greater;
     while(headptr->next != nullptr){
         if(headptr->val < x){
-            lesser.push(headptr);
+            if(lesser_dummy->next == nullptr){
+                lesser_dummy->next = headptr;
+                lesser_ptr = headptr;
+                lesser_ptr->next = nullptr;
+            }
+            lesser_ptr->next = headptr;
+            lesser_ptr = headptr;
+            lesser_ptr->next = nullptr;
         }else{
-            greater.push(headptr);
+            if(greaterEqual_dummy->next == nullptr){
+                greaterEqual_dummy->next = headptr;
+                greaterEqual_ptr = headptr;
+                greaterEqual_ptr->next = nullptr;
+
+            }
+            greaterEqual_ptr->next = headptr;
+            greaterEqual_ptr = headptr;
+            greaterEqual_ptr->next = nullptr;
         }
         headptr = headptr->next;
     }
-    if(!lesser.empty()) {
-        headptr = lesser.front();
-        lesser.pop();
-    }else{
-        headptr = greater.front();
-        greater.pop();
-    }
-    ListNode* newhead = headptr;
-    while(!lesser.empty()){
-        headptr->next = lesser.front();
-        headptr = headptr->next;
-        lesser.pop();
-    }
-    while(!greater.empty()){
-        headptr = greater.front();
-        headptr = headptr->next;
-        greater.pop();
-    }
-    headptr->next = nullptr;
-    return newhead;        
+
+    // join the two lists
+    lesser_ptr->next = greaterEqual_dummy->next;
+    delete greaterEqual_dummy;
+    
+    ListNode* temp = lesser_dummy;
+    lesser_dummy = lesser_dummy->next;
+    delete temp;
+    return lesser_dummy;
 }
