@@ -21,8 +21,8 @@ ListNode* partition(ListNode* head, int x) {
     ListNode* lesser_dummy = new ListNode(0, nullptr);
     ListNode* lesser_ptr = lesser_dummy;
 
-    ListNode* greaterEqual_dummy = new ListNode(0, nullptr);
-    ListNode* greaterEqual_ptr = greaterEqual_dummy;
+    ListNode* greater_dummy = new ListNode(0, nullptr);
+    ListNode* greater_ptr = greater_dummy;
 
     ListNode* headptr = head;
     while(headptr != nullptr){
@@ -30,17 +30,17 @@ ListNode* partition(ListNode* head, int x) {
             lesser_ptr->next = headptr;
             lesser_ptr = headptr;
         }else{
-            greaterEqual_ptr->next = headptr;
-            greaterEqual_ptr = headptr;
+            greater_ptr->next = headptr;
+            greater_ptr = headptr;
         }
         headptr = headptr->next;
     }
 
-    greaterEqual_ptr->next = nullptr; // terminate the greater equal list
+    greater_ptr->next = nullptr; // terminate the greater equal list
 
     // join the two lists
-    lesser_ptr->next = greaterEqual_dummy->next;
-    delete greaterEqual_dummy;
+    lesser_ptr->next = greater_dummy->next;
+    delete greater_dummy;
     
     ListNode* new_head = lesser_dummy->next;
     delete lesser_dummy;
