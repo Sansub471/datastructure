@@ -48,3 +48,20 @@ int searchRotatedI(std::vector<int>& nums, int target) {
     }
     return -1;
 }
+
+// 81. Search in Rotated Sorted Array II
+// The given array can have duplicates, how it affects the search and solution strategy? 
+
+// Key Observations with Duplicates
+//     Ambiguity: If nums[low] == nums[mid] == nums[high], it’s unclear where the pivot lies.
+//     Handling Equal Values: Increment low or decrement high cautiously to narrow the search space.
+//     Worst Case: Time complexity can degrade to O(n) when all elements are the same.
+
+// Modified Strategy for Binary Search
+// Standard Cases:
+//     If nums[mid] == target, return mid.
+//     If the left half (nums[low] to nums[mid]) is sorted and contains the target, search left; otherwise, search right.
+//     If the right half (nums[mid] to nums[high]) is sorted and contains the target, search right; otherwise, search left.
+// Handle Ambiguity: 
+//     When nums[low] == nums[mid] == nums[high], increment low or decrement high.
+
