@@ -65,3 +65,36 @@ int searchRotatedI(std::vector<int>& nums, int target) {
 // Handle Ambiguity: 
 //     When nums[low] == nums[mid] == nums[high], increment low or decrement high.
 
+bool searchRotatedII(std::vector<int>& nums, int target) {
+    if(nums.empty()) return false;
+    int low = 0, high = nums.size() - 1;
+    while(low <= high){
+        int mid = low + (high - low) / 2;
+
+        if(nums[low] == target || nums[mid] == target || nums[high] == target) return true;
+
+        // standard case:
+        if(nums[low] < nums[mid]){
+            if(nums[low] <= target && target < nums[mid]){
+                high = mid - 1;
+            }else{
+                low = mid + 1;
+            }
+        }else if(nums[mid] < nums[high]){
+            if(nums[mid] < target && target <= nums[high]){
+                low = mid + 1;
+            }else{
+                high = mid - 1;
+            }
+        }else{
+            // Ambiguity case: nums[low] == nums[mid] == nums[high]
+            low = low + 1;
+            high = high - 1;
+        }
+    }
+    return false;
+}
+// Time Complexity:
+//     Best Case: O(logn) for standard cases where the array is well-partitioned.
+//     Worst Case: O(n) for scenarios with extensive duplicates (e.g., [1, 1, 1, ..., 1]).
+// This worst-case degradation is unavoidable due to the nature of ambiguous cases.
