@@ -1,4 +1,5 @@
 #pragma once
+#include<vector>
 // 33. Search in Rotated Sorted Array
 
 // There is an integer array nums sorted in ascending order (with distinct values).
@@ -18,3 +19,32 @@
 //     Narrow the search space based on whether the target is in the sorted or unsorted part.
 //     Repeat until the target is found or the search space is exhausted.
 //     This approach guarantees O(logn) complexity due to the halving of the search space at each step.
+
+int searchRotatedI(std::vector<int>& nums, int target) {
+    if(nums.empty()) return -1;
+    int low = 0, high = nums.size() - 1;
+    while(low <= high){
+        int mid = low + (high - low) / 2;
+        if(nums[mid] == target) return mid;
+
+        // check which part is sorted
+        // if left half is sorted
+        if(nums[low] <= nums[mid]){
+            if(nums[low] <= target && target < nums[mid]){
+                high = mid - 1;
+            }else{
+                low = mid + 1;
+            }
+        }
+
+        // if right half is sorted
+        if(nums[mid] <= nums[high]){
+            if(nums[mid] < target && target <= nums[high]){
+                low = mid + 1;
+            }else{
+                high = mid - 1;
+            }
+        }
+    }
+    return -1;
+}
