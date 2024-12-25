@@ -87,7 +87,7 @@ bool searchRotatedII(std::vector<int>& nums, int target) {
                 high = mid - 1;
             }
         }else{
-            // Ambiguity case: nums[low] == nums[mid] == nums[high]
+            // Ambiguity case: nums[low] == nums[mid] == nums[high] or any two equal.
             low = low + 1;
             high = high - 1;
         }
