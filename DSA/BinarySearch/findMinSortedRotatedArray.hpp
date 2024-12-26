@@ -24,3 +24,21 @@ int findMinI(std::vector<int>& nums) {
     }
     return nums[low];
 }
+
+// When there are duplicates in the array
+int findMinII(std::vector<int>& nums) {
+    int low = 0, high = nums.size() - 1;
+    while(low < high){
+        int mid = low + (high - low) / 2;
+        if(nums[mid] > nums[high]){
+            low = mid + 1;
+        }else if(nums[mid] < nums[high]){
+            high = mid;
+        }else{
+            high -= 1; // reducing the search space
+        }
+    }
+    return nums[low];
+}
+
+// For both case, time complexity : O(logN) Binary search technique.
