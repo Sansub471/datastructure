@@ -48,3 +48,24 @@ int findPeakElementBinary(std::vector<int>& nums) {
 }
 
 // Time : O(logN) and Space : O(1)
+
+// Part II : 
+// 1901. Find a Peak Element II
+
+// A peak element in a 2D grid is an element that is strictly greater than all of its adjacent neighbors to the left, right, top, 
+// and bottom.
+
+// Given a 0-indexed m x n matrix mat where no two adjacent cells are equal, find any peak element mat[i][j] and return 
+// the length 2 array [i,j].
+
+// You may assume that the entire matrix is surrounded by an outer perimeter with the value -1 in each cell.
+
+// You must write an algorithm that runs in O(m log(n)) or O(n log(m)) time.
+
+// Guide : You might end up finding a local peak for each row, and just checking the elements to its top and bottom. 
+// This approach won't guarantee a global peak. 
+
+// For eg. mat = [[70,50,40,30,20],[100,1,2,3,4]]
+// Finding a local peak approach, will find any peak, the second row can have two local peaks 100 and 4
+// It doesn't guarantee this local peak will meet the required conditions.
+
