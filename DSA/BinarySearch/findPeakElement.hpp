@@ -28,3 +28,23 @@ int findPeakElementLinear(std::vector<int>& nums) {
 
 // This is a linear approach(O(N)), the required solution must be binary search. O(logN)
 
+// The binary approach is given below:
+
+int findPeakElementBinary(std::vector<int>& nums) {
+    if(nums.empty()) return -1;
+
+    int low = 0, high = nums.size() - 1;
+    // low <= high will cause out of bound if mid = size() - 1
+    while(low < high){
+        int mid = low + (high - low) / 2;
+        if(nums[mid] > nums[mid + 1]){ // peak is on the left including the mid
+            high = mid;
+        }else{
+            low = mid + 1;
+        }
+    }
+    // loop terminates when low == high
+    return low;
+}
+
+// Time : O(logN) and Space : O(1)
