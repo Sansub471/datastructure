@@ -69,3 +69,48 @@ int findPeakElementBinary(std::vector<int>& nums) {
 // Finding a local peak approach, will find any peak, the second row can have two local peaks 100 and 4
 // It doesn't guarantee this local peak will meet the required conditions.
 
+// Fix: A More Robust Approach
+// To ensure correctness, use binary search on the rows as well as the columns. Here's the logic:
+
+// Use a binary search on rows to narrow down the potential rows for the global peak.
+// Within the selected row, perform a binary search on columns to find the peak for that row.
+// Check the top and bottom neighbors of the row-local peak to determine whether it's a global peak.
+
+std::vector<int> findPeakGrid(std::vector<std::vector<int>>& mat) {
+    int low = 0, high = mat.size() - 1;
+    while (low <= high) {
+        int midRow = low + (high - low) / 2;
+
+        // Find the column-local peak in the middle row
+        int maxCol = 0;
+        for (int col = 0; col < mat[midRow].size(); ++col) {
+            if (mat[midRow][col] > mat[midRow][maxCol]) {
+                maxCol = col;
+            }
+        }
+
+        // Check neighbors to determine if it's a global peak
+        int peakValue = mat[midRow][maxCol];
+        bool isTopSmaller = (midRow == 0 || mat[midRow - 1][maxCol] < peakValue);
+        bool isBottomSmaller = (midRow == mat.size() - 1 || mat[midRow + 1][maxCol] < peakValue);
+
+        if (isTopSmaller && isBottomSmaller) {
+            return {midRow, maxCol};
+        }
+
+        // Move search to the row with the larger neighbor
+        if (midRow > 0 && mat[midRow - 1][maxCol] > peakValue) {
+            high = midRow - 1; // Move up
+        } else {
+            low = midRow + 1; // Move down
+        }
+    }
+    return {-1, -1}; // Should never reach here
+}
+
+// Complexity
+//     Time Complexity:
+//     Binary search on rows: O(log(m))
+//     Linear search on columns for each row: O(n)
+//     Total: O(n⋅log(m)), where m is the number of rows and n is the number of columns.
+//     Space Complexity: O(1) (no extra space used).
