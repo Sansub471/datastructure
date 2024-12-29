@@ -28,3 +28,17 @@
 
 // The array is guaranteed to be a mountain array.
 
+#include<vector>
+int peakIndexInMountainArray(std::vector<int>& arr) {
+    int low = 0, high = arr.size() - 1;
+    while(low < high){
+        int mid = low + (high - low) / 2;
+        if(arr[mid + 1] < arr[mid]){
+            high = mid;
+        }else{
+            low = mid + 1;
+        }
+    }
+    return low;
+    
+}
