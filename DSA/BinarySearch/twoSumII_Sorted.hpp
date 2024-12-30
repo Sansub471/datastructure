@@ -14,3 +14,24 @@
 // Input: numbers = [2,7,11,15], target = 9
 // Output: [1,2]
 // Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
+
+// Brute force two sum solution, it works even for not sorted but too slow
+
+#include<vector>
+
+
+std::vector<int> twoSum(std::vector<int>& numbers, int target) {
+    // Brute force solution
+    for(int i = 0; i < numbers.size(); ++i){
+        int comp = target - numbers[i];
+        for(int j = 0; j < numbers.size(); ++j){
+            if( i == j) continue;
+            if(numbers[j] == comp) return {i + 1, j + 1};
+        }
+    }
+    // should never reach here
+    return {-1, -1};
+    
+}
+
+// O(n^2)
