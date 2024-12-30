@@ -20,7 +20,7 @@
 #include<vector>
 
 
-std::vector<int> twoSum(std::vector<int>& numbers, int target) {
+std::vector<int> twoSumI(std::vector<int>& numbers, int target) {
     // Brute force solution
     for(int i = 0; i < numbers.size(); ++i){
         int comp = target - numbers[i];
@@ -35,3 +35,23 @@ std::vector<int> twoSum(std::vector<int>& numbers, int target) {
 }
 
 // O(n^2)
+
+// The two-pointer approach is the easiest and the most efficient 
+std::vector<int> twoSumII(std::vector<int>& numbers, int target) {
+    int low = 0, high = numbers.size() - 1;
+    while(low < high){
+        int sum = numbers[low] + numbers[high];
+        if(sum == target){
+            return {++low, ++high};
+        }else if(sum > target){
+            --high;
+        }else{
+            ++low;
+        }
+    }
+    // should never reach here
+    return {};
+}
+// O(N)
+
+// Binary search approach
