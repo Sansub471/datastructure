@@ -55,3 +55,21 @@ std::vector<int> twoSumII(std::vector<int>& numbers, int target) {
 // O(N)
 
 // Binary search approach
+std::vector<int> twoSum(std::vector<int>& numbers, int target) {
+    for(int i = 0; i < numbers.size(); ++i){
+        int low = i + 1, high = numbers.size() - 1;
+        int comp = target - numbers[i];
+        while(low <= high){
+            int mid = low + (high - low) / 2;
+            if(numbers[mid] == comp){
+                return {++i, ++mid};
+            }else if(numbers[mid] < comp){
+                low = mid + 1; // search right
+            }else{
+                high = mid - 1; // search left
+            }
+        }
+    }
+    return {};
+}
+// O(N logN), for each element use binary search
