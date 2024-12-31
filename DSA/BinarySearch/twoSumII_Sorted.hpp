@@ -74,5 +74,4 @@ std::vector<int> twoSum(std::vector<int>& numbers, int target) {
 }
 // O(N logN), for each element use binary search
 
-// The year ends here with a sad reality
 
