@@ -18,3 +18,28 @@
 // Output: 0
 
 #include<vector>
+// Sliding window approach using two pointers.
+
+int minSubArrayLen(int target, std::vector<int>& nums) {
+    int tail = 0, head = 0;
+    long sum = 0;
+    int length = nums.size() + 1; // Max length of the subarray is the array itself
+    while(tail < nums.size()){
+        if(head < nums.size() && nums[head] >= target) return 1;
+        if(sum >= target){
+            // shrink window from the left
+            while(sum >= target){
+                length = std::min(length, head - tail);
+                sum -= nums[tail++];
+            }
+        }else{
+            if(head < nums.size()){
+                sum += nums[head++];
+            }else{
+                break;
+            }
+        }
+    }
+    return (length == nums.size() + 1) ? 0 : length;
+}
+//Time :  O(N) 
