@@ -14,3 +14,22 @@
 // In suffix array : product of elements after i
 // product[i] = prefix[i] * suffix[i] combine the two arrays into the product array
 
+std::vector<int> productExceptSelf(std::vector<int>& nums) {
+    const int SIZE = nums.size();
+    std::vector<int> prefix(SIZE, 1);
+    std::vector<int> suffix(SIZE, 1);
+    std::vector<int> product(SIZE, 1);
+
+    for(int i = 1; i < SIZE; ++i){
+        prefix[i] = prefix[i-1] * nums[i-1];
+    }
+
+    for(int i = SIZE - 2; i >= 0; --i){
+        suffix[i] = suffix[i+1] * nums[i+1];
+    }
+
+    for(int i = 0; i < SIZE; ++i){
+        product[i] = prefix[i] * suffix[i];
+    }
+    return product;
+}
