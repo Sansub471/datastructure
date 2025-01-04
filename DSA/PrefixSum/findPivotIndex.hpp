@@ -23,3 +23,20 @@
 // Right sum = nums[4] + nums[5] = 5 + 6 = 11
 
 // Need to see another approach for the problem, took me too long to get it done.
+#include<vector>
+
+int pivotIndex(std::vector<int>& nums) {
+    if(nums.empty()) return -1;
+
+    const int SIZE = nums.size();
+    std::vector<int> prefixSum(SIZE + 1, 0);
+    for(int i = 0; i < SIZE; ++i){
+        prefixSum[i+1] = prefixSum[i] + nums[i];
+    }
+    int total = prefixSum[SIZE];
+    for(int i = 0; i < SIZE; ++i){
+        int suffixSum = total - prefixSum[i+1];
+        if(prefixSum[i] == suffixSum) return i;
+    } 
+    return -1;
+}
