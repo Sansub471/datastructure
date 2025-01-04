@@ -40,3 +40,5 @@ int pivotIndex(std::vector<int>& nums) {
     } 
     return -1;
 }
+
+// Next problem for the day, I will see what can be done.
