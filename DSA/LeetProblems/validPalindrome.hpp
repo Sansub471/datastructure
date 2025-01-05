@@ -15,3 +15,29 @@
 // Input: s = "race a car"
 // Output: false
 // Explanation: "raceacar" is not a palindrome.
+
+#include<string>
+
+bool isPalindrome(std::string s) {
+    int left = 0, right = s.size() - 1;
+
+    while (left < right) {
+        // Skip non-alphanumeric characters
+        while (left < right && !std::isalnum(s[left])) {
+            ++left;
+        }
+        while (left < right && !std::isalnum(s[right])) {
+            --right;
+        }
+
+        // Compare characters after converting to lowercase
+        if (std::tolower(s[left]) != std::tolower(s[right])) {
+            return false;
+        }
+
+        ++left;
+        --right;
+    }
+
+    return true;
+}
