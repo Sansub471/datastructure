@@ -21,3 +21,5 @@
 // Explanation: The smallest positive integer 1 is missing.
 
 // This is a hard problem, do it other day
+
+// Come back to it after reading about hash map and heap
