@@ -55,3 +55,22 @@ bool hasCycle(ListNode *head) {
 //     Move both pointers (slow and fast) one step at a time. The point where they meet again is the starting node of the cycle.
 //     This works because the distance from the head to the cycle's start is equal to the distance from the meeting point back to 
 //     the cycle's start.
+
+ListNode *detectCycle(ListNode *head) {
+    ListNode* slow = head;
+    ListNode* fast = head;
+    while(fast != nullptr && fast->next != nullptr){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast){
+            // Cycle found, reset slow to head and move both pointers one step
+            slow = head;
+            while(slow != fast){
+                slow = slow->next;
+                fast = fast->next;
+            }
+            return slow; // or fast
+        }
+    }
+    return nullptr;
+}
