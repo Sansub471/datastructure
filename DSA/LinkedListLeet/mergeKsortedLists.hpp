@@ -61,4 +61,10 @@ ListNode* mergeKLists(std::vector<ListNode*>& lists) {
     return dummy->next;
 }
 
-// 
+// Code Analysis :
+// The problem requires merging k sorted lists by repeatedly taking the smallest node. A min-heap helps efficiently 
+// track the smallest node in O(logk) time, making the solution optimal
+
+// Time Complexity: O(Nlogk), where N is the total number of nodes across all lists, and 
+//                 k is the number of lists. 
+// Space Complexity: O(k) for the priority queue.
