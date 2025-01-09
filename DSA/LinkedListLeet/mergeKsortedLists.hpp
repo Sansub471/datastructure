@@ -25,3 +25,40 @@
 
 typedef LinkedList::Node ListNode;
 
+ListNode* mergeKLists(std::vector<ListNode*>& lists) {
+    if (lists.empty()) return nullptr;
+
+    // Custom comparator for the priority queue (min-heap)
+    auto cmp = [](ListNode* a, ListNode* b) {
+        return a->val > b->val;
+    };
+
+    std::priority_queue<ListNode*, std::vector<ListNode*>, decltype(cmp)> minHeap(cmp);
+
+    // Add the head of each list to the heap
+    for (auto list : lists) {
+        if (list) minHeap.push(list);
+    }
+
+    // Dummy node to start the merged list
+    ListNode* dummy = new ListNode(-1);
+    ListNode* tail = dummy;
+
+    while (!minHeap.empty()) {
+        // Get the smallest node from the heap
+        ListNode* smallest = minHeap.top();
+        minHeap.pop();
+
+        // Add it to the merged list
+        tail->next = smallest;
+        tail = tail->next;
+
+        // If the smallest node has a next node, push it into the heap
+        if (smallest->next) {
+            minHeap.push(smallest->next);
+        }
+    }
+    return dummy->next;
+}
+
+// 
