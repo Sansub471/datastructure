@@ -68,3 +68,7 @@ ListNode* mergeKLists(std::vector<ListNode*>& lists) {
 // Time Complexity: O(Nlogk), where N is the total number of nodes across all lists, and 
 //                 k is the number of lists. 
 // Space Complexity: O(k) for the priority queue.
+
+// Read about following topics
+// Hash Map
+// Heap(Max and Min)
