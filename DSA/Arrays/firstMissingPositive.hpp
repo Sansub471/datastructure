@@ -36,3 +36,5 @@ int firstMissingPositive(std::vector<int>& nums) {
 
     return N + 1;
 }
+
+// Analysis : Time O(N) and Space O(1)
