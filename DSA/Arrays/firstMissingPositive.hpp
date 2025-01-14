@@ -25,7 +25,7 @@ int firstMissingPositive(std::vector<int>& nums) {
     for (int i = 0; i < N; ++i) {
         // Check if nums[i] is within the valid range and not already in the correct position
         while (nums[i] > 0 && nums[i] <= N && nums[i] != nums[nums[i] - 1]) {
-            swap(nums[i], nums[nums[i] - 1]);
+            std::swap(nums[i], nums[nums[i] - 1]);
         }
     }
 
@@ -38,3 +38,14 @@ int firstMissingPositive(std::vector<int>& nums) {
 }
 
 // Analysis : Time O(N) and Space O(1)
+
+// Solution Strategy : 
+// Place Numbers Correctly:
+// For each index i in the array, while nums[i] is in the range [1, n] and not in its correct position (nums[i] != nums[nums[i] - 1]), 
+// swap it with nums[nums[i] - 1].
+
+// Find the Missing Number:
+// After reordering, iterate through the array. If nums[i] != i + 1, return i + 1 as the first missing positive.
+
+// Handle Edge Case:
+// If the entire array is properly ordered, return n + 1.
