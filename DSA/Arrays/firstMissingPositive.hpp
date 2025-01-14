@@ -19,3 +19,20 @@
 // Input: nums = [7,8,9,11,12]
 // Output: 1
 // Explanation: The smallest positive integer 1 is missing.
+#include<vector>
+int firstMissingPositive(std::vector<int>& nums) {
+    const int N = nums.size();
+    for (int i = 0; i < N; ++i) {
+        // Check if nums[i] is within the valid range and not already in the correct position
+        while (nums[i] > 0 && nums[i] <= N && nums[i] != nums[nums[i] - 1]) {
+            swap(nums[i], nums[nums[i] - 1]);
+        }
+    }
+
+    // Find the first missing positive
+    for (int i = 0; i < N; ++i) {
+        if (nums[i] != i + 1) return i + 1;
+    }
+
+    return N + 1;
+}
