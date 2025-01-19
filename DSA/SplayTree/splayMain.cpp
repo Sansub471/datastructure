@@ -73,6 +73,54 @@ public:
 
     SplayTree() : root(nullptr) {}
 
+    // Search operation
+    Node* search(int key) {
+        root = splay(root, key);
+        return (root && root->key == key) ? root : nullptr;
+    }
+
+    // Insert operation
+    void insert(int key) {
+        if (!root) {
+            root = new Node(key);
+            return;
+        }
+
+        root = splay(root, key);
+
+        if (root->key == key) return; // Key already exists
+
+        Node* newNode = new Node(key);
+        if (key < root->key) {
+            newNode->right = root;
+            newNode->left = root->left;
+            root->left = nullptr;
+        } else {
+            newNode->left = root;
+            newNode->right = root->right;
+            root->right = nullptr;
+        }
+
+        root = newNode;
+    }
+
+    // Delete operation
+    void remove(int key) {
+        if (!root) return;
+
+        root = splay(root, key);
+
+        if (root->key != key) return; // Key not found
+
+        if (!root->left) {
+            root = root->right;
+        } else {
+            Node* temp = root;
+            root = splay(root->left, key);
+            root->right = temp->right;
+        }
+    }
+
     // Inorder traversal
     void inorder(Node* node) {
         if (!node) return;
