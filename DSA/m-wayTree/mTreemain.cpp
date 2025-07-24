@@ -1,8 +1,3 @@
 #include<iostream>
 
-int main(){
-  
-   
-
-    return 0;
-}
+// Unbalanced m-way tree for now.
