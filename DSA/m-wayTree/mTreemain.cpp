@@ -73,6 +73,3 @@ int main() {
     cout << "Search 100: " << (T.contains(100) ? "found" : "not found") << "\n";
     return 0;
 }
-
-// Life as an engineer will never be easy for now.
-// Learn to accept it, no matter what!
