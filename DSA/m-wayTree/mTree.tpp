@@ -26,7 +26,7 @@ bool MWayTree<Key, M>::contains(const Key& k){
 template<typename Key, int M>
 void MWayTree<Key, M>::insert(const Key& k){
     if(root->count == M - 1){
-        std::cer<<"Root is full - splitting not supported yet\n";
+        std::cerr<<"Root is full - splitting not supported yet\n";
         return;
     }
     insertNonFull(root, k);
@@ -46,7 +46,7 @@ void MWayTree<Key, M>::insertNonFull(Node* node, const Key& k){
         while(i >= 0 && node->keys[i] > k) i--;
         i++;
         if(node->children[i]->count == M - 1){
-            std::cer<<"Child node is full - need split\n";
+            std::cerr<<"Child node is full - need split\n";
             return;
         }
         insertNonFull(node->children[i], k);
