@@ -12,7 +12,7 @@ typename MWayTree<Key, M>::Node* MWayTree<Key, M>::search(Node* node, const Key&
     if(!node) return nullptr;
     int i = 0;
     while(i < node->count && k > node->keys[i]) i++;
-    if(i < node->count && k == node->keys[i]) return node;
+    if(i < node->count && k == node->keys[i]) return node; // key already exists
     if(node->isLeaf) return nullptr;
     return search(node->children[i], k);
 }
@@ -32,4 +32,24 @@ void MWayTree<Key, M>::insert(const Key& k){
     insertNonFull(root, k);
 }
 
+template<typename Key, int M>
+void MWayTree<Key, M>::insertNonFull(Node* node, const Key& k){
+    int i = node->count - 1;
+    if(node->isLeaf){
+        while(i >= 0 && node-> keys[i] > k){
+            node->keys[i + 1] = node->keys[i];
+            i--;
+        }
+        node->keys[i + 1] == k;
+        node->count++;
+    }else{
+        while(i >= 0 && node->keys[i] > k) i--;
+        i++;
+        if(node->children[i]->count == M - 1){
+            std::cer<<"Child node is full - need split\n";
+            return;
+        }
+        insertNonFull(node->children[i], k);
+    }
+}
 #endif
