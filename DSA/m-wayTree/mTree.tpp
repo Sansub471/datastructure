@@ -40,7 +40,7 @@ void MWayTree<Key, M>::insertNonFull(Node* node, const Key& k){
             node->keys[i + 1] = node->keys[i];
             i--;
         }
-        node->keys[i + 1] == k;
+        node->keys[i + 1] = k;
         node->count++;
     }else{
         while(i >= 0 && node->keys[i] > k) i--;
