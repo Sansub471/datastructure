@@ -13,7 +13,7 @@ int main() {
     std::cout<<"Search 15: "<< (m_tree.contains(15) ? "Found" : "Not Found") << "\n";
     std::cout<<"Search 99: "<< (m_tree.contains(99) ? "Found" : "Not Found") << "\n";
 
-    // Move with the life in the right direction
+    
     return 0;
 }
 
