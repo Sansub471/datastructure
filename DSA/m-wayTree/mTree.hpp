@@ -30,6 +30,8 @@ class MWayTree {
         Node* search(Node* node, const Key& k); 
       
         void insertNonFull(Node* node, const Key& k);
+        void splitChild(Node* parent, int index);
+        void printNode(Node* node, int depth);
 
     public:
         MWayTree();
@@ -37,6 +39,7 @@ class MWayTree {
         bool contains(const Key& k);
         
         void insert(const Key& k);
+        void print();
 };
 
 #include"mTree.tpp" // Template implementation
