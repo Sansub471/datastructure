@@ -15,5 +15,3 @@ int main() {
 
     return 0;
 }
-
-// I am doomed right now.
