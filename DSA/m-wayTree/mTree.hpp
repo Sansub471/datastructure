@@ -89,5 +89,3 @@ Extension	Common Use	                            Meaning / Convention
 */
 
 #endif
-
-// When will I complete the table? 
